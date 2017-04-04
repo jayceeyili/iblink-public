@@ -1,13 +1,15 @@
-# Project Name
+# iBlink
 
-> Pithy project description
+A web app that allows presenters to share their live presentations in real time with their audience.
+Attendees see the slides on their cell phones and can bookmark, annotate and download slides in real time.
+Presenters get metrics to improve their presentations and can connect with attendees based on shared areas of interest.
 
 ## Team
 
-  - teamMember
-  - teamMember
-  - teamMember
-  - teamMember
+  - J.G Demathieu
+  - Johnny Chen
+  - Yi Li
+  - Allen Guan
 
 ## Table of Contents
 
@@ -27,9 +29,10 @@
 
 - Node 6.4.x
 - Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- MySQL 9.1.x
+- Babel-Core
+- React
+-
 
 ## Development
 
