@@ -10,9 +10,9 @@
   "scripts": {
     "lint": "eslint client server",
     "lint-fix": "eslint client server",
-    "start": "node server/server.js",
-    "server-dev": "nodemon server/server.js",
-    "build": "webpack -d --watch"
+    "start": "npm run build && node server/server.js",
+    "dev": "webpack -d --watch & nodemon server/server.js",
+    "build": "webpack -p"
   },
   "dependencies": {
     "body-parser": "^1.17.1",
@@ -24,7 +24,7 @@
     "history": "^4.6.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "redux": "^3.6.0"
+    "react-router": "^4.0.0"
   },
   "devDependencies": {
     "webpack": "^2.2.1",
