@@ -1,4 +1,16 @@
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
 ### node etc ###
+
+.env
 
 # Logs
 logs
@@ -21,6 +33,9 @@ coverage
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 build/
 dist/
+client/public/bundle.js
+.tmp/
+test/output.js
 
 # Dependency directorys
 # Deployed apps should consider commenting these lines out:
