@@ -13,7 +13,7 @@
     "start": "npm run build && node server/server.js",
     "dev": "webpack -d --watch & nodemon server/server.js",
     "build": "webpack -p",
-    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress"
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"
   },
   "dependencies": {
     "body-parser": "^1.17.1",
