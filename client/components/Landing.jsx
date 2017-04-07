@@ -8,7 +8,7 @@ export default class Layout extends React.Component {
   render() {
     return (
       <div>
-        <h1>This is Landing page</h1>
+        <h2>This is the Landing page</h2>
         <button>Login</button>
         <button>Signup</button>
       </div>
