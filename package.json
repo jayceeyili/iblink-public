@@ -12,7 +12,8 @@
     "lint-fix": "eslint client server",
     "start": "npm run build && node server/server.js",
     "dev": "webpack -d --watch & nodemon server/server.js",
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress"
   },
   "dependencies": {
     "body-parser": "^1.17.1",
