@@ -1,17 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
+import AppRouter from './components/AppRouter.jsx';
+// import $ from 'jquery';
 
-class App extends React.Component {
-  constructor(){
-    super()
-  }
+// class App extends React.Component {
+//   constructor(){
+//     super()
+//   }
+//
+//   render() {
+//     return(
+//       <h1>hello world</h1>
+//     )
+//   }
+// }
 
-  render() {
-    return(
-      <h1>hello world</h1>
-    )
-  }
-}
-
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(
+          <AppRouter />,
+          document.getElementById('app')
+        );
