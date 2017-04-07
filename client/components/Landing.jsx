@@ -1,22 +1,17 @@
 import React from 'react';
-import $ from 'jquery';
 
-class Landing extends React.Componen {
-  constructor( props ) {
-    super( props )
-
-    // this.state = {
-    //
-    // }
+export default class Layout extends React.Component {
+	constructor(props) {
+		super(props);
   }
 
   render() {
     return (
       <div>
-        Hello React Router!!!
+        <h1>This is Landing page</h1>
+        <button>Login</button>
+        <button>Signup</button>
       </div>
     );
   }
 };
-
-export default Landing;
