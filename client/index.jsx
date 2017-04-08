@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppRouter from './components/index.jsx';
+import AppRouter from './pages/index.jsx';
 
 ReactDOM.render(
-          <AppRouter />,
+  <AppRouter />,
           document.getElementById('app')
         );
