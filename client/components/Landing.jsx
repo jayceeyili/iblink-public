@@ -1,16 +1,33 @@
 import React from 'react';
+import { Link, Redirect } from 'react-router-dom';
 
 export default class Layout extends React.Component {
-	constructor(props) {
-		super(props);
+	constructor( props ) {
+		super( props );
+
+    this.handleLoginClick = this.handleLoginClick.bind( this );
+    this.handleSignupClick = this.handleSignupClick.bind( this );
+  }
+
+  handleLoginClick() {
+    console.log( 'Login!' );
+  }
+
+  handleSignupClick() {
+    console.log( 'Signup!' );
   }
 
   render() {
     return (
       <div>
-        <h1>This is Landing page</h1>
-        <button>Login</button>
-        <button>Signup</button>
+        <Link to='/livePresentation'>livePresentation</Link>
+        <h2>This is the Landing page</h2>
+        <button
+          onClick={ this.handleLoginClick }>Login
+        </button>
+        <button
+          onClick={ this.handleSignupClick }>Signup
+        </button>
       </div>
     );
   }
