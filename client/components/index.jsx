@@ -13,12 +13,12 @@ export default class AppRouter extends React.Component {
 
 	render () {
     return (
-      <div>
         <Router history={ history }>
-          <Route exact path='/' component={ Landing } />
-          <Route path='/livePresentation' component={ LivePresentation } />
+					<div>
+	          <Route exact path='/' component={ Landing } />
+	          <Route path='/livePresentation' component={ LivePresentation } />
+					</div>
         </Router>
-      </div>
     );
   }
 };
