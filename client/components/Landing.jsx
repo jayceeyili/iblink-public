@@ -5,10 +5,6 @@ export default class Layout extends React.Component {
 	constructor( props ) {
 		super( props );
 
-    this.state = {
-
-    }
-
     this.handleLoginClick = this.handleLoginClick.bind( this );
     this.handleSignupClick = this.handleSignupClick.bind( this );
   }
