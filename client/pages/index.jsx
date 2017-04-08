@@ -7,6 +7,7 @@ import LiveAudiencePage from './LiveAudiencePage.jsx';
 import Dashboard from './Dashboard.jsx';
 
 const history = createHistory();
+const store = createStore();
 
 export default class AppRouter extends React.Component {
   constructor(props) {
