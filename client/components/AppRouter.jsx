@@ -22,5 +22,3 @@ export default class AppRouter extends React.Component {
     );
   }
 };
-
-// put other Routes under line 16
