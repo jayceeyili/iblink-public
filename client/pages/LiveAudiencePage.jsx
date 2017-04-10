@@ -1,4 +1,5 @@
 import React from 'react';
+import FeaturesContainer from './../components/slideUtilities/index.jsx';
 
 export default class LiveAudiencePage extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ export default class LiveAudiencePage extends React.Component {
     return (
       <div>
         <h1>This is the Live Audience Page</h1>
+        <FeaturesContainer />
       </div>
     );
   }
