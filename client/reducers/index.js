@@ -7,9 +7,9 @@ import bookmarks from './bookmarks';
 
 // pass reducers into combineReducers (in first object)
 const rootReducer = combineReducers({
+  // ES6 method for adding in key-value pairs
   bookmarks,
   routing: routerReducer
 });
 
 export default rootReducer;
-// Contact GitHub API Training Shop Blog About

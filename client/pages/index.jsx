@@ -12,28 +12,20 @@ import rootReducer from './../reducers';
 const history = createHistory();
 const store = createStore(
   rootReducer,
+  // Lets Redux DevTools access states and actions
   window.devToolsExtension ? window.devToolsExtension() : undefined
 );
 
-class AppRouter extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <Provider store={store}>
-        <Router history={history}>
-          <div>
-            <Route exact path="/" component={LandingPage} />
-            <Route path="/dashboard" component={Dashboard} />
-            <Route path="/live-presenter-page" component={LivePresenterPage} />
-            <Route path="/live-audience-page" component={LiveAudiencePage} />
-          </div>
-        </Router>
-      </Provider>
-    );
-  }
-}
-
+const AppRouter = () => (
+  <Provider store={store}>
+    <Router history={history}>
+      <div>
+        <Route exact path="/" component={LandingPage} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/live-presenter-page" component={LivePresenterPage} />
+        <Route path="/live-audience-page" component={LiveAudiencePage} />
+      </div>
+    </Router>
+  </Provider>
+);
 export default AppRouter;
