@@ -2,21 +2,19 @@ import React from 'react';
 // import
 
 export default class Bookmark extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.toggleBookmark = this.toggleBookmark.bind(this);
-
   }
 
-  toggleBookmark () {
-
+  toggleBookmark() {
   }
 
-  render () {
+  render() {
     return (
       <div>
         <button onClick={this.toggleBookmark}>Bookmark</button>
       </div>
-    )
+    );
   }
 }
