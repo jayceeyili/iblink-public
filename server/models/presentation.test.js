@@ -5,7 +5,7 @@ const mvpPres = [`${imagePath}Slide1.jpg`, `${imagePath}Slide2.jpg`, `${imagePat
 test('Server model retrieves image files', () => {
   const fs = require('fs');
   const pres = presentation.getPresentation();
-  expect(fs.existsSync(pres[2]).toBe(true));
-  expect(pres.length.toBe(3));
+  expect(fs.existsSync(pres[2])).toBe(true);
+  expect(pres.length).toBe(3);
 });
 
