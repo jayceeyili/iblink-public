@@ -19,7 +19,7 @@ const store = createStore(
 const AppRouter = () => (
   <Provider store={store}>
     <Router history={history}>
-      <div>
+      <div> React: {React.version}
         <Route exact path="/" component={LandingPage} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/live-presenter-page" component={LivePresenterPage} />
