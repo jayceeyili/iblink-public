@@ -12,9 +12,9 @@ export default class CarouselView extends React.Component {
     this.state = {
       showIndex: false,
       slideOnThumbnailHover: false,
-      showBullets: true,
-      infinite: true,
-      showThumbnails: true,
+      showBullets: false,
+      infinite: false,
+      showThumbnails: false,
       showFullscreenButton: true,
       showGalleryFullscreenButton: true,
       showPlayButton: true,
