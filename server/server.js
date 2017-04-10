@@ -3,6 +3,7 @@ const dotenv = require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const socketServer = require('./socketServer');
 
 // ««««««««« configuration »»»»»»»»»
 // DB config comes here
@@ -17,8 +18,9 @@ app.use(bodyParser.json({ entended: true }));
 require('./routes')(app);
 
 // ««««««««« start app »»»»»»»»»
-app.listen(port, () => {
+const webServer = app.listen(port, () => {
   console.log(`App is listening at port:  ${ port }`);
 });
+socketServer(webServer);
 
 exports = module.exports = app;
