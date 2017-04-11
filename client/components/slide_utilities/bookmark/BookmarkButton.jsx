@@ -9,15 +9,10 @@ class Bookmark extends React.Component {
     super(props);
   }
 
-  componentWillMount() {
-    this.props.toggleBookmark(this.props.bookmarks);
-    this.props.addBookmark(this.props.bookmarks);
-  }
-
   render() {
     return (
       <div>
-        <button onClick={this.toggleBookmark}>Bookmark</button>
+        <button onClick={this.props.toggleBookmark}>Bookmark</button>
       </div>
     );
   }

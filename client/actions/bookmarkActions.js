@@ -1,18 +1,16 @@
 import ActionType from './actionType';
 
-export function toggleBookmark(user) {
+export function toggleBookmark() {
   console.log('hi');
   return {
-    type: ActionType.ToggleBookmark,
-    user
+    type: ActionType.ToggleBookmark
   };
 }
 
-export function addBookmark(user) {
+export function addBookmark() {
   console.log('ho');
   return {
-    type: ActionType.AddBookmark,
-    user
+    type: ActionType.AddBookmark
   };
 }
 
