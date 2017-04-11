@@ -1,44 +1,28 @@
 import React from 'react';
+import Overview from '../components/overview/Overview.jsx';
+import PastPresentationView from '../components/past_presentation_view/PastPresentationView.jsx';
+// import styles from './Dashboard.css';
 
 export default class Dashboard extends React.Component {
   constructor(props) {
     super(props);
   }
 
+
   render() {
     return (
       // { -------PAGE WRAPPER------ }
-      <div className="container-fluid main">
+      <div className="container-fluid dashboard" >
 
 
         {/* -------LEFT HAND COLUMN------- */}
-        <div className="col-sm-3 account">
-          <Account />
+        <div className="col-sm-3 overview" >
+          <Overview />
         </div>
 
         {/* -------RIGHT HAND COLUMN------- */}
-        <div className="col-sm-9 right9">
-
-          {/* -------TOPBAR------- */}
-          <div className="col-sm-12 topbar">
-            <TopBar event={this.state.currentEvent} owner={this.props.friends[0]} />
-          </div>
-
-          <div className="mainviewWrapper">
-            {/* -------MAIN------- */}
-            <div className="col-sm-8 mainview">
-              {this.state.owner ? (<EventOverview event={this.state.currentEvent} />) : (<FriendEventOverview event={this.state.currentEvent} />)}
-              {/* <FriendEventOverview event={this.state.currentEvent}/>*/}
-
-
-            </div>
-
-            {/* -------CHAT------- */}
-            <div className="col-sm-4 right4">
-              <Chat event={this.state.currentEvent} owner={this.props.friends[0]} />
-            </div>
-          </div>
-
+        <div className="col-sm-9 presentation" >
+          <PastPresentationView />
         </div>
       </div>
 

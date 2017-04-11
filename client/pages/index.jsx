@@ -9,6 +9,7 @@ import LiveAudiencePage from './LiveAudiencePage.jsx';
 import Dashboard from './Dashboard.jsx';
 import SocketTest from './socketTest.jsx';
 import rootReducer from './../reducers';
+import Admin from './Admin.jsx';
 
 const history = createHistory();
 const store = createStore(
@@ -20,12 +21,13 @@ const store = createStore(
 const AppRouter = () => (
   <Provider store={store}>
     <Router history={history}>
-      <div> React: {React.version}
+      <div>
         <Route exact path="/" component={LandingPage} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/live-presenter-page" component={LivePresenterPage} />
         <Route path="/live-audience-page" component={LiveAudiencePage} />
-        <Route path="/socket-test-page" component={ SocketTest } />
+        <Route path="/socket-test-page" component={SocketTest} />
+        <Route path="/admin" component={Admin} />
       </div>
     </Router>
   </Provider>
