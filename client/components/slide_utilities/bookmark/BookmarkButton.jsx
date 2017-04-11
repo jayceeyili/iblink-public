@@ -1,13 +1,17 @@
 import React from 'react';
-// import
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-export default class Bookmark extends React.Component {
+import * as bookmarkActionCreators from './../../../actions/bookmarkActions';
+
+class Bookmark extends React.Component {
   constructor(props) {
     super(props);
-    this.toggleBookmark = this.toggleBookmark.bind(this);
   }
 
-  toggleBookmark() {
+  componentWillMount() {
+    this.props.toggleBookmark(this.props.bookmarks);
+    this.props.addBookmark(this.props.bookmarks);
   }
 
   render() {
@@ -18,3 +22,19 @@ export default class Bookmark extends React.Component {
     );
   }
 }
+
+const bundledActionCreators = Object.assign({},
+                                          bookmarkActionCreators
+                                        );
+
+const mapStateToProps = (state) => {
+  return {
+    bookmarks: state.bookmarks
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(bundledActionCreators, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Bookmark);

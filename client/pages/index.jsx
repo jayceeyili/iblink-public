@@ -32,4 +32,5 @@ const AppRouter = () => (
     </Router>
   </Provider>
 );
+
 export default AppRouter;
