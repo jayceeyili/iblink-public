@@ -1,0 +1,24 @@
+
+.container-fluid.dashboard {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+
+.overview {
+  background-color: rgb(77, 56, 75);
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.presentation {
+  background-color: beige;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+
