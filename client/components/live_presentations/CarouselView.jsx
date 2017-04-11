@@ -3,6 +3,12 @@ import React from 'react';
 import ImageGallery from 'react-image-gallery';
 
 export default class CarouselView extends React.Component {
+  constructor() {
+    super()
+
+    this.handleImageLoad = this.handleImageLoad.bind(this)
+  }
+
   handleImageLoad(event) {
     console.log('Image loaded ', event.target)
   }
@@ -24,11 +30,15 @@ export default class CarouselView extends React.Component {
       }
     ]
 
+
     return (
-      <ImageGallery
-        items={images}
-        slideInterval={2000}
-        onImageLoad={this.handleImageLoad}/>
+      <div>
+        <ImageGallery
+          items={images}
+          slideInterval={2000}
+          onImageLoad={this.handleImageLoad}
+        />
+      </div>
     );
   }
 }
