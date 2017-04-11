@@ -1,6 +1,6 @@
 import React from 'react';
 import FeaturesContainer from './../components/slide_utilities/index.jsx';
-import LivePresentationView from '../components/live_presentations/LivePresentationView.jsx'
+import LivePresentationView from '../components/live_presentation/LivePresentationView.jsx'
 
 export default class LiveAudiencePage extends React.Component {
   constructor(props) {
