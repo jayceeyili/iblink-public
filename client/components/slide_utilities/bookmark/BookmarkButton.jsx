@@ -5,9 +5,6 @@ import { bindActionCreators } from 'redux';
 import * as bookmarkActionCreators from './../../../actions/bookmarkActions';
 
 class Bookmark extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (
