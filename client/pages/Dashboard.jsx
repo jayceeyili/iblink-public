@@ -1,6 +1,6 @@
 import React from 'react';
 import Overview from '../components/overview/Overview.jsx';
-import PastPresentationView from '../components/past_presentation_view/PastPresentationView.jsx';
+import PastPresentationView from '../components/past_presentation/PastPresentationView.jsx';
 // import styles from './Dashboard.css';
 
 export default class Dashboard extends React.Component {
