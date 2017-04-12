@@ -8,6 +8,7 @@ const actionType = {
   TogglePresent: 'TOGGLE_PRESENT'
   GetCurrentIndex: 'GET_CURRENT_INDEX'
   GetSlidesIndex: 'GET_SLIDES_INDEX',
+  GetCurrentIndex: 'GET_CURRENT_INDEX'
   GetSlides: 'GET_SLIDES'
 };
 
