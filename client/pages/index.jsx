@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router, IndexRoute, Route } from 'react-router';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import LandingPage from './LandingPage.jsx';
@@ -10,13 +10,17 @@ import Dashboard from './Dashboard.jsx';
 import SocketTest from './socketTest.jsx';
 import rootReducer from './../reducers';
 import Admin from './Admin.jsx';
+import SocketOn, { broadcastMiddleware } from './../socketOn.js';
 
 const history = createHistory();
-const store = createStore(
+const createStoreWithMiddleware = applyMiddleware( broadcastMiddleware )( createStore );
+const store = createStoreWithMiddleware(
   rootReducer,
   // Lets Redux DevTools access states and actions
   window.devToolsExtension ? window.devToolsExtension() : undefined
 );
+
+SocketOn( store );
 
 const AppRouter = () => (
   <Provider store={store}>
