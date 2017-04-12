@@ -17,3 +17,10 @@ export function addBookmark() {
 export function removeBookmark() {
 
 }
+
+export function getCurrentIndex(index) {
+  return {
+    type: ActionType.GetCurrentIndex,
+    index
+  };
+}
