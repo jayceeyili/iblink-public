@@ -4,6 +4,7 @@ import LivePresentationView from '../components/live_presentation/LivePresentati
 
 class LiveAudiencePage extends React.Component {
   render() {
+    // console.log(this.ImageGallery.state.currentIndex);
     return (
       <div>
         <h1>This is the Live Audience Page</h1>

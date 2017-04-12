@@ -5,11 +5,14 @@ import { bindActionCreators } from 'redux';
 import * as bookmarkActionCreators from './../../../actions/bookmarkActions';
 
 class Bookmark extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
   render() {
     return (
       <div>
-        <button onClick={this.props.toggleBookmark}>Bookmark</button>
+        <button className="btn btn-icon" onClick={this.props.toggleBookmark}><span className="glyphicon glyphicon-bookmark active" >Bookmark</span></button>
       </div>
     );
   }
