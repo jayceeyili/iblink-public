@@ -10,19 +10,18 @@ class CarouselView extends React.Component {
     this.state = {
       images: [],
       audienceImages: [],
-      pointer: 0
+      maxSlide: 0
     };
 
     this.handleImageLoad = this.handleImageLoad.bind(this);
     this.getPresentations = this.getPresentations.bind(this);
     this.audienceAccess = this.audienceAccess.bind(this);
-    this.getPointer = this.getPointer.bind(this);
-    // this.handleSlideChange = this.handleSlideChange.bind(this);
+    this.getMaxSlide = this.getMaxSlide.bind(this);
   }
 
   componentWillMount() {
     this.getPresentations();
-    this.getPointer();
+    this.getMaxSlide();
   }
 
   getPresentations() {
@@ -36,11 +35,11 @@ class CarouselView extends React.Component {
       });
   }
 
-  getPointer() {
+  getMaxSlide() {
     return fetch('/audience_presentation')
       .then(response => response.json())
       .then((data) => {
-        this.setState({ pointer: data });
+        this.setState({ maxSlide: data });
         this.audienceAccess(data);
       })
       .catch((err) => {
@@ -48,9 +47,9 @@ class CarouselView extends React.Component {
       })
   }
 
-  audienceAccess(pointer) {
+  audienceAccess(maxSlide) {
     var temp = []
-    for (var i = 0; i <= pointer; i++) {
+    for (var i = 0; i <= maxSlide; i++) {
       temp.push(this.state.images[i]);
     }
     this.setState({audienceImages: temp});
@@ -60,11 +59,6 @@ class CarouselView extends React.Component {
     console.log('Image loaded ', event.target);
   }
 
-  // handleSlideChange() {
-  //   console.log(this.ImageGallery.state.currentIndex)
-  //   this.props.getCurrentIndex(this.ImageGallery.state.currentIndex);
-  // }
-
   render() {
     return (
       <div>
@@ -73,7 +67,6 @@ class CarouselView extends React.Component {
           items={this.state.audienceImages}
           slideInterval={2000}
           onImageLoad={this.handleImageLoad}
-          // onSlide={this.handleSlideChange}
           showIndex={true}
         />
       </div>

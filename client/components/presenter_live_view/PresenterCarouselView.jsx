@@ -10,18 +10,18 @@ class PresenterCarouselView extends React.Component {
     this.state = {
       images: [],
       index: [0],
-      pointer: 0
+      maxSlide: 0
     };
 
     this.handleImageLoad = this.handleImageLoad.bind(this);
     this.handleSlideChange = this.handleSlideChange.bind(this);
     this.getPresentations = this.getPresentations.bind(this);
-    this.sendPointer = this.sendPointer.bind(this);
+    this.sendMaxSlide = this.sendMaxSlide.bind(this);
   }
 
   componentWillMount() {
     this.getPresentations();
-    this.sendPointer();
+    this.sendMaxSlide();
   }
 
   getPresentations() {
@@ -41,12 +41,11 @@ class PresenterCarouselView extends React.Component {
   }
 
   handleSlideChange() {
-    // this.props.getCurrentIndex(this.ImageGallery.state.currentIndex);
     this.setState({
       index: this.state.index.concat(this.ImageGallery.state.currentIndex)
     }, () => {
-      this.setState({ pointer: Math.max.apply(null, this.state.index) }, () => {
-        this.sendPointer();
+      this.setState({ maxSlide: Math.max.apply(null, this.state.index) }, () => {
+        this.sendMaxSlide();
       });
     });
 
@@ -54,14 +53,14 @@ class PresenterCarouselView extends React.Component {
 
   }
 
-  sendPointer() {
+  sendMaxSlide() {
     return fetch('/audience_presentation', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        pointer: this.state.pointer
+        maxSlide: this.state.maxSlide
       })
     })
     .then(() => {
