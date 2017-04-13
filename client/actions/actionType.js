@@ -5,10 +5,9 @@ const actionType = {
   SendURL: 'SEND_URL',
   ReceiveURL: 'RECEIVE_URL',
   UpdateURL: 'UPDATE_URL',
-  TogglePresent: 'TOGGLE_PRESENT'
-  GetCurrentIndex: 'GET_CURRENT_INDEX'
+  TogglePresent: 'TOGGLE_PRESENT',
+  GetCurrentIndex: 'GET_CURRENT_INDEX',
   GetSlidesIndex: 'GET_SLIDES_INDEX',
-  GetCurrentIndex: 'GET_CURRENT_INDEX'
   GetSlides: 'GET_SLIDES'
 };
 
