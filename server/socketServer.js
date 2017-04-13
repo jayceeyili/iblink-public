@@ -8,7 +8,7 @@ module.exports = function (server) {
     connections.push(socket);
 
     socket.on('broadcastSlide', data => {
-      console.log(`Socket received new url ${ data }`);
+      console.log(`Socket received new url: ${ data }`);
       connections.forEach(connectedSocket => {
         if (connectedSocket !== socket) {
           connectedSocket.emit('broadcastSlide', data);
