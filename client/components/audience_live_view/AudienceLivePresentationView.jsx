@@ -1,5 +1,5 @@
 import React from 'react';
-import CarouselView from './CarouselView.jsx';
+import CarouselView from './AudienceCarouselView.jsx';
 
 const LivePresentationView = () => {
   return (

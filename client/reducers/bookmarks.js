@@ -1,11 +1,9 @@
 import actionType from './../actions/actionType.js';
 
-const bookmarks = (state = { bookmark: false, currentIndex: null }, action) => {
+const bookmarks = (state = { bookmark: false }, action) => {
   switch (action.type) {
     case actionType.ToggleBookmark:
       return { ...state, bookmark: !state.bookmark };
-    case actionType.GetCurrentIndex:
-      return { ...state, currentIndex: action.index };
     default: return state;
   }
 };
