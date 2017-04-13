@@ -48,7 +48,6 @@ function renderFullPage(preloadedState) {
           <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
         <![endif]-->
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="${path.join(__dirname, '../client/public/styles.css')}">
         <!-- for react-image-gallery -->
         <link rel="stylesheet" type="text/css" href="${path.join(__dirname, '../client/public/styles/css/image-gallery.css')}">
       </head>
