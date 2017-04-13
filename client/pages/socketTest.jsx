@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { updateURL, sendURL, receiveURL } from './../actions/socketAction.js';
+import { updateURL, sendURL } from './../actions/socketAction.js';
 
 class SocketTest extends React.Component {
   constructor() {
@@ -53,7 +53,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     updateURL,
-    receiveURL,
     sendURL
   }, dispatch);
 };

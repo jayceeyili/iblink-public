@@ -1,5 +1,11 @@
 import ActionType from './actionType';
 
+export function togglePresent() {
+  return {
+    type: ActionType.TogglePresent
+  }
+}
+
 export function sendURL( url ) {
   // console.log('Socket Action: sendUrl', url);
   return {
