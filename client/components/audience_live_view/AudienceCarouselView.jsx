@@ -3,6 +3,7 @@ import ImageGallery from 'react-image-gallery';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as bookmarkActionCreators from './../../actions/bookmarkActions';
+import * as carouselActionCreators from './../../actions/carouselActions';
 
 class CarouselView extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class CarouselView extends React.Component {
     this.getPresentations = this.getPresentations.bind(this);
     this.audienceAccess = this.audienceAccess.bind(this);
     this.getMaxSlide = this.getMaxSlide.bind(this);
+    this.handleSlideChange = this.handleSlideChange.bind(this);
   }
 
   componentWillMount() {
@@ -29,6 +31,8 @@ class CarouselView extends React.Component {
       .then(response => response.json())
       .then((slides) => {
         this.setState({ images: slides });
+        this.props.getSlides(slides);
+        this.handleSlideChange();
       })
       .catch((error) => {
         console.error(error);
@@ -59,6 +63,10 @@ class CarouselView extends React.Component {
     console.log('Image loaded ', event.target);
   }
 
+  handleSlideChange() {
+    this.props.getCurrentAudienceSlide(this.ImageGallery.state.currentIndex);
+  }
+
   render() {
     return (
       <div>
@@ -68,6 +76,7 @@ class CarouselView extends React.Component {
           slideInterval={2000}
           onImageLoad={this.handleImageLoad}
           showIndex={true}
+          onSlide={this.handleSlideChange}
         />
       </div>
     );
@@ -75,12 +84,14 @@ class CarouselView extends React.Component {
 }
 
 const bundledActionCreators = Object.assign({},
-                                          bookmarkActionCreators
+                                          bookmarkActionCreators,
+                                          carouselActionCreators
                                         );
 
 const mapStateToProps = (state) => {
   return {
-    bookmarks: state.bookmarks
+    bookmarks: state.bookmarks,
+    slides: state.slides
   };
 };
 

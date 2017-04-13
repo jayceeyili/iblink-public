@@ -16,3 +16,11 @@ router.post('/audience_presentation', controller.audience_presentation.post);
 
 module.exports = router;
 
+
+app.post('/audience_presentation/add_bookmark', (req, res) => {
+  if (!tempBookmarkStore.includes(req.body.slideIndex)) {
+    bookmarks.push(req.body.slideIndex);
+  }
+  console.log('slide ', slideIndex, ' is being bookmarked');
+
+})
