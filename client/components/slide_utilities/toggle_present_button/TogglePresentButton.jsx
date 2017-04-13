@@ -12,7 +12,7 @@ class TogglePresentButton extends React.Component {
   render() {
     return (
       <div>
-        <button className="ui button" onClick={ this.props.togglePresent }>{
+        <button onClick={ this.props.togglePresent }>{
             this.props.isOn ? 'End Presentation' : 'Start Presentation'
           }</button>
       </div>
