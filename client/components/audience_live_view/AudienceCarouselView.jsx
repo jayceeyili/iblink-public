@@ -16,12 +16,13 @@ class CarouselView extends React.Component {
     this.handleImageLoad = this.handleImageLoad.bind(this);
     this.getPresentations = this.getPresentations.bind(this);
     this.audienceAccess = this.audienceAccess.bind(this);
+    this.getPointer = this.getPointer.bind(this);
     // this.handleSlideChange = this.handleSlideChange.bind(this);
   }
 
-
-  componentWillMount() {
+  componentDidMount() {
     this.getPresentations();
+    this.getPointer();
   }
 
   getPresentations() {
@@ -37,12 +38,19 @@ class CarouselView extends React.Component {
 
   getPointer() {
     return fetch('/audience_presentation')
-      then(response => response.json())
+      .then(response => response.json())
+      .then((data) => {
+        this.setState({ pointer: data });
+        this.audienceAccess(data);
+      })
+      .catch((err) => {
+        console.log('There has been an error to get your slides position', err);
+      })
   }
 
-  audienceAccess() {
+  audienceAccess(pointer) {
     var temp = []
-    for (var i = 0; i <= this.state.pointer; i++) {
+    for (var i = 0; i <= pointer; i++) {
       temp.push(this.state.images[i]);
     }
     this.setState({audienceImages: temp});
@@ -62,7 +70,7 @@ class CarouselView extends React.Component {
       <div>
         <ImageGallery
           ref={(ImageGallery) => { this.ImageGallery = ImageGallery; }}
-          items={this.state.images}
+          items={this.state.audienceImages}
           slideInterval={2000}
           onImageLoad={this.handleImageLoad}
           // onSlide={this.handleSlideChange}

@@ -11,13 +11,12 @@ class PresenterCarouselView extends React.Component {
       images: [],
       index: [0],
       pointer: 0
-
     };
 
     this.handleImageLoad = this.handleImageLoad.bind(this);
     this.handleSlideChange = this.handleSlideChange.bind(this);
     this.getPresentations = this.getPresentations.bind(this);
-    this.sendPointer = this.sendPointer.bind(this);
+    this.setPointer = this.setPointer.bind(this);
   }
 
   componentWillMount() {
@@ -51,18 +50,9 @@ class PresenterCarouselView extends React.Component {
       });
     });
     console.log('current slide: ' , this.ImageGallery.state.currentIndex);
-    this.setState({ index: this.state.index.concat(this.ImageGallery.state.currentIndex).sort((a, b) => a - b
-    ) });
-    // this.setState({ index: this.state.index.push(this.ImageGallery.state.currentIndex) });
-    console.log(this.state.index);
-    // pointer should be this.state.index[this.state.index.length-1]
-    // console.log(this.state.index[this.state.index.length - 1]);
-    // this.setState({ pointer: this.state.index[this.state.index.length - 1] });
-    // console.log(this.state.pointer);
-    // this.sendPointer();
   }
 
-  sendPointer() {
+  setPointer() {
     return fetch('/audience_presentation', {
       method: 'POST',
       headers: {
