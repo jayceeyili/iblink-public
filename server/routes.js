@@ -1,8 +1,10 @@
+const path = require('path');
+
 const presentation = require('./models/presentation.js');
 
-module.exports = function(app) {
+module.exports = function (app) {
   // ««««««««« server routes »»»»»»»»»
-  var maxSlide = 0;
+  let maxSlide = 0;
 
   app.get('/api', (req, res) => {
     res.json('Hello World');
