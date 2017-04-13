@@ -13,19 +13,19 @@ import Admin from './Admin.jsx';
 import SocketOn, { broadcastMiddleware } from './../socketOn.js';
 
 const history = createHistory();
-const createStoreWithMiddleware = applyMiddleware( broadcastMiddleware )( createStore );
+const createStoreWithMiddleware = applyMiddleware(broadcastMiddleware)(createStore);
 const store = createStoreWithMiddleware(
   rootReducer,
   // Lets Redux DevTools access states and actions
   window.devToolsExtension ? window.devToolsExtension() : undefined
 );
 
-SocketOn( store );
+SocketOn(store);
 
 const AppRouter = () => (
   <Provider store={store}>
     <Router history={history}>
-      <div>
+      <div> Page from server: {window.__CHANNEL__}
         <Route exact path="/" component={LandingPage} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/live-presenter-page" component={LivePresenterPage} />

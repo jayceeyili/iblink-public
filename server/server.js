@@ -32,13 +32,13 @@ function handleRender(req, res) {
 
 
   // Compile an initial state
-  const preloadedState = 'LIVE_PRESENTATION';
+  const preloadedState = 1;
 
   // Send the rendered page back to the client
   res.send(renderFullPage(preloadedState));
 }
 
-function renderFullPage(preloadedState) {
+function renderFullPage(channel) {
   return `<!doctype html>
     <html lang="en">
       <head>
@@ -48,20 +48,18 @@ function renderFullPage(preloadedState) {
           <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
         <![endif]-->
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <!-- for react-image-gallery -->
+        <!-- for react-image-gallery... -->
         <link rel="stylesheet" type="text/css" href="${path.join(__dirname, '../client/public/styles/css/image-gallery.css')}">
       </head>
       <body>
         <div id="app"></div>
+        <script> window.__CHANNEL__ = ${channel} </script>
         <script src="/static/bundle.js"></script>
       </body>
     </html>
     `;
 }
 
-        // <script>
-        //   window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\x3c')}
-        // </script>
 
 // require('./routes')(app);
 
