@@ -3,6 +3,7 @@ import actionType from './../actions/actionType.js';
 const bookmarks = (state = { bookmark: false, currentIndex: null }, action) => {
   switch (action.type) {
     case actionType.ToggleBookmark:
+      console.log('hi');
       return { ...state, bookmark: !state.bookmark };
     case actionType.GetCurrentIndex:
       return { ...state, currentIndex: action.index };
