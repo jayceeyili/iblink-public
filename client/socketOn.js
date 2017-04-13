@@ -1,5 +1,5 @@
-// import actionType from './actions/actionType.js';
-import * as actions from './actions/socketAction.js';
+import actionType from './actions/actionType.js';
+// import * as actions from './actions/socketAction.js';
 
 import io from 'socket.io-client';
 
@@ -7,21 +7,22 @@ var socket = null;
 
 export function broadcastMiddleware( store ) {
   return next => action => {
-    const result = next( action );
-
-    if ( socket && action.type === actionType.SendURL ) {
-      let currentImg = store.getState().currentIndex;
-      socket.emit( 'broadcastSlide', currentImg );
+    if ( socket && action.type === actionType.SendURL) {
+      socket.emit( 'broadcastSlide', action.url );
     }
 
-    return result;
+    return next(action);
   }
 }
 
 export default function( store ) {
-  const socket = io();
+  socket = io();
 
   socket.on( 'broadcastSlide', data => {
-    store.dispatch( actionType.addResponse( data ) );
+    console.log('received url: ', data);
+    store.dispatch( {
+      type: actionType.ReceiveURL,
+      url: data
+    } );
   });
 }
