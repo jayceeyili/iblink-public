@@ -26,7 +26,11 @@ const AppRouter = () => (
   <Provider store={store}>
     <Router history={history}>
       <div> Page from server: {window.__CHANNEL__}
-        <Route exact path="/" component={LandingPage} />
+        {window.__CHANNEL__ ? (
+          <Route exact path="/" component={LiveAudiencePage} />
+        ) : (
+          <Route exact path="/" component={LandingPage} />
+        )}
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/live-presenter-page" component={LivePresenterPage} />
         <Route path="/live-audience-page" component={LiveAudiencePage} />
