@@ -16,7 +16,7 @@ class PresenterCarouselView extends React.Component {
     this.handleImageLoad = this.handleImageLoad.bind(this);
     this.handleSlideChange = this.handleSlideChange.bind(this);
     this.getPresentations = this.getPresentations.bind(this);
-    this.setPointer = this.setPointer.bind(this);
+    this.sendPointer = this.sendPointer.bind(this);
   }
 
   componentWillMount() {
@@ -49,10 +49,12 @@ class PresenterCarouselView extends React.Component {
         this.sendPointer();
       });
     });
+
     console.log('current slide: ' , this.ImageGallery.state.currentIndex);
+
   }
 
-  setPointer() {
+  sendPointer() {
     return fetch('/audience_presentation', {
       method: 'POST',
       headers: {

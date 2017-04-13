@@ -13,7 +13,6 @@ module.exports = function(app) {
     res.json(presentation.getPresentation());
   });
 
-
   app.post('/audience_presentation', (req, res) => {
     pointer = req.body.pointer;
     console.log(pointer);
@@ -22,5 +21,5 @@ module.exports = function(app) {
 
   app.get('/audience_presentation', (req, res) => {
     res.json(pointer);
-  })
+  });
 };

@@ -20,7 +20,7 @@ class CarouselView extends React.Component {
     // this.handleSlideChange = this.handleSlideChange.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.getPresentations();
     this.getPointer();
   }
