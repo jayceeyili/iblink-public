@@ -19,7 +19,6 @@ export default function( store ) {
   socket = io();
 
   socket.on( 'broadcastSlide', data => {
-    console.log('received url: ', data);
     store.dispatch( {
       type: actionType.ReceiveURL,
       url: data

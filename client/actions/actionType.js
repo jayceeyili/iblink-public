@@ -5,7 +5,8 @@ const actionType = {
   GetCurrentIndex: 'GET_CURRENT_INDEX',
   SendURL: 'SEND_URL',
   ReceiveURL: 'RECEIVE_URL',
-  UpdateURL: 'UPDATE_URL'
+  UpdateURL: 'UPDATE_URL',
+  TogglePresent: 'TOGGLE_PRESENT'
 };
 
 export default actionType;
