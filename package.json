@@ -46,10 +46,10 @@
     "redux": "^3.6.0",
     "socket.io": "^1.7.3",
     "style-loader": "^0.16.1",
-    "webpack": "^2.2.1"
+    "webpack": "^2.2.1",
+    "css-loader": "^0.28.0",
   },
   "devDependencies": {
-    "css-loader": "^0.28.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
