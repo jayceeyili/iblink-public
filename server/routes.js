@@ -14,4 +14,6 @@ router.post('/presentations', controller.presentation.post);
 router.get('/audience_presentation', controller.audience_presentation.get);
 router.post('/audience_presentation', controller.audience_presentation.post);
 
+router.post('/audience_presentation/add_bookmark', controller.audience_presentation_add_bookmark.post)
+
 module.exports = router;
