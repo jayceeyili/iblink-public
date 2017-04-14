@@ -17,13 +17,11 @@ class CarouselView extends React.Component {
     this.handleImageLoad = this.handleImageLoad.bind(this);
     this.getPresentations = this.getPresentations.bind(this);
     this.audienceAccess = this.audienceAccess.bind(this);
-    // this.getMaxSlide = this.getMaxSlide.bind(this);
     this.handleSlideChange = this.handleSlideChange.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getPresentations();
-    // this.getMaxSlide();
   }
 
   componentWillUpdate( nextProps, nextState ) {
@@ -37,6 +35,7 @@ class CarouselView extends React.Component {
       .then(response => response.json())
       .then((slides) => {
         this.setState({ images: slides });
+        this.audienceAccess( this.state.maxSlide );
         this.props.getSlides(slides);
         this.handleSlideChange();
       })
@@ -44,18 +43,6 @@ class CarouselView extends React.Component {
         console.error(error);
       });
   }
-
-  // getMaxSlide() {
-    // return fetch('/audience_presentation')
-    //   .then(response => response.json())
-    //   .then((data) => {
-    //     this.setState({ maxSlide: data });
-        // this.audienceAccess(this.state.maxSlide);
-    //   })
-    //   .catch((err) => {
-    //     console.log('There has been an error to get your slides position', err);
-    //   })
-  // }
 
   audienceAccess(maxSlide) {
     var temp = []

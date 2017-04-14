@@ -53,21 +53,6 @@ class PresenterCarouselView extends React.Component {
   }
 
   sendMaxSlide() {
-    // return fetch('/audience_presentation', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     maxSlide: this.state.maxSlide
-    //   })
-    // })
-    // .then(() => {
-    //   console.log('success');
-    // })
-    // .catch((error) => {
-    //   console.error(error);
-    // });
     this.props.sendURL( this.state.maxSlide );
   }
 
