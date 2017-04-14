@@ -1,9 +1,13 @@
 import actionType from './../actions/actionType.js';
 
-const bookmarks = (state = { bookmark: false }, action) => {
+const bookmarks = (state = { bookmark: false, bookmarks: [], currentAudienceSlide: null }, action) => {
   switch (action.type) {
     case actionType.ToggleBookmark:
       return { ...state, bookmark: !state.bookmark };
+    case actionType.AddBookmark:
+      return { ...state, bookmarks: state.bookmarks.concat(state.currentAudienceSlide) };
+    case actionType.GetCurrentAudienceSlide:
+      return { ...state, currentAudienceSlide: action.currentAudienceSlide };
     default: return state;
   }
 };

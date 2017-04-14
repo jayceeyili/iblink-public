@@ -6,7 +6,8 @@ const actionType = {
   ReceiveURL: 'RECEIVE_URL',
   UpdateURL: 'UPDATE_URL',
   TogglePresent: 'TOGGLE_PRESENT',
-  GetSlides: 'GET_SLIDES'
+  GetSlides: 'GET_SLIDES',
+  GetCurrentAudienceSlide: 'GET_CURRENT_AUDIENCE_SLIDE'
 };
 
 export default actionType;

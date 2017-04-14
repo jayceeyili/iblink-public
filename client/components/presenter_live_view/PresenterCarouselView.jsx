@@ -48,9 +48,6 @@ class PresenterCarouselView extends React.Component {
         this.sendMaxSlide();
       });
     });
-
-    console.log('current slide: ' , this.ImageGallery.state.currentIndex);
-
   }
 
   sendMaxSlide() {
