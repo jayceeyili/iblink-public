@@ -2,6 +2,7 @@ const path = require('path');
 const presentation = require('../models/presentation');
 
 let maxSlide = 0;  // TODO: improve after MVP to support multiple presentations
+let tempBookmarkStore = []
 
 module.exports = {
 
@@ -49,5 +50,13 @@ module.exports = {
       res.json();
     }
   }
-};
 
+  audience_presentation_add_bookmark: {
+    post(req, res) {
+      if (!tempBookmarkStore.includes(req.body.slideIndex)) {
+        bookmarks.push(req.body.slideIndex);
+      }
+      console.log('slide ', slideIndex, ' is being bookmarked');
+    }
+  }
+};
