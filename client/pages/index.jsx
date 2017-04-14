@@ -25,7 +25,7 @@ SocketOn(store);
 const AppRouter = () => (
   <Provider store={store}>
     <Router history={history}>
-      <div> Page from server: {window.__CHANNEL__}
+      <div>
         {window.__CHANNEL__ > 0 ? (
           <Route exact path="/" component={LiveAudiencePage} />
         ) : (
