@@ -27,9 +27,8 @@ class CarouselView extends React.Component {
   }
 
   componentWillUpdate( nextProps, nextState ) {
-    console.log(this.nextState);
-    if ( this.state.maxSlide !== nextState.maxSlide ) {
-      this.audienceAccess(nextState.maxSlide);
+    if ( this.props.maxSlide !== nextProps.maxSlide ) {
+      this.audienceAccess(nextProps.maxSlide);
     }
   }
 

@@ -9,10 +9,6 @@ class LivePresentationView extends React.Component {
     super(props);
   }
 
-  // componentWillUpdate(nextProps, nextState) {
-  //   console.log(nextProps);
-  // }
-
   render() {
     return (
       <div>
@@ -23,7 +19,6 @@ class LivePresentationView extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  // console.log('this is the global state: ', state);
   return {
     maxSlide: state.sockets.receivedUrl
   };
