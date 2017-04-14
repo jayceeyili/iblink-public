@@ -17,7 +17,7 @@ class CarouselView extends React.Component {
     this.handleImageLoad = this.handleImageLoad.bind(this);
     this.getPresentations = this.getPresentations.bind(this);
     this.audienceAccess = this.audienceAccess.bind(this);
-    this.getMaxSlide = this.getMaxSlide.bind(this);
+    // this.getMaxSlide = this.getMaxSlide.bind(this);
     this.handleSlideChange = this.handleSlideChange.bind(this);
   }
 
