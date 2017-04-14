@@ -10,10 +10,10 @@ const mustacheExpress = require('mustache-express');  // Logic-less {{mustache}}
 // ««««««««« configuration »»»»»»»»»
 
 // Middleware
-const webpack = require('webpack');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-// const webpackHotMiddleware = require('webpack-hot-middleware');
-const webpackConfig = require('../webpack.config');
+// const webpack = require('webpack');
+// const webpackDevMiddleware = require('webpack-dev-middleware');
+// // const webpackHotMiddleware = require('webpack-hot-middleware');
+// const webpackConfig = require('../webpack.config');
 
 // Router
 const router = require('./routes.js');
@@ -39,8 +39,8 @@ app.use(express.static(path.join(__dirname, '../client/public')));
 
 
 // Use this middleware to set up hot module reloading via webpack.
-const compiler = webpack(webpackConfig);
-app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }));
+// const compiler = webpack(webpackConfig);
+// app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }));
 // app.use(webpackHotMiddleware(compiler))
 
 

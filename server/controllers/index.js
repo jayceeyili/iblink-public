@@ -5,19 +5,17 @@ module.exports = {
 
   homepage: {
     get(req, res) {
-      // res.send(renderFullPage());
-      // console.log('homepage channel:', req.query.channel);
-      res.render('master', { channel: req.query.channel });
+      let channel = req.query.channel;
+      if (!channel) {
+        channel = -1;
+      }
+      res.render('master', { channel });
     }
   },
 
   channel: {
     get(req, res) {
-      // res.set({ 'Content-Disposition': 'filename="index.html"' });
-      // res.type('html');
       res.redirect(`/?channel=${req.params.id}`);
-
-      // res.render('master', { channel: '-1' }); // { channel: req.params.id });
     }
   },
 
