@@ -11,19 +11,25 @@ class CarouselView extends React.Component {
     this.state = {
       images: [],
       audienceImages: [],
-      maxSlide: 0
+      maxSlide: this.props.maxSlide || 0
     };
 
     this.handleImageLoad = this.handleImageLoad.bind(this);
     this.getPresentations = this.getPresentations.bind(this);
     this.audienceAccess = this.audienceAccess.bind(this);
-    this.getMaxSlide = this.getMaxSlide.bind(this);
+    // this.getMaxSlide = this.getMaxSlide.bind(this);
     this.handleSlideChange = this.handleSlideChange.bind(this);
   }
 
   componentWillMount() {
     this.getPresentations();
-    this.getMaxSlide();
+    // this.getMaxSlide();
+  }
+
+  componentWillUpdate( nextProps, nextState ) {
+    if ( this.props.maxSlide !== nextProps.maxSlide ) {
+      this.audienceAccess(nextProps.maxSlide);
+    }
   }
 
   getPresentations() {
@@ -39,17 +45,17 @@ class CarouselView extends React.Component {
       });
   }
 
-  getMaxSlide() {
-    return fetch('/audience_presentation')
-      .then(response => response.json())
-      .then((data) => {
-        this.setState({ maxSlide: data });
-        this.audienceAccess(data);
-      })
-      .catch((err) => {
-        console.log('There has been an error to get your slides position', err);
-      })
-  }
+  // getMaxSlide() {
+    // return fetch('/audience_presentation')
+    //   .then(response => response.json())
+    //   .then((data) => {
+    //     this.setState({ maxSlide: data });
+        // this.audienceAccess(this.state.maxSlide);
+    //   })
+    //   .catch((err) => {
+    //     console.log('There has been an error to get your slides position', err);
+    //   })
+  // }
 
   audienceAccess(maxSlide) {
     var temp = []
@@ -60,7 +66,7 @@ class CarouselView extends React.Component {
   }
 
   handleImageLoad(event) {
-    console.log('Image loaded ', event.target);
+    // console.log('Image loaded ', event.target);
   }
 
   handleSlideChange() {

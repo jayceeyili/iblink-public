@@ -16,6 +16,8 @@ export function broadcastMiddleware( store ) {
 }
 
 export default function( store ) {
+  let start = store.getState().sockets.isOn;
+  
   socket = io();
 
   socket.on( 'broadcastSlide', data => {

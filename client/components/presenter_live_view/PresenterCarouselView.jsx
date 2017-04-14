@@ -3,6 +3,7 @@ import ImageGallery from 'react-image-gallery';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as bookmarkActionCreators from './../../actions/bookmarkActions';
+import * as socketActionCreators from './../../actions/socketAction.js';
 
 class PresenterCarouselView extends React.Component {
   constructor(props) {
@@ -47,25 +48,27 @@ class PresenterCarouselView extends React.Component {
       this.setState({ maxSlide: Math.max.apply(null, this.state.index) }, () => {
         this.sendMaxSlide();
       });
+
     });
   }
 
   sendMaxSlide() {
-    return fetch('/audience_presentation', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        maxSlide: this.state.maxSlide
-      })
-    })
-    .then(() => {
-      console.log('success');
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+    // return fetch('/audience_presentation', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     maxSlide: this.state.maxSlide
+    //   })
+    // })
+    // .then(() => {
+    //   console.log('success');
+    // })
+    // .catch((error) => {
+    //   console.error(error);
+    // });
+    this.props.sendURL( this.state.maxSlide );
   }
 
   render() {
@@ -85,7 +88,8 @@ class PresenterCarouselView extends React.Component {
 }
 
 const bundledActionCreators = Object.assign({},
-                                          bookmarkActionCreators
+                                          bookmarkActionCreators,
+                                          socketActionCreators
                                         );
 
 const mapStateToProps = (state) => {
