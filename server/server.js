@@ -4,7 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const socketServer = require('./socketServer');
-const mustache = require('mustache-express');  // Logic-less {{mustache}} templates
+const mustacheExpress = require('mustache-express');  // Logic-less {{mustache}} templates
 
 
 // ««««««««« configuration »»»»»»»»»
@@ -15,18 +15,18 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 // const webpackHotMiddleware = require('webpack-hot-middleware');
 const webpackConfig = require('../webpack.config');
 
-// Mustache templates for dynamic html pages
-app.engine('html', mustacheExpress());          // register file extension mustache
-app.set('view engine', 'html');                 // register file extension for partials
-app.set('views', `${__dirname}/html`);
-// app.set('views', path.join(__dirname, '../client/html'));
-
 // Router
 const router = require('./routes.js');
 
 // Web server
 const app = express();
 const port = process.env.PORT || 3000;
+
+// Mustache templates for dynamic html pages
+const engine = app.engine('html', mustacheExpress());          // register file extension mustache, engine has cache!
+app.set('view engine', 'html');                 // register file extension for partials
+app.set('views', `${__dirname}/../client/html`);
+// app.set('views', path.join(__dirname, '../client/html'));
 
 // Parsing
 app.use(bodyParser.json());
