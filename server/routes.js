@@ -1,25 +1,18 @@
-const presentation = require('./models/presentation.js');
+const router = require('express').Router();
 
-module.exports = function(app) {
-  // ««««««««« server routes »»»»»»»»»
-  var maxSlide = 0;
+const controller = require('./controllers');
 
-  app.get('/api', (req, res) => {
-    res.json('Hello World');
-  });
 
-  // other routes come here
-  app.get('/presentations', (req, res) => {
-    res.json(presentation.getPresentation());
-  });
+// Connect controller methods to their corresponding routes
+router.get('/', controller.homepage.get);
+router.get('/:id([0-9]{1,5})', controller.channel.get);  // id: a number from 1 to 5 digits long
 
-  app.post('/audience_presentation', (req, res) => {
-    maxSlide = req.body.maxSlide;
-    console.log(maxSlide);
-    res.json();
-  });
 
-  app.get('/audience_presentation', (req, res) => {
-    res.json(maxSlide);
-  });
-};
+router.get('/presentations', controller.presentation.get);
+router.post('/presentations', controller.presentation.post);
+
+router.get('/audience_presentation', controller.audience_presentation.get);
+router.post('/audience_presentation', controller.audience_presentation.post);
+
+module.exports = router;
+
