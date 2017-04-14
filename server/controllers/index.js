@@ -49,7 +49,7 @@ module.exports = {
       console.log(maxSlide);
       res.json();
     }
-  }
+  },
 
   audience_presentation_add_bookmark: {
     post(req, res) {
