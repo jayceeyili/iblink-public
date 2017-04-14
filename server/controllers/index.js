@@ -1,6 +1,8 @@
 const path = require('path');
 const presentation = require('../models/presentation');
 
+let maxSlide = 0;  // TODO: improve after MVP to support multiple presentations
+
 module.exports = {
 
   homepage: {
@@ -34,6 +36,17 @@ module.exports = {
       //   if (err) { /* do something */ }
       //   res.sendStatus(201);
       // });
+    }
+  },
+
+  audience_presentation: {
+    get(req, res) {
+      res.json(maxSlide);
+    },
+    post(req, res) {
+      maxSlide = req.body.maxSlide;
+      console.log(maxSlide);
+      res.json();
     }
   }
 };
