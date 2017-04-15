@@ -27,7 +27,6 @@ export function updateURL( url ) {
 }
 
 export function receiveURL( url ) {
-  // console.log('Socket Action: receiveURL', url);
   return {
     type: ActionType.ReceiveURL,
     url
