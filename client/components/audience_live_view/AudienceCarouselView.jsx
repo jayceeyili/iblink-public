@@ -64,30 +64,19 @@ class CarouselView extends React.Component {
   render() {
     return (
       <div>
-<<<<<<< 05808f710a7a5dda7f2bf2de0e95a3e849c3c01a
         { this.props.audienceIsOn ?
-        <ImageGallery
-          ref={(ImageGallery) => { this.ImageGallery = ImageGallery; }}
-          items={this.state.audienceImages}
-          slideInterval={2000}
-          onImageLoad={this.handleImageLoad}
-          showIndex={true}
-          onSlide={this.handleSlideChange}
-        /> :
-        <Redirect to="/dashboard"/>
+          <section className="image-gallery-container">
+            <ImageGallery
+              ref={(ImageGallery) => { this.ImageGallery = ImageGallery; }}
+              items={this.state.audienceImages}
+              slideInterval={2000}
+              onImageLoad={this.handleImageLoad}
+              showIndex={true}
+              onSlide={this.handleSlideChange}
+            />
+          </section> :
+          <Redirect to="/dashboard"/>
         }
-=======
-        <section className="image-gallery-container">
-          <ImageGallery
-            ref={(ImageGallery) => { this.ImageGallery = ImageGallery; }}
-            items={this.state.audienceImages}
-            slideInterval={2000}
-            onImageLoad={this.handleImageLoad}
-            showIndex={true}
-            onSlide={this.handleSlideChange}
-          />
-        </section>
->>>>>>> (fix) changed styling, moved presenter view to dashboard view
       </div>
     );
   }
