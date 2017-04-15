@@ -10,10 +10,10 @@ import Dashboard from './Dashboard.jsx';
 import SocketTest from './socketTest.jsx';
 import rootReducer from './../reducers';
 import Admin from './Admin.jsx';
-import SocketOn, { broadcastMiddleware } from './../socketOn.js';
+import SocketOn, { broadcastMiddleware, redirectMiddleware } from './../socketOn.js';
 
 const history = createHistory();
-const createStoreWithMiddleware = applyMiddleware(broadcastMiddleware)(createStore);
+const createStoreWithMiddleware = applyMiddleware(broadcastMiddleware, redirectMiddleware)(createStore);
 const store = createStoreWithMiddleware(
   rootReducer,
   // Lets Redux DevTools access states and actions

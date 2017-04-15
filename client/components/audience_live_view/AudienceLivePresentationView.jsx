@@ -12,7 +12,10 @@ class LivePresentationView extends React.Component {
   render() {
     return (
       <div>
-        <CarouselView maxSlide={ this.props.maxSlide } />
+        <CarouselView
+          maxSlide={ this.props.maxSlide }
+          audienceIsOn={ this.props.audienceIsOn }
+        />
       </div>
     );
   }
@@ -20,7 +23,8 @@ class LivePresentationView extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    maxSlide: state.sockets.receivedUrlId
+    maxSlide: state.sockets.receivedUrlId,
+    audienceIsOn: state.sockets.audienceIsOn
   };
 };
 

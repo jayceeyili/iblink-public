@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Redirect } from 'react-router';
 import ImageGallery from 'react-image-gallery';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -11,7 +12,7 @@ class CarouselView extends React.Component {
     this.state = {
       images: [],
       audienceImages: [],
-      maxSlide: this.props.maxSlide || 0
+      maxSlide: this.props.maxSlide || 0,
     };
 
     this.handleImageLoad = this.handleImageLoad.bind(this);
@@ -63,6 +64,7 @@ class CarouselView extends React.Component {
   render() {
     return (
       <div>
+        { this.props.audienceIsOn ?
         <ImageGallery
           ref={(ImageGallery) => { this.ImageGallery = ImageGallery; }}
           items={this.state.audienceImages}
@@ -70,7 +72,9 @@ class CarouselView extends React.Component {
           onImageLoad={this.handleImageLoad}
           showIndex={true}
           onSlide={this.handleSlideChange}
-        />
+        /> :
+        <Redirect to="/dashboard"/>
+        }
       </div>
     );
   }
@@ -84,7 +88,8 @@ const bundledActionCreators = Object.assign({},
 const mapStateToProps = (state) => {
   return {
     bookmarks: state.bookmarks,
-    slides: state.slides
+    slides: state.slides,
+    presenterIsOn: state.sockets.presenterIsOn
   };
 };
 
