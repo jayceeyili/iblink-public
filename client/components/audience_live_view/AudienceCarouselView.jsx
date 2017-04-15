@@ -13,7 +13,6 @@ class CarouselView extends React.Component {
       images: [],
       audienceImages: [],
       maxSlide: this.props.maxSlide || 0,
-      audienceIsOn: this.props.audienceIsOn
     };
 
     this.handleImageLoad = this.handleImageLoad.bind(this);
