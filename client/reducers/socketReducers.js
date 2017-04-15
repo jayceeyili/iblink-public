@@ -1,6 +1,13 @@
 import actionType from './../actions/actionType.js';
 
-const sockets = ( state = { sentUrl: '', receivedUrlId: '', presenterIsOn: true, audienceIsOn: true }, action ) => {
+let initialState = {
+  sentUrl: '',
+  receivedUrlId: '',
+  presenterIsOn: true,
+  audienceIsOn: true
+};
+
+const sockets = ( state = initialState, action ) => {
   switch (action.type) {
     case actionType.SendStatus:
       return { ...state, presenterIsOn: !state.presenterIsOn };
