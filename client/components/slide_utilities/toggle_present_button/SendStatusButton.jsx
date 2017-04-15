@@ -12,7 +12,7 @@ class SendStatusButton extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={ this.props.SendStatus }>{
+        <button type="button" class="btn btn-warning" onClick={ this.props.SendStatus }>{
             this.props.presenterIsOn ? 'End Presentation' : 'Start Presentation'
           }</button>
       </div>
