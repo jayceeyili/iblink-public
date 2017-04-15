@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import Promise from 'bluebird';
 
 import { SendStatus } from './../../../actions/socketAction';
 
@@ -11,8 +12,11 @@ class SendStatusButton extends React.Component {
   }
 
   handlePresentButton() {
-    this.props.SendStatus();
-    console.log(this.props.presenterIsOn);
+    Promise.promisify(this.props.SendStatus);
+    this.props.SendStatus()
+    .then(() => {
+      console.log(this.props.presenterIsOn);
+    });
     // if (!this.props.presenterIsOn) {
     //   console.log('presenterIsOn === false');
     //   fetch('/audience_presentation/store_bookmark')
@@ -25,9 +29,6 @@ class SendStatusButton extends React.Component {
     //     console.error(error);
     //   });
     // }
-    if (!this.props.presenterIsOn) {
-      console.log('its false');
-    }
   }
 
   render() {
