@@ -1,5 +1,8 @@
 const path = require('path');
+
 const presentation = require('../models/presentation');
+const configureStore = require('../../common/store/configureStore');
+
 
 let maxSlide = 0;  // TODO: improve after MVP to support multiple presentations
 let tempBookmarkStore = [];
@@ -9,10 +12,15 @@ module.exports = {
 
   homepage: {
     get(req, res) {
-      let channel = req.query.channel;
-      if (!channel) {
-        channel = -1;
-      }
+
+      preloadedState = {
+        channel : req.query.channel,
+        presentations:
+
+      };
+
+      const store = configureStore(preloadedState);
+
       res.render('master', { channel });
     }
   },

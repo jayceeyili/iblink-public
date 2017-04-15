@@ -7,12 +7,13 @@ import LivePresenterPage from './LivePresenterPage.jsx';
 import LiveAudiencePage from './LiveAudiencePage.jsx';
 import Dashboard from './Dashboard.jsx';
 import Admin from './Admin.jsx';
-import SocketOn from './../socketOn.js';
-import store from './store.js';
 
-const history = createHistory();
+const preloadedState = window.__PRELOADED_STATE__;
+const store = configureStore(preloadedState);
 
 SocketOn(store);
+
+const history = createHistory();
 
 const AppRouter = () => (
   <Provider store={store}>
