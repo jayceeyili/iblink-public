@@ -14,7 +14,7 @@ const buttons = `${styles.buttons}`
 
 const PastPresentationView = props => (
   <div>
-    <h3 style={title}>Your Presentation
+    <h3 style={title}>MVP Presentation
     </h3>
     <div>
       <section className={images}>

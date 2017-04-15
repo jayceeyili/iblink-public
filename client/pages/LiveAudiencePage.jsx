@@ -10,7 +10,7 @@ class LiveAudiencePage extends React.Component {
 
     return (
       <div>
-        <h1 style={centered}>Welcome to the live audience page</h1>
+        <h1 style={centered}>MVP Presentation</h1>
         <LivePresentationView />
 
       </div>

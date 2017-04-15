@@ -18,7 +18,7 @@ class Bookmark extends React.Component {
   render() {
     return (
       <div>
-        <button className="btn btn-icon" onClick={this.handleAddBookmark}><span className="glyphicon glyphicon-bookmark active" >Bookmark</span></button>
+        <button className="btn btn-icon btn-info" onClick={this.handleAddBookmark}><span className="glyphicon glyphicon-bookmark active" >Bookmark</span></button>
       </div>
     );
   }
