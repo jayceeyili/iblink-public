@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Promise from 'bluebird';
+import store from '../../../pages/store.js'
 import { SendStatus } from './../../../actions/socketAction';
 
 class SendStatusButton extends React.Component {
@@ -16,11 +17,9 @@ class SendStatusButton extends React.Component {
   handlePresentButton() {
     this.setState({presenterIsOn: !this.state.presenterIsOn}, () => {
       if (!this.state.presenterIsOn) {
-        console.log('presenterIsOn === false');
         fetch('/audience_presentation/store_bookmark')
         .then(response => response.json())
         .then((bookmarkedSlides) => {
-          console.log('GET to /audience_presentation/store_bookmark is receiving response');
           console.log('bookmarked: ', bookmarkedSlides);
         })
         .catch((error) => {
@@ -28,7 +27,6 @@ class SendStatusButton extends React.Component {
         });
       }
     });
-    // this.props.SendStatus();
   }
 
   render() {
