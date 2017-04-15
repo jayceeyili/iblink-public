@@ -27,7 +27,7 @@ const AppRouter = () => (
     <Router history={history}>
       <div>
         {window.__CHANNEL__ > 0 ? (
-          <Route history={history} exact path="/" component={LiveAudiencePage} />
+          <Route exact path="/" component={LiveAudiencePage} />
         ) : (
           <Route exact path="/" component={LandingPage} />
         )}
