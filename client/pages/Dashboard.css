@@ -5,6 +5,7 @@
   height: 100%;
   width: 100%;
   position: fixed;
+  color: white;
 }
 
 .overview {
@@ -20,5 +21,3 @@
   margin: 0;
   height: 100%;
 }
-
-

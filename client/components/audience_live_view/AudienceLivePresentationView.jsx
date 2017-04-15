@@ -3,6 +3,7 @@ import CarouselView from './AudienceCarouselView.jsx';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as socketActionCreators from './../../actions/socketAction.js';
+import styles from './style.css'
 
 class LivePresentationView extends React.Component {
   constructor(props) {
@@ -10,12 +11,17 @@ class LivePresentationView extends React.Component {
   }
 
   render() {
+    // styles for container
+    const container = `${styles.image}`
+
     return (
       <div>
-        <CarouselView
-          maxSlide={ this.props.maxSlide }
-          audienceIsOn={ this.props.audienceIsOn }
-        />
+        <section className={container}>
+          <CarouselView
+            maxSlide={ this.props.maxSlide }
+            audienceIsOn={ this.props.audienceIsOn }
+          />
+        </section>
       </div>
     );
   }

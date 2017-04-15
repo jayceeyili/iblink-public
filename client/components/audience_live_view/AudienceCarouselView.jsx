@@ -65,15 +65,17 @@ class CarouselView extends React.Component {
     return (
       <div>
         { this.props.audienceIsOn ?
-        <ImageGallery
-          ref={(ImageGallery) => { this.ImageGallery = ImageGallery; }}
-          items={this.state.audienceImages}
-          slideInterval={2000}
-          onImageLoad={this.handleImageLoad}
-          showIndex={true}
-          onSlide={this.handleSlideChange}
-        /> :
-        <Redirect to="/dashboard"/>
+          <section className="image-gallery-container">
+            <ImageGallery
+              ref={(ImageGallery) => { this.ImageGallery = ImageGallery; }}
+              items={this.state.audienceImages}
+              slideInterval={2000}
+              onImageLoad={this.handleImageLoad}
+              showIndex={true}
+              onSlide={this.handleSlideChange}
+            />
+          </section> :
+          <Redirect to="/dashboard"/>
         }
       </div>
     );

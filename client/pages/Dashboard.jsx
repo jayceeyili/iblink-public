@@ -13,6 +13,7 @@ export default class Dashboard extends React.Component {
     const dashboardStyles = `container-fluid ${styles.dashboard} `;
     const overviewStyles = `col-sm-3 ${styles.overview}`;
     const presentationStyles = `col-sm-9 ${styles.presentation}`;
+
     return (
       // { -------PAGE WRAPPER------ }
       <div className={dashboardStyles} >
