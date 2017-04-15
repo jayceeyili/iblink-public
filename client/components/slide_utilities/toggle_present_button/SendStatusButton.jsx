@@ -33,12 +33,12 @@ class SendStatusButton extends React.Component {
     return (
       <div>
         {
-          this.props.presenterIsOn ?
+          this.state.presenterIsOn ?
             <button type="button" className="btn btn-danger"
-              onClick={ this.props.SendStatus }>End Presentation
+              onClick={this.handlePresentButton}>End Presentation
             </button> :
           <button type="button" className="btn btn-success"
-            onClick={ this.props.SendStatus }>Start Presentation
+            onClick={this.handlePresentButton}>Start Presentation
           </button>
         }
       </div>
