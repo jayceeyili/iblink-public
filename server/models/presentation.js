@@ -1,19 +1,19 @@
 const mvpPres = [
   {
-    original: 'http://i.imgur.com/4m3HhbX.jpg',
-    thumbnail: 'http://i.imgur.com/4m3HhbX.jpg'
+    original: 'http://i.imgur.com/1NDbR9t.jpg',
+    thumbnail: 'http://i.imgur.com/1NDbR9t.jpg'
   },
   {
-    original: 'http://i.imgur.com/vFBNAvo.jpg',
-    thumbnail: 'http://i.imgur.com/vFBNAvo.jpg'
+    original: 'http://i.imgur.com/kTQhA6J.jpg',
+    thumbnail: 'http://i.imgur.com/kTQhA6J.jpg'
   },
   {
-    original: 'http://i.imgur.com/HvR3tl5.jpg',
-    thumbnail: 'http://i.imgur.com/HvR3tl5.jpg'
+    original: 'http://i.imgur.com/jUkgkhB.jpg',
+    thumbnail: 'http://i.imgur.com/jUkgkhB.jpg'
   },
   {
-    original: 'http://i.imgur.com/xV46TXK.jpg',
-    thumbnail: 'http://i.imgur.com/xV46TXK.jpg'
+    original: 'http://i.imgur.com/8IzciiM.jpg',
+    thumbnail: 'http://i.imgur.com/8IzciiM.jpg'
   },
   {
     original: 'http://i.imgur.com/ULvmW7i.jpg',
