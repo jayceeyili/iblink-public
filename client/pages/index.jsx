@@ -21,7 +21,7 @@ const AppRouter = () => (
         {window.__CHANNEL__ > 0 ? (
           <Route exact path="/" component={LiveAudiencePage} />
         ) : (
-          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/" component={Dashboard} />
         )}
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/live-presenter-page" component={LivePresenterPage} />
