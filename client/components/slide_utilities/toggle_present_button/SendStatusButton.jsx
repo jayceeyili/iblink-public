@@ -11,17 +11,23 @@ class SendStatusButton extends React.Component {
   }
 
   handlePresentButton() {
-    if (!this.props.isOn) {
-      fetch('/audience_presentation/store_bookmark')
-      .then(response => response.json())
-      .then((bookmarkedSlides) => {
-        console.log('bookmarked: ', bookmarkedSlides);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    this.props.SendStatus();
+    console.log(this.props.presenterIsOn);
+    // if (!this.props.presenterIsOn) {
+    //   console.log('presenterIsOn === false');
+    //   fetch('/audience_presentation/store_bookmark')
+    //   .then(response => response.json())
+    //   .then((bookmarkedSlides) => {
+    //     console.log('GET to /audience_presentation/store_bookmark is receiving response');
+    //     console.log('bookmarked: ', bookmarkedSlides);
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
+    // }
+    if (!this.props.presenterIsOn) {
+      console.log('its false');
     }
-    this.props.togglePresent();
   }
 
   render() {
