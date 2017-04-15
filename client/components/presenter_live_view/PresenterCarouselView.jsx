@@ -31,7 +31,6 @@ class PresenterCarouselView extends React.Component {
       .then(response => response.json())
       .then((slides) => {
         this.setState({ images: slides });
-        dispatch(addPresentation('MVP presentation', slides));
       })
       .catch((error) => {
         console.error(error);

@@ -12,16 +12,14 @@ module.exports = {
 
   homepage: {
     get(req, res) {
-
-      preloadedState = {
-        channel : req.query.channel,
-        presentations:
-
+      const preloadedState = {
+        channel: req.query.channel,
+        yourPresentations: presentation.getPresentation()
       };
 
       const store = configureStore(preloadedState);
 
-      res.render('master', { channel });
+      res.render('master', { preloadedState: JSON.stringify(preloadedState).replace(/</g, '\\x3c') });
     }
   },
 

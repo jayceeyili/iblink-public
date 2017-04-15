@@ -10,8 +10,8 @@
   "scripts": {
     "lint": "eslint client server",
     "lint-fix": "eslint client server",
-    "start": "npm run build && node server/server.js",
-    "dev": "webpack -d --watch & nodemon server/server.js",
+    "start": "npm run build && node server/index.js",
+    "dev": "webpack -d --watch & nodemon server/index.js",
     "build": "webpack -p",
     "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
     "test": "jest"
