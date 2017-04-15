@@ -53,6 +53,10 @@ module.exports = {
   },
 
   audience_presentation_add_bookmark: {
+    get(req, res) {
+      console.log('storing bookmarked slides into DB');
+      res.json(bookmarkedSlides);
+    },
     post(req, res) {
       let slideIndex = req.body.slideIndex;
       if (!tempBookmarkStore.includes(slideIndex)) {
@@ -65,6 +69,13 @@ module.exports = {
       res.json();
       console.log('tempBookmarkStore', tempBookmarkStore);
       console.log('bookmarkedSlides', bookmarkedSlides);
+    }
+  },
+
+  audience_presentation_store_bookmark: {
+    get(req, res) {
+      console.log('storing ', bookmarkedSlides, ' into DB');
+      res.json(bookmarkedSlides);
     }
   }
 };

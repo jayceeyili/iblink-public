@@ -7,6 +7,21 @@ import { SendStatus } from './../../../actions/socketAction';
 class SendStatusButton extends React.Component {
   constructor(props) {
     super(props);
+    this.handlePresentButton = this.handlePresentButton.bind(this);
+  }
+
+  handlePresentButton() {
+    if (!this.props.isOn) {
+      fetch('/audience_presentation/store_bookmark')
+      .then(response => response.json())
+      .then((bookmarkedSlides) => {
+        console.log('bookmarked: ', bookmarkedSlides);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    }
+    this.props.togglePresent();
   }
 
   render() {
@@ -17,9 +32,9 @@ class SendStatusButton extends React.Component {
             <button type="button" className="btn btn-danger"
               onClick={ this.props.SendStatus }>End Presentation
             </button> :
-            <button type="button" className="btn btn-success"
-              onClick={ this.props.SendStatus }>Start Presentation
-            </button>
+          <button type="button" className="btn btn-success"
+            onClick={ this.props.SendStatus }>Start Presentation
+          </button>
         }
       </div>
     );
