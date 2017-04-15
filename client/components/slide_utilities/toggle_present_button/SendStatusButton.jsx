@@ -9,9 +9,9 @@ import { SendStatus } from './../../../actions/socketAction';
 class SendStatusButton extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   presenterIsOn: true
-    // }
+    this.state = {
+      presenterIsOn: true
+    }
     this.handlePresentButton = this.handlePresentButton.bind(this);
   }
 
@@ -29,21 +29,6 @@ class SendStatusButton extends React.Component {
         });
       }
     });
-
-    // this.setState({presenterIsOn: !this.state.presenterIsOn}, () => {
-    //   if (!this.state.presenterIsOn) {
-    //     console.log('presenterIsOn === false');
-    //     fetch('/audience_presentation/store_bookmark')
-    //     .then(response => response.json())
-    //     .then((bookmarkedSlides) => {
-    //       console.log('GET to /audience_presentation/store_bookmark is receiving response');
-    //       console.log('bookmarked: ', bookmarkedSlides);
-    //     })
-    //     .catch((error) => {
-    //       console.error(error);
-    //     });
-    //   }
-    // });
   }
 
   render() {
