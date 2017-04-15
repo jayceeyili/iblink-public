@@ -1,4 +1,6 @@
 const actionType = {
+  AddPresentation: 'ADD_PRESENTATION',
+  RemovePresentation: 'REMOVE_PRESENTATION',
   ToggleBookmark: 'TOGGLE_BOOKMARK',
   AddBookmark: 'ADD_BOOKMARK',
   RemoveBookmark: 'REMOVE_BOOKMARK',

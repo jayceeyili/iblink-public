@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as bookmarkActionCreators from './../../actions/bookmarkActions';
 import * as socketActionCreators from './../../actions/socketAction.js';
+import * as presentationActionCreators from './../../actions/presentationActions.js';
 
 class PresenterCarouselView extends React.Component {
   constructor(props) {
@@ -30,6 +31,7 @@ class PresenterCarouselView extends React.Component {
       .then(response => response.json())
       .then((slides) => {
         this.setState({ images: slides });
+        dispatch(addPresentation('MVP presentation', slides));
       })
       .catch((error) => {
         console.error(error);
@@ -48,12 +50,11 @@ class PresenterCarouselView extends React.Component {
       this.setState({ maxSlide: Math.max.apply(null, this.state.index) }, () => {
         this.sendMaxSlide();
       });
-
     });
   }
 
   sendMaxSlide() {
-    this.props.sendURL( this.state.maxSlide );
+    this.props.sendURL(this.state.maxSlide);
   }
 
   render() {
@@ -65,7 +66,7 @@ class PresenterCarouselView extends React.Component {
           slideInterval={2000}
           onImageLoad={this.handleImageLoad}
           onSlide={this.handleSlideChange}
-          showIndex={true}
+          showIndex
         />
       </div>
     );
@@ -74,18 +75,15 @@ class PresenterCarouselView extends React.Component {
 
 const bundledActionCreators = Object.assign({},
                                           bookmarkActionCreators,
-                                          socketActionCreators
+                                          socketActionCreators,
+                                          presentationActionCreators
                                         );
 
-const mapStateToProps = (state) => {
-  return {
-    bookmarks: state.bookmarks
-  };
-};
+const mapStateToProps = state => ({
+  bookmarks: state.bookmarks
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators(bundledActionCreators, dispatch);
-};
+const mapDispatchToProps = dispatch => bindActionCreators(bundledActionCreators, dispatch);
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(PresenterCarouselView);
