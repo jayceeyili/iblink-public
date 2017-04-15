@@ -13,6 +13,7 @@ class Bookmark extends React.Component {
   handleAddBookmark(event) {
     event.preventDefault();
     this.props.addBookmark(this.props.bookmarks.currentAudienceSlide);
+    console.log(this.props.bookmarks);
   }
 
   render() {

@@ -2,33 +2,33 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Promise from 'bluebird';
-
 import { SendStatus } from './../../../actions/socketAction';
 
 class SendStatusButton extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      presenterIsOn: true
+    }
     this.handlePresentButton = this.handlePresentButton.bind(this);
   }
 
   handlePresentButton() {
-    Promise.promisify(this.props.SendStatus);
-    this.props.SendStatus()
-    .then(() => {
-      console.log(this.props.presenterIsOn);
+    this.setState({presenterIsOn: !this.state.presenterIsOn}, () => {
+      if (!this.state.presenterIsOn) {
+        console.log('presenterIsOn === false');
+        fetch('/audience_presentation/store_bookmark')
+        .then(response => response.json())
+        .then((bookmarkedSlides) => {
+          console.log('GET to /audience_presentation/store_bookmark is receiving response');
+          console.log('bookmarked: ', bookmarkedSlides);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      }
     });
-    // if (!this.props.presenterIsOn) {
-    //   console.log('presenterIsOn === false');
-    //   fetch('/audience_presentation/store_bookmark')
-    //   .then(response => response.json())
-    //   .then((bookmarkedSlides) => {
-    //     console.log('GET to /audience_presentation/store_bookmark is receiving response');
-    //     console.log('bookmarked: ', bookmarkedSlides);
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
-    // }
+    // this.props.SendStatus();
   }
 
   render() {
