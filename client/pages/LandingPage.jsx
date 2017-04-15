@@ -40,9 +40,6 @@ export default class LandingPage extends React.Component {
           <Link to="/live-audience-page">Live audience page</Link>
         </div>
         <div>
-          <Link to="/socket-test-page">Socket Test page</Link>
-        </div>
-        <div>
           <Link to="/admin">Admin page</Link>
         </div>
       </div>
