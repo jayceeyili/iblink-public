@@ -5,7 +5,7 @@ const bookmarks = (state = { bookmark: false, bookmarks: [], currentAudienceSlid
     case actionType.ToggleBookmark:
       return { ...state, bookmark: !state.bookmark };
     case actionType.AddBookmark:
-      return { ...state, bookmarks: state.bookmarks.concat(state.currentAudienceSlide) };
+      return { ...state, bookmarks: !state.bookmarks.includes(state.currentAudienceSlide) ? state.bookmarks.concat(state.currentAudienceSlide) : state.bookmarks };
     case actionType.GetCurrentAudienceSlide:
       return { ...state, currentAudienceSlide: action.currentAudienceSlide };
     default: return state;

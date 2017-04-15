@@ -7,6 +7,7 @@ export function toggleBookmark() {
 }
 
 export function addBookmark(slideIndex) {
+  console.log('addBookmark received slideIndex', slideIndex);
   fetch('/audience_presentation/add_bookmark', {
     method: 'POST',
     headers: {
