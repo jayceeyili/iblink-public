@@ -1,4 +1,12 @@
 .image {
-  width: 80% !important;
+  width: 85% !important;
   margin: 0 auto;
+}
+
+.bookmark {
+  text-align: center;
+}
+
+.background {
+  background-color: #4c4c4c;
 }

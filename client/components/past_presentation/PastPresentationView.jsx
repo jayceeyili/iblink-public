@@ -10,15 +10,21 @@ const title = {
   'color': 'black',
   'textAlign': 'center'
 }
+const buttons = `${styles.buttons}`
+
 const PastPresentationView = props => (
   <div>
-    <h3 style={title}>Title of past presentation
+    <h3 style={title}>Your Presentation
     </h3>
     <div>
       <section className={images}>
         <PresenterCarouselView />
-        <SendStatusButton />
-        <Bookmark />
+        <div className={buttons}>
+          <Bookmark />
+        </div>
+        <div className={buttons}>
+          <SendStatusButton />
+        </div>
       </section>
     </div>
   </div>
