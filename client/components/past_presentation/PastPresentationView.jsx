@@ -8,7 +8,7 @@ import styles from './presenterStyle.css';
 const images = `${styles.image}`;
 const title = {
   'color': 'black',
-  'text-align': 'center'
+  'textAlign': 'center'
 }
 const PastPresentationView = props => (
   <div>
