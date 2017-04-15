@@ -1,4 +1,10 @@
 .image {
-  width: 65% !important;
+  width: 70% !important;
   margin: 0 auto;
+}
+
+.buttons {
+  text-align: center;
+  margin: 5px;
+  float: left;
 }

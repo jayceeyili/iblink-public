@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Promise from 'bluebird';
-import store from '../../../pages/store.js'
+import store from '../../../pages/store.js';
 import { SendStatus } from './../../../actions/socketAction';
 
 class SendStatusButton extends React.Component {
