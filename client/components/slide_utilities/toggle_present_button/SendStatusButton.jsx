@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { togglePresent } from './../../../actions/socketAction';
+import { SendStatus } from './../../../actions/socketAction';
 
-class TogglePresentButton extends React.Component {
+class SendStatusButton extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -12,8 +12,8 @@ class TogglePresentButton extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={ this.props.togglePresent }>{
-            this.props.isOn ? 'End Presentation' : 'Start Presentation'
+        <button onClick={ this.props.SendStatus }>{
+            this.props.presenterIsOn ? 'End Presentation' : 'Start Presentation'
           }</button>
       </div>
     );
@@ -22,14 +22,14 @@ class TogglePresentButton extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    isOn: state.sockets.isOn
+    presenterIsOn: state.sockets.presenterIsOn
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    togglePresent
+    SendStatus
   }, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TogglePresentButton);
+export default connect(mapStateToProps, mapDispatchToProps)(SendStatusButton);

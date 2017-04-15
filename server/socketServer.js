@@ -16,6 +16,15 @@ module.exports = function (server) {
       });
     });
 
+    socket.on('redirect', data => {
+      console.log(`Socket received new status: ${ data }`);
+      connections.forEach(connectedSocket => {
+        if (connectedSocket !== socket) {
+          connectedSocket.emit('redirect', data);
+        }
+      });
+    });
+
     socket.on('disconnect', () => {
       const index = connections.indexOf(socket);
       connections.splice(index, 1);

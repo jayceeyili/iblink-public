@@ -5,7 +5,8 @@ const actionType = {
   SendURL: 'SEND_URL',
   ReceiveURL: 'RECEIVE_URL',
   UpdateURL: 'UPDATE_URL',
-  TogglePresent: 'TOGGLE_PRESENT',
+  SendStatus: 'TOGGLE_PRESENT',
+  ReceiveStatus: 'RECEIVE_STATUS',
   GetSlides: 'GET_SLIDES',
   GetCurrentAudienceSlide: 'GET_CURRENT_AUDIENCE_SLIDE'
 };

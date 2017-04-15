@@ -116,14 +116,14 @@ When writing any block of code that is logically subordinate to the line immedia
     ```javascript
     // good:
 
-    // this comparison evaluates to false, because the number zero is not the same as the empty string.
+    // this comparpresenterIsOn evaluates to false, because the number zero is not the same as the empty string.
     if(0 === ''){
       alert('looks like they\'re equal');
     }
 
     // bad:
 
-    // This comparison evaluates to true, because after type coercion, zero and the empty string are equal.
+    // This comparpresenterIsOn evaluates to true, because after type coercion, zero and the empty string are equal.
     if(0 == ''){
       alert('looks like they\'re equal');
     }
