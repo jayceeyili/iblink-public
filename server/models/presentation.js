@@ -20,8 +20,8 @@ const mvpPres = [
     thumbnail: 'http://i.imgur.com/ULvmW7i.jpg'
   },
   {
-    original: 'http://i.imgur.com/zV6MaXa.jpg',
-    thumbnail: 'http://i.imgur.com/zV6MaXa.jpg'
+    original: 'http://i.imgur.com/aSgIylL.jpg',
+    thumbnail: 'http://i.imgur.com/aSgIylL.jpg'
   }
 ];  // For MVP
 
