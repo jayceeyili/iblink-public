@@ -33,6 +33,13 @@ export function removeBookmark() {
 
 }
 
+export function changeBookmarkButtonColor(bookmarkButtonColor) {
+  return {
+    type: ActionType.ChangeBookmarkButtonColor,
+    bookmarkButtonColor
+  };
+}
+
 export function getCurrentAudienceSlide(currentAudienceSlide) {
   return {
     type: ActionType.GetCurrentAudienceSlide,

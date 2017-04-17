@@ -32,6 +32,34 @@ class AudienceCarouselView extends React.Component {
     this.setState({ audienceImages: temp });
   }
 
+  handleImageLoad(event) {
+    // console.log('Image loaded ', event.target);
+  }
+
+  handleSlideChange() {
+    this.props.getCurrentAudienceSlide(this.ImageGallery.state.currentIndex);
+    fetch('/audience_presentation/get_bookmarks')
+    .then(response => response.json())
+    .then((bookmarkedSlides) => {
+      console.log('bookmarked: ', bookmarkedSlides);
+      fetch('/presentations')
+        .then(response => response.json())
+        .then((slides) => {
+          if (bookmarkedSlides.includes(slides[this.ImageGallery.state.currentIndex])) {
+            this.props.changeBookmarkButtonColor('blue');
+          } else {
+            this.props.changeBookmarkButtonColor('red');
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
+
   render() {
     return (
       <div>
@@ -53,4 +81,3 @@ class AudienceCarouselView extends React.Component {
 }
 
 export default AudienceCarouselView;
-

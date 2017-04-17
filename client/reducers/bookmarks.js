@@ -2,7 +2,7 @@ import 'babel-polyfill';
 
 import actionType from './../actions/actionType.js';
 
-const bookmarks = (state = { bookmark: false, bookmarks: [], currentAudienceSlide: null }, action) => {
+const bookmarks = (state = { bookmark: false, bookmarks: [], currentAudienceSlide: null, bookmarkButtonColor: null }, action) => {
   switch (action.type) {
     case actionType.ToggleBookmark:
       return { ...state, bookmark: !state.bookmark };
@@ -10,6 +10,8 @@ const bookmarks = (state = { bookmark: false, bookmarks: [], currentAudienceSlid
       return { ...state, bookmarks: !state.bookmarks.includes(state.currentAudienceSlide) ? state.bookmarks.concat(state.currentAudienceSlide) : state.bookmarks };
     case actionType.GetCurrentAudienceSlide:
       return { ...state, currentAudienceSlide: action.currentAudienceSlide };
+    case actionType.ChangeBookmarkButtonColor:
+      return { ...state, bookmarkButtonColor: action.bookmarkButtonColor}
     default: return state;
   }
 };

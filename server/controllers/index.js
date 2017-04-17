@@ -111,7 +111,7 @@ module.exports = {
     }
   },
 
-  audience_presentation_store_bookmark: {
+  audience_presentation_get_bookmarks: {
     get(req, res) {
       console.log('storing ', bookmarkedSlides, ' into DB');
       res.json(bookmarkedSlides);
