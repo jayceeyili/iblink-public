@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import PresenterCarouselView from '../components/presenter_live_view/PresenterCarouselView.jsx';
 import { broadcastMiddleware } from '../socketOn';
-
+import
 const mapStateToProps = (state, ownProps) => {
   console.log('mapStateToprops, state:', state);
   return {
