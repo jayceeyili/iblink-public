@@ -1,45 +1,32 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import PresenterCarouselView from './PresenterCarouselView.jsx';
+import PresenterCarouselView from '../components/presenter_live_view/PresenterCarouselView.jsx';
 
 
-handleSlideChange() {
-  this.setState({
-    index: this.state.index.concat(this.ImageGallery.state.currentIndex)
-  }, () => {
-    this.setState({ maxSlide: Math.max.apply(null, this.state.index) }, () => {
-      this.sendMaxSlide();
-    });
-  });
-}
-
-sendMaxSlide() {
-  this.props.sendURL(this.state.maxSlide);
-}
-
-
-const mapStateToProps = (state, ownProps) => ({
-  images: // get all images of the pres 
-})
+const mapStateToProps = (state, ownProps) => {
+  console.log('mapStateToprops, state:', state);
+  return {
+    images: state.presentations[state.selectedPresentationIndex].slides
+  };
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
+  onWillMount: () => {
+    dispatch(sendURL, 0);
+  },
+
   onSlideChange: (index) => {
     dispatch(sendURL, index);
+    // could be tricky to get state here,
+    // use recompose or thunk?
+    // https://github.com/reactjs/react-redux/issues/535
+
     if (index > store.maxSlide) {
       dispatch(maxSlide, index);
     }
   }
-})
-
-const mapStateToProps = state => ({
-  todos: getVisibleTodos(state.todos, state.visibilityFilter)
 });
-
-
-const mapDispatchToProps = {
-  on: toggleTodo
-};
 
 // YourPresentationsContainer.propTypes = {
 //   presentations: PropTypes.arrayOf(PropTypes.shape({
@@ -49,7 +36,6 @@ const mapDispatchToProps = {
 //   })).isRequired,
 //   selectPresentation: PropTypes.func.isRequired
 // };
-
 
 export default connect(
   mapStateToProps,

@@ -14,6 +14,7 @@ module.exports = {
     get(req, res) {
       let preloadedState = {
         channel: req.query.channel,
+        selectedPresentationIndex: 0,
         presentations: [presentation.getPresentation()]
       };
 

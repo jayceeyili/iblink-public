@@ -16,10 +16,10 @@ const presentation = (state, action) => {
       return {
         null
       }
-    case ActionType.SelectPresentation:
-      return action.selectedPresentation
-    case ActionType.SelectSlide
-      return action.selectedSlide
+    case ActionType.SelectPresentationIndex:
+      return action.selectedPresentationIndex
+    case ActionType.SetMaxSlide:
+      return action.maxSlide || 0
     default:
       return state
   }
@@ -37,9 +37,9 @@ const presentations = (state = [], action) => {
       return state.map(pres =>
         presentation(pres, action)
       )
-    case ActionType.SelectPresentation:
+    case ActionType.SelectPresentationIndex:
       return {...state,
-        selectedPresentation: action.selectedPresentation}
+        selectedPresentationIndex: action.selectedPresentationIndex}
     case ActionType.SelectSlide:
       return {...state,
         selectedSlide: action.selectedSlide}

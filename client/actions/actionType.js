@@ -1,7 +1,7 @@
 const actionType = {
   AddPresentation: 'ADD_PRESENTATION',
   RemovePresentation: 'REMOVE_PRESENTATION',
-  SelectPresentation: 'SELECT_PRESENTATION',
+  SelectPresentationIndex: 'SELECT_PRESENTATION_INDEX',
   SelectSlide: 'SELECT_SLIDE',
   ToggleBookmark: 'TOGGLE_BOOKMARK',
   AddBookmark: 'ADD_BOOKMARK',

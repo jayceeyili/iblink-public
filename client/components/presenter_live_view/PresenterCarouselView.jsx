@@ -1,45 +1,26 @@
 import React from 'react';
 import ImageGallery from 'react-image-gallery';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as bookmarkActionCreators from './../../actions/bookmarkActions';
-import * as socketActionCreators from './../../actions/socketAction.js';
-import * as presentationActionCreators from './../../actions/presentationActions.js';
 
-const PresenterCarouselView = () => {
+class PresenterCarouselView extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log('props in constructor:', props);
+    // this.props
+  }
 
   componentWillMount() {
-    this.sendMaxSlide();
-  }
-
-  handleImageLoad(event) {
-    event.preventDefault();
-    console.log('Image loaded ', event.target);
-  }
-
-  handleSlideChange() {
-    this.setState({
-      index: this.state.index.concat(this.ImageGallery.state.currentIndex)
-    }, () => {
-      this.setState({ maxSlide: Math.max.apply(null, this.state.index) }, () => {
-        this.sendMaxSlide();
-      });
-    });
-  }
-
-  sendMaxSlide() {
-    this.props.sendURL(this.state.maxSlide);
+    console.log('in willmount, this props:', this.props);
+    this.props.onWillMount();
   }
 
   render() {
     return (
       <div>
         <ImageGallery
-          ref={(ImageGallery) => { this.ImageGallery = ImageGallery; }}
-          items={this.state.images}
+          items={this.props.images}
           slideInterval={2000}
-          onImageLoad={(event) => event.preventDefault() }
-          onSlide={this.handleSlideChange}
+          onImageLoad={event => event.preventDefault()}
+          onSlide={this.props.onSlideChange}
           showIndex
         />
       </div>

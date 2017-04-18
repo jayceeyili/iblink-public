@@ -14,12 +14,12 @@ export const removePresentation = id => ({
   id
 });
 
-export const selectPresentation = selectedPresentation => ({
+export const selectPresentation = selectedPresentationIndex => ({
   type: ActionType.SelectPresentation,
-  selectedPresentation
+  selectedPresentationIndex
 });
 
-export const selectSlide = selectedSlide => ({
-  type: ActionType.SelectSlide,
-  selectedSlide
+export const setMaxSlide = maxSlide => ({
+  type: ActionType.SetMaxSlide,
+  maxSlide
 });
