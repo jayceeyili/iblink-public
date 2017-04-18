@@ -6,35 +6,10 @@ import * as bookmarkActionCreators from './../../actions/bookmarkActions';
 import * as socketActionCreators from './../../actions/socketAction.js';
 import * as presentationActionCreators from './../../actions/presentationActions.js';
 
-class PresenterCarouselView extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      images: [],
-      index: [0],
-      maxSlide: 0
-    };
-
-    this.handleImageLoad = this.handleImageLoad.bind(this);
-    this.handleSlideChange = this.handleSlideChange.bind(this);
-    this.getPresentations = this.getPresentations.bind(this);
-    this.sendMaxSlide = this.sendMaxSlide.bind(this);
-  }
+const PresenterCarouselView = () => {
 
   componentWillMount() {
-    this.getPresentations();
     this.sendMaxSlide();
-  }
-
-  getPresentations() {
-    return fetch('/presentations')
-      .then(response => response.json())
-      .then((slides) => {
-        this.setState({ images: slides });
-      })
-      .catch((error) => {
-        console.error(error);
-      });
   }
 
   handleImageLoad(event) {
@@ -63,7 +38,7 @@ class PresenterCarouselView extends React.Component {
           ref={(ImageGallery) => { this.ImageGallery = ImageGallery; }}
           items={this.state.images}
           slideInterval={2000}
-          onImageLoad={this.handleImageLoad}
+          onImageLoad={(event) => event.preventDefault() }
           onSlide={this.handleSlideChange}
           showIndex
         />
@@ -72,17 +47,4 @@ class PresenterCarouselView extends React.Component {
   }
 }
 
-const bundledActionCreators = Object.assign({},
-                                          bookmarkActionCreators,
-                                          socketActionCreators,
-                                          presentationActionCreators
-                                        );
-
-const mapStateToProps = state => ({
-  bookmarks: state.bookmarks
-});
-
-const mapDispatchToProps = dispatch => bindActionCreators(bundledActionCreators, dispatch);
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(PresenterCarouselView);
+export default PresenterCarouselView;

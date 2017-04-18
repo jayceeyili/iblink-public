@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import React from 'react';
 import { Router, IndexRoute, Route } from 'react-router';
 import { Provider } from 'react-redux';
@@ -7,8 +8,12 @@ import LivePresenterPage from './LivePresenterPage.jsx';
 import LiveAudiencePage from './LiveAudiencePage.jsx';
 import Dashboard from './Dashboard.jsx';
 import Admin from './Admin.jsx';
+import configureStore from '../store/configureStore.jsx';
+import SocketOn from '../socketOn.js';
 
 const preloadedState = window.__PRELOADED_STATE__;
+console.log('state : ', preloadedState);
+
 const store = configureStore(preloadedState);
 
 SocketOn(store);

@@ -1,16 +1,13 @@
 import React, { PropTypes } from 'react';
 
-const PresentationTitle = ({ onClick, title }) => (
-  <li
-    onClick={onClick}
-  >
+const PresentationTitle = ({ title }) => (
+  <div>
     {title}
-  </li>
+  </div>
 );
 
 PresentationTitle.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string
 };
 
 export default PresentationTitle;

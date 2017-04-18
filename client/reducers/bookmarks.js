@@ -1,3 +1,5 @@
+import 'babel-polyfill';
+
 import actionType from './../actions/actionType.js';
 
 const bookmarks = (state = { bookmark: false, bookmarks: [], currentAudienceSlide: null }, action) => {

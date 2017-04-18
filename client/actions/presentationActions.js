@@ -13,3 +13,13 @@ export const removePresentation = id => ({
   type: ActionType.RemovePresentation,
   id
 });
+
+export const selectPresentation = selectedPresentation => ({
+  type: ActionType.SelectPresentation,
+  selectedPresentation
+});
+
+export const selectSlide = selectedSlide => ({
+  type: ActionType.SelectSlide,
+  selectedSlide
+});

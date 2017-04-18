@@ -1,7 +1,7 @@
 const path = require('path');
 
 const presentation = require('../models/presentation');
-const configureStore = require('../../common/store/configureStore');
+// const configureStore = require('../../common/store/configureStore');
 
 
 let maxSlide = 0;  // TODO: improve after MVP to support multiple presentations
@@ -12,14 +12,15 @@ module.exports = {
 
   homepage: {
     get(req, res) {
-      const preloadedState = {
+      let preloadedState = {
         channel: req.query.channel,
-        yourPresentations: presentation.getPresentation()
+        presentations: [presentation.getPresentation()]
       };
 
-      const store = configureStore(preloadedState);
-
-      res.render('master', { preloadedState: JSON.stringify(preloadedState).replace(/</g, '\\x3c') });
+      // const store = configureStore(preloadedState);
+      preloadedState = JSON.stringify(preloadedState).replace(/</g, '\\x3c');
+      // console.log('preloadedState', preloadedState);
+      res.render('master', { preloadedState });
     }
   },
 

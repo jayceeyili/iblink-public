@@ -1,24 +1,15 @@
 import React, { PropTypes } from 'react';
-import PresentationTitle from './presentationTitle.jsx';
 
-const PresentationList = ({ presentations, onPresentationClick }) => (
-  <ul>
-    {presentations.map(presentation =>
-      <PresentationTitle
-        key={presentation.id}
-        {...presentation}
-        onClick={() => onPresentationClick(presentation.id)}
-      />
-    )}
-  </ul>
+const PresentationList = ({ title, children }) => (
+  <div>
+    <h2>{title}</h2>
+    <div>{children}</div>
+  </div>
 );
 
 PresentationList.propTypes = {
-  presentations: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired
-  }).isRequired).isRequired,
-  onPresentationClick: PropTypes.func.isRequired
+  children: PropTypes.node,
+  title: PropTypes.string.isRequired
 };
 
 export default PresentationList;
