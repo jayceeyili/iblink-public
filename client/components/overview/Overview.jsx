@@ -2,8 +2,8 @@ import React from 'react';
 import YourPresentationsContainer from '../../containers/yourPresentationsContainer';
 
 const text = {
-  'font-size': '.5em'
-}
+  fontSize: '.5em'
+};
 
 const Overview = props => (
   <div>

@@ -1,25 +1,14 @@
+// Presentations actions that are not related to a live presentation
+
 import ActionType from './actionType';
 
-let nextPresentationId = 0;
-
-export const addPresentation = (title, slides) => ({
-  type: ActionType.AddPresentation,
-  id: nextPresentationId++,
-  title,
-  slides
-});
-
-export const removePresentation = id => ({
+export const removePresentationIndex = selectedPresentationIndex => ({
   type: ActionType.RemovePresentation,
-  id
+  selectedPresentationIndex
 });
 
-export const selectPresentation = selectedPresentationIndex => ({
+export const selectPresentationIndex = selectedPresentationIndex => ({
   type: ActionType.SelectPresentationIndex,
   selectedPresentationIndex
 });
 
-export const setMaxSlide = maxSlide => ({
-  type: ActionType.SetMaxSlide,
-  maxSlide
-});

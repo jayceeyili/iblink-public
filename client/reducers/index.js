@@ -3,7 +3,7 @@ import { routerReducer } from 'react-router-redux';
 
 // Import reducers
 import bookmarks from './bookmarks';
-import channel from './channel';
+import livePresentation from './livePresentation';
 import presentations from './presentations';
 import selectedPresentationIndex from './selectedPresentation';
 import sockets from './socketReducers';
@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
   sockets,
   presentations,
   selectedPresentationIndex,
-  channel,
+  livePresentation,
   bookmarks,
   routing: routerReducer
 });

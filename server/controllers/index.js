@@ -1,26 +1,45 @@
 const path = require('path');
 
 const presentation = require('../models/presentation');
+const channel = require('../models/channel');
 // const configureStore = require('../../common/store/configureStore');
 
 
 let maxSlide = 0;  // TODO: improve after MVP to support multiple presentations
-let tempBookmarkStore = [];
-let bookmarkedSlides = [];
+const tempBookmarkStore = [];
+const bookmarkedSlides = [];
 
 module.exports = {
 
   homepage: {
     get(req, res) {
+      const channelNumber = req.query.channel;
+      const livePresentation = {
+        currentSlideIndex: 0,
+        maxSlideIndex: 0
+      };
+      if (channel.channelIsLive(channelNumber)) {
+        livePresentation.channel = channelNumber;
+        livePresentation.presentationIndex = 0;
+      } else {
+        livePresentation.channel = null;
+        livePresentation.presentationIndex = null;
+      }
+
       // ************* INITIAL STORE ******************
-      
       let preloadedState = {
-        livePresentation: {
-          channel: req.query.channel,
-          presentationId: 
+        livePresentation,
+          // channel,
+          // presentationIndex, (in the presentations array below)
+          // currentSlideIndex, (in the slides array below)
+          // maxSlideIndex (in the slides array below)
         selectedPresentationIndex: 0,
         presentations: [presentation.getPresentation()]
+          // title,
+          // id,  (database ID)
+          // slides: [ {original: url, thumbnail: url}, ... ]
       };
+      // ***********************************************
 
       // const store = configureStore(preloadedState);
       preloadedState = JSON.stringify(preloadedState).replace(/</g, '\\x3c');
@@ -70,10 +89,10 @@ module.exports = {
       res.json(bookmarkedSlides);
     },
     post(req, res) {
-      let slideIndex = req.body.slideIndex;
+      const slideIndex = req.body.slideIndex;
       if (!tempBookmarkStore.includes(slideIndex)) {
         tempBookmarkStore.push(slideIndex);
-        let slides = presentation.getPresentation();
+        const slides = presentation.getPresentation();
         bookmarkedSlides.push(slides[slideIndex]);
 
         console.log('slide ', slideIndex, ' is being bookmarked');

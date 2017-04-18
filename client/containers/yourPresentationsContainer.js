@@ -1,16 +1,16 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { selectPresentation } from '../actions/presentationActions';
+import { selectPresentationIndex } from '../actions/selectedPresentationActions';
 import PresentationList from '../components/overview/presentationList.jsx';
 import PresentationTitle from '../components/overview/presentationTitle.jsx';
 
-const YourPresentationsContainer = ({ presentations, selectPresentation }) => (
+const YourPresentationsContainer = ({ presentations, selectPresentationIndex }) => (
   <PresentationList title="Your Presentations">
-    {presentations.map(presentation =>
+    {presentations.map((presentation, index) =>
       <PresentationTitle
         key={presentation.id}
         title={presentation.title}
-        onPresentationTitleClicked={() => selectPresentation(presentation)}
+        onPresentationTitleClicked={() => selectPresentationIndex(index)}
       />
     )}
   </PresentationList>
@@ -22,7 +22,7 @@ YourPresentationsContainer.propTypes = {
     title: PropTypes.string.isRequired,
     slides: PropTypes.array
   })).isRequired,
-  selectPresentation: PropTypes.func.isRequired
+  selectPresentationIndex: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -31,5 +31,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { selectPresentation }
+  { selectPresentationIndex }
 )(YourPresentationsContainer);

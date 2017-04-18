@@ -1,7 +1,9 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router';
-import ImageGallery from 'react-image-gallery';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import ImageGallery from 'react-image-gallery';
+
 import * as bookmarkActionCreators from './../../actions/bookmarkActions';
 import * as carouselActionCreators from './../../actions/carouselActions';
 
