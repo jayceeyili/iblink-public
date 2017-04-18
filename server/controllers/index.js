@@ -16,7 +16,7 @@ module.exports = {
       const channelNumber = req.query.channel;
       const livePresentation = {
         currentSlideIndex: 0,
-        maxSlideIndex: 0
+        maxSlideIndex: 0 // TODO: keep track
       };
       if (channel.channelIsLive(channelNumber)) {
         livePresentation.channel = channelNumber;
