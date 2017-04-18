@@ -2,7 +2,7 @@ import 'babel-polyfill';
 
 import actionType from './../actions/actionType.js';
 
-const bookmarks = (state = { bookmark: false, bookmarks: [], currentAudienceSlide: null, bookmarkButtonColor: null }, action) => {
+const bookmarks = (state = { bookmark: false, bookmarks: [], currentAudienceSlide: null, bookmarkButtonColor: 'black' }, action) => {
   switch (action.type) {
     case actionType.ToggleBookmark:
       return { ...state, bookmark: !state.bookmark };

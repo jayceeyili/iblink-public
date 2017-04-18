@@ -41,19 +41,24 @@ class AudienceCarouselView extends React.Component {
     fetch('/audience_presentation/get_bookmarks')
     .then(response => response.json())
     .then((bookmarkedSlides) => {
-      console.log('bookmarked: ', bookmarkedSlides);
-      fetch('/presentations')
-        .then(response => response.json())
-        .then((slides) => {
-          if (bookmarkedSlides.includes(slides[this.ImageGallery.state.currentIndex])) {
-            this.props.changeBookmarkButtonColor('blue');
-          } else {
-            this.props.changeBookmarkButtonColor('red');
-          }
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+      // console.log('bookmarked: ', bookmarkedSlides);
+      console.log('Does bookmarkedSlides includes this.state.images[this.ImageGallery.state.currentIndex]?', JSON.stringify(bookmarkedSlides[0]) === JSON.stringify(this.state.images[this.ImageGallery.state.currentIndex]));
+      // if (JSON.stringify(bookmarkedSlides[0]) === JSON.stringify(this.state.images[this.ImageGallery.state.currentIndex])) {
+      //   this.props.changeBookmarkButtonColor('purple');
+      // } else {
+      //   this.props.changeBookmarkButtonColor('black');
+      // }
+
+      for (var i = 0; i < bookmarkedSlides.length; i++) {
+        if (JSON.stringify(bookmarkedSlides[i]) === JSON.stringify(this.state.images[this.ImageGallery.state.currentIndex])) {
+          console.log('changing to purple');
+          this.props.changeBookmarkButtonColor('purple');
+          break;
+        } else {
+          console.log('changing to black');
+          this.props.changeBookmarkButtonColor('black');
+        }
+      }
     })
     .catch((error) => {
       console.error(error);
