@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Redirect } from 'react-router';
 import ImageGallery from 'react-image-gallery';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import * as bookmarkActionCreators from './../../actions/bookmarkActions';
 import * as carouselActionCreators from './../../actions/carouselActions';
 
@@ -12,7 +11,7 @@ class CarouselView extends React.Component {
     this.state = {
       images: [],
       audienceImages: [],
-      maxSlide: this.props.maxSlide || 0,
+      maxSlide: this.props.maxSlide || 0
     };
 
     this.handleImageLoad = this.handleImageLoad.bind(this);
@@ -25,8 +24,8 @@ class CarouselView extends React.Component {
     this.getPresentations();
   }
 
-  componentWillUpdate( nextProps, nextState ) {
-    if ( this.props.maxSlide !== nextProps.maxSlide ) {
+  componentWillUpdate(nextProps, nextState) {
+    if (this.props.maxSlide !== nextProps.maxSlide) {
       this.audienceAccess(nextProps.maxSlide);
     }
   }
@@ -36,7 +35,7 @@ class CarouselView extends React.Component {
       .then(response => response.json())
       .then((slides) => {
         this.setState({ images: slides });
-        this.audienceAccess( this.state.maxSlide );
+        this.audienceAccess(this.state.maxSlide);
         this.props.getSlides(slides);
         this.handleSlideChange();
       })
@@ -46,11 +45,11 @@ class CarouselView extends React.Component {
   }
 
   audienceAccess(maxSlide) {
-    var temp = []
-    for (var i = 0; i <= maxSlide; i++) {
+    const temp = [];
+    for (let i = 0; i <= maxSlide; i++) {
       temp.push(this.state.images[i]);
     }
-    this.setState({audienceImages: temp});
+    this.setState({ audienceImages: temp });
   }
 
   handleImageLoad(event) {
@@ -71,11 +70,11 @@ class CarouselView extends React.Component {
               items={this.state.audienceImages}
               slideInterval={2000}
               onImageLoad={this.handleImageLoad}
-              showIndex={true}
+              showIndex
               onSlide={this.handleSlideChange}
             />
           </section> :
-          <Redirect to="/dashboard"/>
+          <Redirect to="/dashboard" />
         }
       </div>
     );
@@ -87,17 +86,13 @@ const bundledActionCreators = Object.assign({},
                                           carouselActionCreators
                                         );
 
-const mapStateToProps = (state) => {
-  return {
-    bookmarks: state.bookmarks,
-    slides: state.slides,
-    presenterIsOn: state.sockets.presenterIsOn
-  };
-};
+const mapStateToProps = state => ({
+  bookmarks: state.bookmarks,
+  slides: state.slides,
+  presenterIsOn: state.sockets.presenterIsOn
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators(bundledActionCreators, dispatch);
-};
+const mapDispatchToProps = dispatch => bindActionCreators(bundledActionCreators, dispatch);
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(CarouselView);

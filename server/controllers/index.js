@@ -12,8 +12,12 @@ module.exports = {
 
   homepage: {
     get(req, res) {
+      // ************* INITIAL STORE ******************
+      
       let preloadedState = {
-        channel: req.query.channel,
+        livePresentation: {
+          channel: req.query.channel,
+          presentationId: 
         selectedPresentationIndex: 0,
         presentations: [presentation.getPresentation()]
       };

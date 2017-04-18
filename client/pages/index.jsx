@@ -24,7 +24,7 @@ const AppRouter = () => (
   <Provider store={store}>
     <Router history={history}>
       <div>
-        {window.__STORE__ > 0 ? (
+        {store.getState().channel > 0 ? (
           <Route exact path="/" component={LiveAudiencePage} />
         ) : (
           <Route exact path="/" component={Dashboard} />
