@@ -15,7 +15,7 @@ export const removePresentation = id => ({
 });
 
 export const selectPresentation = selectedPresentationIndex => ({
-  type: ActionType.SelectPresentationIndex,
+  type: ActionType.SelectPresentation,
   selectedPresentationIndex
 });
 

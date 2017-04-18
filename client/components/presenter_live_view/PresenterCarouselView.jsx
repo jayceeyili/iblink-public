@@ -10,7 +10,7 @@ class PresenterCarouselView extends React.Component {
 
   componentWillMount() {
     console.log('in willmount, this props:', this.props);
-    this.props.onWillMount();
+    this.props.broadcastMiddleware();
   }
 
   render() {

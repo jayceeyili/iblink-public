@@ -1,6 +1,8 @@
 const actionType = {
   AddPresentation: 'ADD_PRESENTATION',
   RemovePresentation: 'REMOVE_PRESENTATION',
+  SetChannel: 'SET_CHANNEL',
+  DeleteChannel: 'DELETE_CHANNEL',
   SelectPresentationIndex: 'SELECT_PRESENTATION_INDEX',
   SelectSlide: 'SELECT_SLIDE',
   ToggleBookmark: 'TOGGLE_BOOKMARK',
