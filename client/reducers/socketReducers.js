@@ -18,6 +18,7 @@ const sockets = (state = initialState, action) => {
     case actionType.UpdateURL:
       return { ...state, sentUrl: action.url };
     case actionType.SendURL:
+      console.log('Socket reducer: send URL');
       return state;
     default: return state;
   }
