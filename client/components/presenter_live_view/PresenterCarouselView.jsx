@@ -10,7 +10,7 @@ class PresenterCarouselView extends React.Component {
 
   componentWillMount() {
     console.log('in willmount, this props:', this.props);
-    this.props.broadcastMiddleware();
+    this.props.sendURL;
   }
 
   render() {
@@ -20,7 +20,7 @@ class PresenterCarouselView extends React.Component {
           items={this.props.images}
           slideInterval={2000}
           onImageLoad={event => event.preventDefault()}
-          onSlide={this.props.onSlideChange}
+          onSlide={this.props.sendURL}
           showIndex
         />
       </div>

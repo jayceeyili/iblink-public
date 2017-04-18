@@ -1,30 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import PresenterCarouselView from '../components/presenter_live_view/PresenterCarouselView.jsx';
-import { broadcastMiddleware } from '../socketOn';
-import
+import * as bookmarkActionCreators from '../actions/bookmarkActions';
+import * as socketActionCreators from '../actions/socketAction';
+
 const mapStateToProps = (state, ownProps) => {
   console.log('mapStateToprops, state:', state);
   return {
-    images: state.presentations[state.selectedPresentationIndex].slides
+    images: state.presentations[state.selectedPresentationIndex].slides,
+    bookmarks: state.bookmarks
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  broadcastMiddleware,  // same as ProductsContainer's addToCart of redux shopping cart example
+const bundledActionCreators = Object.assign({},
+                                          bookmarkActionCreators,
+                                          socketActionCreators
+                                        );
 
-  onSlideChange: (index) => {
-    dispatch(sendURL, index);
-    // could be tricky to get state here,
-    // use recompose or thunk?
-    // https://github.com/reactjs/react-redux/issues/535
-
-    if (index > store.maxSlide) {
-      dispatch(maxSlide, index);
-    }
-  }
-});
+const mapDispatchToProps = dispatch => bindActionCreators(bundledActionCreators, dispatch);
 
 // YourPresentationsContainer.propTypes = {
 //   presentations: PropTypes.arrayOf(PropTypes.shape({

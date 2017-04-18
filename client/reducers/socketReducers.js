@@ -1,13 +1,13 @@
 import actionType from './../actions/actionType.js';
 
-let initialState = {
+const initialState = {
   sentUrl: '',
   receivedUrlId: '',
   presenterIsOn: true,
   audienceIsOn: true
 };
 
-const sockets = ( state = initialState, action ) => {
+const sockets = (state = initialState, action) => {
   switch (action.type) {
     case actionType.SendStatus:
       return { ...state, presenterIsOn: !state.presenterIsOn };
@@ -20,6 +20,12 @@ const sockets = ( state = initialState, action ) => {
     case actionType.SendURL:
       return state;
     default: return state;
+  }
+};
+
+export const sendId = channelId => (dispatch, getState) => {
+  if (getState().products.byId[productId].inventory > 0) {
+    dispatch(addToCartUnsafe(productId));
   }
 };
 
