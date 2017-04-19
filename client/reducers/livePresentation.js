@@ -1,6 +1,7 @@
 import ActionType from '../actions/actionType';
 
-const livePresentation = (state = null, action) => {
+const livePresentation = (state = {channel: null, presentationIndex: null, currentSlideIndex: 0,
+                                   maxSlideIndex: 0 }, action) => {
   console.log('In reduce livePresentation with state:', state, 'and action:', action );
   switch (action.type) {
     case ActionType.SetChannel:

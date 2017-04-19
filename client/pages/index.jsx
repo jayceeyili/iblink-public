@@ -11,9 +11,13 @@ import configureStore from '../store/configureStore.jsx';
 import SocketOn from '../socketOn.js';
 
 const preloadedState = window.__PRELOADED_STATE__;
-console.log('state : ', preloadedState);
 
 const store = configureStore(preloadedState);
+
+// Load the state one more time for Redux dev tools
+import reduxTest from '../store/redux-dev.jsx';
+reduxTest(preloadedState);
+// console.log('state after redux test: ', preloadedState);
 
 SocketOn(store);
 

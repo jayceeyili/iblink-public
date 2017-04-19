@@ -4,12 +4,11 @@ import ImageGallery from 'react-image-gallery';
 class PresenterCarouselView extends React.Component {
   constructor(props) {
     super(props);
-    console.log('props in constructor:', props);
-    // this.props
+    // console.log('props in constructor:', props);
   }
 
   componentWillMount() {
-    console.log('in willmount, this props:', this.props);
+    // console.log('in willmount, this props:', this.props);
     this.props.sendURL;
   }
 

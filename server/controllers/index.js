@@ -29,15 +29,23 @@ module.exports = {
       // ************* INITIAL STORE ******************
       let preloadedState = {
         livePresentation,
-          // channel,
-          // presentationIndex, (in the presentations array below)
-          // currentSlideIndex, (in the slides array below)
-          // maxSlideIndex (in the slides array below)
+          // Object with:
+          // * channel,
+          // * presentationIndex, (in the presentations array below)
+          // * currentSlideIndex, (in the slides array below)
+          // * maxSlideIndex (in the slides array below)
         selectedPresentationIndex: 0,
-        presentations: [presentation.getPresentation()]
+        presentations: [presentation.getPresentation()],
           // title,
           // id,  (database ID)
           // slides: [ {original: url, thumbnail: url}, ... ]
+        // TODO: Refactor the following to merge with above
+        sockets: {
+          sentUrl: '',
+          receivedUrlId: '',
+          presenterIsOn: true,
+          audienceIsOn: true
+        }
       };
       // ***********************************************
 

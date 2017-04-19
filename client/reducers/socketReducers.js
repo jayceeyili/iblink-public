@@ -1,4 +1,4 @@
-import actionType from './../actions/actionType.js';
+import actionType from '../actions/actionType.js';
 
 const initialState = {
   sentUrl: '',
@@ -8,6 +8,8 @@ const initialState = {
 };
 
 const sockets = (state = initialState, action) => {
+  // console.log('In reduce sockets with state:', state, 'and action:', action);
+
   switch (action.type) {
     case actionType.SendStatus:
       return { ...state, presenterIsOn: !state.presenterIsOn };
@@ -18,15 +20,9 @@ const sockets = (state = initialState, action) => {
     case actionType.UpdateURL:
       return { ...state, sentUrl: action.url };
     case actionType.SendURL:
-      console.log('Socket reducer: send URL');
+      // console.log('Socket reducer: send URL');
       return state;
     default: return state;
-  }
-};
-
-export const sendId = channelId => (dispatch, getState) => {
-  if (getState().products.byId[productId].inventory > 0) {
-    dispatch(addToCartUnsafe(productId));
   }
 };
 
