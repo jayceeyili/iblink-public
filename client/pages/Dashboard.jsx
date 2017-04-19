@@ -3,33 +3,28 @@ import Overview from '../components/overview/Overview.jsx';
 import PastPresentationView from '../components/past_presentation/PastPresentationView.jsx';
 import styles from './Dashboard.css';
 
-export default class Dashboard extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
+const Dashboard = () => {
+  const dashboardStyles = `container-fluid ${styles.dashboard} `;
+  const overviewStyles = `col-sm-3 ${styles.overview}`;
+  const presentationStyles = `col-sm-9 ${styles.presentation}`;
 
-  render() {
-    const dashboardStyles = `container-fluid ${styles.dashboard} `;
-    const overviewStyles = `col-xs-3 ${styles.overview}`;
-    const presentationStyles = `col-xs-9 ${styles.presentation}`;
-
-    return (
+  return (
       // { -------PAGE WRAPPER------ }
-      <div className={dashboardStyles} >
+    <div className={dashboardStyles} >
 
 
-        {/* -------LEFT HAND COLUMN------- */}
-        <div className={overviewStyles}>
-          <Overview />
-        </div>
-
-        {/* -------RIGHT HAND COLUMN------- */}
-        <div className={presentationStyles}>
-          <PastPresentationView />
-        </div>
+      {/* -------LEFT HAND COLUMN------- */}
+      <div className={overviewStyles}>
+        <Overview />
       </div>
 
+      {/* -------RIGHT HAND COLUMN------- */}
+      <div className={presentationStyles}>
+        <PastPresentationView />
+      </div>
+    </div>
     );
-  }
-}
+};
+
+export default Dashboard;

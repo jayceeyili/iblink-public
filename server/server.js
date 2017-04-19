@@ -38,6 +38,9 @@ app.use('/', router);
 app.use(express.static(path.join(__dirname, '../client/public')));
 
 
+// For testing purposes. TODO: Move to live presentation creation logic!
+require('./models/channel').getNewChannel();
+
 // Use this middleware to set up hot module reloading via webpack.
 // const compiler = webpack(webpackConfig);
 // app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }));

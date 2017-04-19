@@ -1,31 +1,38 @@
+import 'babel-polyfill';
 import React from 'react';
 import { Router, IndexRoute, Route } from 'react-router';
 import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import LandingPage from './LandingPage.jsx';
-import LivePresenterPage from './LivePresenterPage.jsx';
-import LiveAudiencePage from './LiveAudiencePage.jsx';
+import AudiencePresentationContainer from '../containers/audiencePresentationContainer.jsx';
 import Dashboard from './Dashboard.jsx';
 import Admin from './Admin.jsx';
-import SocketOn from './../socketOn.js';
-import store from './store.js';
+import configureStore from '../store/configureStore.jsx';
+import SocketOn from '../socketOn.js';
 
-const history = createHistory();
+const preloadedState = window.__PRELOADED_STATE__;
+
+const store = configureStore(preloadedState);
+
+// Load the state one more time for Redux dev tools
+import reduxTest from '../store/redux-dev.jsx';
+reduxTest(preloadedState);
+// console.log('state after redux test: ', preloadedState);
 
 SocketOn(store);
+
+const history = createHistory();
 
 const AppRouter = () => (
   <Provider store={store}>
     <Router history={history}>
       <div>
-        {window.__CHANNEL__ > 0 ? (
-          <Route exact path="/" component={LiveAudiencePage} />
+        {store.getState().livePresentation.channel > 0 ? (
+          <Route exact path="/" component={AudiencePresentationContainer} />
         ) : (
           <Route exact path="/" component={Dashboard} />
         )}
         <Route path="/dashboard" component={Dashboard} />
-        <Route path="/live-presenter-page" component={LivePresenterPage} />
-        <Route path="/live-audience-page" component={LiveAudiencePage} />
         <Route path="/admin" component={Admin} />
       </div>
     </Router>

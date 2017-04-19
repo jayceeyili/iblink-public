@@ -16,3 +16,7 @@ module.exports.deleteChannel = function (channel) {
   _liveChannels[channel] = false;
 };
 
+module.exports.channelIsLive = function (channel) {
+  return !!_liveChannels[channel];
+};
+

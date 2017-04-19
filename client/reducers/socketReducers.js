@@ -1,13 +1,15 @@
-import actionType from './../actions/actionType.js';
+import actionType from '../actions/actionType.js';
 
-let initialState = {
+const initialState = {
   sentUrl: '',
   receivedUrlId: '',
   presenterIsOn: true,
   audienceIsOn: true
 };
 
-const sockets = ( state = initialState, action ) => {
+const sockets = (state = initialState, action) => {
+  // console.log('In reduce sockets with state:', state, 'and action:', action);
+
   switch (action.type) {
     case actionType.SendStatus:
       return { ...state, presenterIsOn: !state.presenterIsOn };
@@ -18,6 +20,7 @@ const sockets = ( state = initialState, action ) => {
     case actionType.UpdateURL:
       return { ...state, sentUrl: action.url };
     case actionType.SendURL:
+      // console.log('Socket reducer: send URL');
       return state;
     default: return state;
   }

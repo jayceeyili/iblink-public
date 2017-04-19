@@ -1,64 +1,35 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router';
-import ImageGallery from 'react-image-gallery';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as bookmarkActionCreators from './../../actions/bookmarkActions';
-import * as carouselActionCreators from './../../actions/carouselActions';
+import ImageGallery from 'react-image-gallery';
 
-class CarouselView extends React.Component {
+class AudienceCarouselView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      images: [],
-      audienceImages: [],
-      maxSlide: this.props.maxSlide || 0,
+      audienceImages: null
     };
 
-    this.handleImageLoad = this.handleImageLoad.bind(this);
-    this.getPresentations = this.getPresentations.bind(this);
-    this.audienceAccess = this.audienceAccess.bind(this);
-    this.handleSlideChange = this.handleSlideChange.bind(this);
+    this.setAudienceAccess = this.setAudienceAccess.bind(this);
   }
 
-  componentDidMount() {
-    this.getPresentations();
+  componentWillMount() {
+    this.setAudienceAccess(this.props.maxSlide);
   }
 
-  componentWillUpdate( nextProps, nextState ) {
-    if ( this.props.maxSlide !== nextProps.maxSlide ) {
-      this.audienceAccess(nextProps.maxSlide);
+  componentWillUpdate(nextProps, nextState) {
+    if (this.props.maxSlide !== nextProps.maxSlide) {
+      this.setAudienceAccess(nextProps.maxSlide);
     }
   }
 
-  getPresentations() {
-    return fetch('/presentations')
-      .then(response => response.json())
-      .then((slides) => {
-        this.setState({ images: slides });
-        this.audienceAccess( this.state.maxSlide );
-        this.props.getSlides(slides);
-        this.handleSlideChange();
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
-  audienceAccess(maxSlide) {
-    var temp = []
-    for (var i = 0; i <= maxSlide; i++) {
-      temp.push(this.state.images[i]);
+  setAudienceAccess(maxSlide) {
+    const temp = [];
+    for (let i = 0; i <= maxSlide; i++) {
+      temp.push(this.props.images[i]);
     }
-    this.setState({audienceImages: temp});
-  }
-
-  handleImageLoad(event) {
-    // console.log('Image loaded ', event.target);
-  }
-
-  handleSlideChange() {
-    this.props.getCurrentAudienceSlide(this.ImageGallery.state.currentIndex);
+    this.setState({ audienceImages: temp });
   }
 
   render() {
@@ -71,33 +42,15 @@ class CarouselView extends React.Component {
               items={this.state.audienceImages}
               slideInterval={2000}
               onImageLoad={this.handleImageLoad}
-              showIndex={true}
-              onSlide={this.handleSlideChange}
+              showIndex
             />
           </section> :
-          <Redirect to="/dashboard"/>
+          <Redirect to="/dashboard" />
         }
       </div>
     );
   }
 }
 
-const bundledActionCreators = Object.assign({},
-                                          bookmarkActionCreators,
-                                          carouselActionCreators
-                                        );
+export default AudienceCarouselView;
 
-const mapStateToProps = (state) => {
-  return {
-    bookmarks: state.bookmarks,
-    slides: state.slides,
-    presenterIsOn: state.sockets.presenterIsOn
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators(bundledActionCreators, dispatch);
-};
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(CarouselView);
