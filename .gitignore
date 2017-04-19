@@ -9,7 +9,7 @@ ehthumbs.db
 Thumbs.db
 
 ### node etc ###
-
+database/config/config.json
 .env
 
 # Logs
