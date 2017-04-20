@@ -65,6 +65,7 @@ class Login extends React.Component {
       var token = result.credential.accessToken;
       var secret = result.credential.secret;
       var user = result.user;
+      console.log(user);
     }).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -106,7 +107,7 @@ class Login extends React.Component {
             </form>
             <button onClick={this.signUp}>Or Sign Up</button>
             <button
-              onClick={this.loginProvider(new firebase.auth.TwitterAuthProvider())}>
+              onClick={this.loginProvider(twitterProvider)}>
               Twitter Login
             </button>
           </div>
