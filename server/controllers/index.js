@@ -101,7 +101,6 @@ module.exports = {
       if (!tempBookmarkStore.includes(slideIndex)) {
         tempBookmarkStore.push(slideIndex);
         const slides = presentation.getPresentation();
-        console.log('slides', slides.slides);
         bookmarkedSlides.push(slides.slides[slideIndex]);
 
         console.log('slide ', slideIndex, ' is being bookmarked');

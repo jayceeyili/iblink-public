@@ -39,13 +39,9 @@ class AudienceCarouselView extends React.Component {
 
   handleSlideChange() {
     this.props.getCurrentAudienceSlide(this.ImageGallery.state.currentIndex);
-    console.log('this.ImageGallery.state.currentIndex: ', this.ImageGallery.state.currentIndex);
     fetch('/audience_presentation/get_bookmarks')
     .then(response => response.json())
     .then((bookmarkedSlides) => {
-      console.log('bookmarked: ', bookmarkedSlides);
-      console.log('Does bookmarkedSlides includes this.state.images[this.ImageGallery.state.currentIndex]?', JSON.stringify(bookmarkedSlides[0]) === JSON.stringify(this.state.audienceImages[this.ImageGallery.state.currentIndex]));
-
       for (var i = 0; i < bookmarkedSlides.length; i++) {
         if (JSON.stringify(bookmarkedSlides[i]) === JSON.stringify(this.state.audienceImages[this.ImageGallery.state.currentIndex])) {
           console.log('changing to purple');
