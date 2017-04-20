@@ -65,7 +65,7 @@ class Login extends React.Component {
       var token = result.credential.accessToken;
       var secret = result.credential.secret;
       var user = result.user;
-      console.log(user);
+      console.log('hello',user);
     }).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -89,12 +89,8 @@ class Login extends React.Component {
     this.setState({signup: !this.state.signup })
   }
 
-  hoverOver(e) {
-
-  }
 
   render() {
-    var twitterProvider = new firebase.auth.TwitterAuthProvider()
     return (
         this.state.signup === false ?
           <div>
@@ -107,7 +103,8 @@ class Login extends React.Component {
             </form>
             <button onClick={this.signUp}>Or Sign Up</button>
             <button
-              onClick={this.loginProvider(twitterProvider)}>
+              onClick={() => {this.loginProvider(new firebase.auth.TwitterAuthProvider())}}
+            >
               Twitter Login
             </button>
           </div>
@@ -120,7 +117,11 @@ class Login extends React.Component {
               <input type="submit" value="Enter" />
             </form>
             <button onClick={this.signUp}>Or Login</button>
-            <button onClick={this.twitterAuth}>Twitter Login</button>
+            <button
+              onClick={() => {this.loginProvider(new firebase.auth.TwitterAuthProvider())}}
+            >
+              Twitter Login
+            </button>
           </div>
     )
   }
