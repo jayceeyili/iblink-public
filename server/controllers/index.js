@@ -101,7 +101,7 @@ module.exports = {
       if (!tempBookmarkStore.includes(slideIndex)) {
         tempBookmarkStore.push(slideIndex);
         const slides = presentation.getPresentation();
-        bookmarkedSlides.push(slides[slideIndex]);
+        bookmarkedSlides.push(slides.slides[slideIndex]);
 
         console.log('slide ', slideIndex, ' is being bookmarked');
       }
@@ -111,7 +111,7 @@ module.exports = {
     }
   },
 
-  audience_presentation_store_bookmark: {
+  audience_presentation_get_bookmarks: {
     get(req, res) {
       console.log('storing ', bookmarkedSlides, ' into DB');
       res.json(bookmarkedSlides);

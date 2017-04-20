@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import AudienceCarouselView from '../components/audience_live_view/AudienceCarouselView.jsx';
+import * as bookmarkActionCreators from '../actions/bookmarkActions.js';
 // import * as socketActionCreators from '../actions/socketAction.js';
 
 const mapStateToProps = (state) => {
@@ -10,8 +11,17 @@ const mapStateToProps = (state) => {
   return {
     maxSlide,
     audienceIsOn: state.sockets.audienceIsOn,
-    images: state.presentations[state.selectedPresentationIndex].slides
+    images: state.presentations[state.selectedPresentationIndex].slides,
+    bookmarks: state.bookmarks
   };
 };
 
-export default connect(mapStateToProps)(AudienceCarouselView);
+const bundledActionCreators = Object.assign({},
+                                          bookmarkActionCreators
+                                        );
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(bundledActionCreators, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AudienceCarouselView);

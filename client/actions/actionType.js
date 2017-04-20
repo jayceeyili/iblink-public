@@ -14,6 +14,7 @@ const actionType = {
   ToggleBookmark: 'TOGGLE_BOOKMARK',
   AddBookmark: 'ADD_BOOKMARK',
   RemoveBookmark: 'REMOVE_BOOKMARK',
+  ChangeBookmarkButtonColor: 'CHANGE_BOOKMARK_BUTTON_COLOR',
 
   // Sockets
   SendURL: 'SEND_URL',

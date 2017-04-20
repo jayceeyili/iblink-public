@@ -2,27 +2,35 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import store from '../../../pages/store.js';
 import * as bookmarkActionCreators from './../../../actions/bookmarkActions';
 
 class Bookmark extends React.Component {
   constructor(props) {
     super(props);
-    this.handleAddBookmark = this.handleAddBookmark.bind(this);
+    this.state = {
+      buttonColor: 'black'
+    };
+    this.handleClickBookmark = this.handleClickBookmark.bind(this);
   }
 
-  handleAddBookmark(event) {
+  handleClickBookmark(event) {
     event.preventDefault();
     this.props.addBookmark(this.props.bookmarks.currentAudienceSlide);
+    this.props.changeBookmarkButtonColor('purple');
+    console.log('changing to purple');
   }
 
   render() {
     return (
       <div>
-        <button className="btn btn-icon btn-info" onClick={this.handleAddBookmark}><span className="glyphicon glyphicon-bookmark active" >Bookmark</span></button>
+        <button onClick={this.handleClickBookmark} style={{ backgroundColor: this.props.bookmarks.bookmarkButtonColor }}>Bookmark</button>
       </div>
     );
   }
 }
+
+{/* <button className="btn btn-icon btn-info" onClick={this.handleAddBookmark} style={{ backgroundColor: this.props.bookmarkButtonColor }}><span className="glyphicon glyphicon-bookmark active" >Bookmark</span></button> */}
 
 const bundledActionCreators = Object.assign({},
                                           bookmarkActionCreators

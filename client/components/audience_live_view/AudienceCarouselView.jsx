@@ -12,6 +12,7 @@ class AudienceCarouselView extends React.Component {
     };
 
     this.setAudienceAccess = this.setAudienceAccess.bind(this);
+    this.handleSlideChange = this.handleSlideChange.bind(this);
   }
 
   componentWillMount() {
@@ -32,6 +33,31 @@ class AudienceCarouselView extends React.Component {
     this.setState({ audienceImages: temp });
   }
 
+  handleImageLoad(event) {
+    // console.log('Image loaded ', event.target);
+  }
+
+  handleSlideChange() {
+    this.props.getCurrentAudienceSlide(this.ImageGallery.state.currentIndex);
+    fetch('/audience_presentation/get_bookmarks')
+    .then(response => response.json())
+    .then((bookmarkedSlides) => {
+      for (var i = 0; i < bookmarkedSlides.length; i++) {
+        if (JSON.stringify(bookmarkedSlides[i]) === JSON.stringify(this.state.audienceImages[this.ImageGallery.state.currentIndex])) {
+          console.log('changing to purple');
+          this.props.changeBookmarkButtonColor('purple');
+          break;
+        } else {
+          console.log('changing to black');
+          this.props.changeBookmarkButtonColor('black');
+        }
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
+
   render() {
     return (
       <div>
@@ -41,6 +67,7 @@ class AudienceCarouselView extends React.Component {
               ref={(ImageGallery) => { this.ImageGallery = ImageGallery; }}
               items={this.state.audienceImages}
               slideInterval={2000}
+              onSlide={this.handleSlideChange}
               onImageLoad={this.handleImageLoad}
               showIndex
             />
@@ -53,4 +80,3 @@ class AudienceCarouselView extends React.Component {
 }
 
 export default AudienceCarouselView;
-
