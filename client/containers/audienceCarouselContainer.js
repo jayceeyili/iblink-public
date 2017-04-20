@@ -6,10 +6,8 @@ import * as bookmarkActionCreators from '../actions/bookmarkActions.js';
 // import * as socketActionCreators from '../actions/socketAction.js';
 
 const mapStateToProps = (state) => {
-  // TODO: bring channel-related socket logic to livePresentation
-  const maxSlide = state.sockets.receivedUrlId || state.livePresentation.maxSlideIndex;
   return {
-    maxSlide,
+    maxSlide: state.sockets.receivedUrlId,
     audienceIsOn: state.sockets.audienceIsOn,
     images: state.presentations[state.selectedPresentationIndex].slides,
     bookmarks: state.bookmarks
