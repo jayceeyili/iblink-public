@@ -14,21 +14,22 @@ module.exports = {
   homepage: {
     get(req, res) {
       const channelNumber = req.query.channel;
-      const livePresentation = {
-        currentSlideIndex: 0,
-        maxSlideIndex: 0 // TODO: keep track
+      const sockets = {
+        sentUrl: '',
+        presenterIsOn: true,
+        audienceIsOn: true
       };
       if (channel.channelIsLive(channelNumber)) {
-        livePresentation.channel = channelNumber;
-        livePresentation.presentationIndex = 0;
+        sockets.channel = channelNumber;
+        sockets.receivedUrlId = 0;
       } else {
-        livePresentation.channel = null;
-        livePresentation.presentationIndex = null;
+        sockets.channel = null;
+        sockets.receivedUrlId = null;
       }
 
       // ************* INITIAL STORE ******************
       let preloadedState = {
-        livePresentation,
+        // livePresentation,
           // Object with:
           // * channel,
           // * presentationIndex, (in the presentations array below)
@@ -39,13 +40,7 @@ module.exports = {
           // title,
           // id,  (database ID)
           // slides: [ {original: url, thumbnail: url}, ... ]
-        // TODO: Refactor the following to merge with above
-        sockets: {
-          sentUrl: '',
-          receivedUrlId: '',
-          presenterIsOn: true,
-          audienceIsOn: true
-        }
+        sockets
       };
       // ***********************************************
 
