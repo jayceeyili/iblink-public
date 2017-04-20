@@ -29,7 +29,11 @@ const actionType = {
 
   // Not sure needed! TODO review
   GetSlides: 'GET_SLIDES',
+<<<<<<< 7135d369e1a410358b50925744d93da4f5cccf6e
   GetCurrentAudienceSlide: 'GET_CURRENT_AUDIENCE_SLIDE'
+=======
+  GetCurrentAudienceSlide: 'GET_CURRENT_AUDIENCE_SLIDE',
+>>>>>>> (feat) modifying twitter authentication function
 };
 
 export default actionType;

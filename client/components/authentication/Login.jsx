@@ -18,7 +18,7 @@ class Login extends React.Component {
     this.state = {
       email: '',
       password: '',
-      signup: false
+      signup: false,
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -26,7 +26,7 @@ class Login extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.signOut = this.signOut.bind(this)
     this.signUp = this.signUp.bind(this)
-    this.twitterAuth = this.twitterAuth.bind(this)
+    this.loginProvider = this.loginProvider.bind(this)
 
   }
 
@@ -45,32 +45,39 @@ class Login extends React.Component {
 
     if (this.state.signup === false) {
       firebase.auth().signInWithEmailAndPassword(email, password)
-        .catch(function(error) {
-        // Handle Errors here.
+      .catch(function(error) {
           var errorCode = error.code;
           var errorMessage = error.message;
-          // ...
           console.log(errorCode, errorMessage)
         });
     } else {
-      firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ...
-        console.log(errorCode, errorMessage)
-      });
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .catch(function(error) {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.log(errorCode, errorMessage)
+        });
     }
   }
 
-  twitterAuth() {
-
+  loginProvider(provider) {
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+      var token = result.credential.accessToken;
+      var secret = result.credential.secret;
+      var user = result.user;
+    }).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      var email = error.email;
+      var credential = error.credential;
+      console.log('this is the twitter login error', errorCode, errorMessage)
+    });
   }
 
   signOut() {
     firebase.auth().signOut().then(function() {
       // Sign-out successful.
-      console.log('you\'ved signed out')
+      console.log('you\'ve signed out')
     }).catch(function(error) {
       // An error happened.
       console.log('oh oh spaghettios');
@@ -81,7 +88,12 @@ class Login extends React.Component {
     this.setState({signup: !this.state.signup })
   }
 
+  hoverOver(e) {
+
+  }
+
   render() {
+    var twitterProvider = new firebase.auth.TwitterAuthProvider()
     return (
         this.state.signup === false ?
           <div>
@@ -93,7 +105,10 @@ class Login extends React.Component {
               <button onClick={this.signOut}>Log Out</button>
             </form>
             <button onClick={this.signUp}>Or Sign Up</button>
-            <button onClick={this.twitterAuth}>Twitter Login</button>
+            <button
+              onClick={this.loginProvider(new firebase.auth.TwitterAuthProvider())}>
+              Twitter Login
+            </button>
           </div>
         :
           <div>

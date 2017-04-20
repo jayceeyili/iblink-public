@@ -21,6 +21,7 @@ export default class LandingPage extends React.Component {
     return (
       <div>
         <h2>This is the Landing page</h2>
+<<<<<<< 7135d369e1a410358b50925744d93da4f5cccf6e
         <button
           onClick={this.handleLoginClick}
         >Login
@@ -30,6 +31,8 @@ export default class LandingPage extends React.Component {
         >Signup
         </button>
 
+=======
+>>>>>>> (feat) modifying twitter authentication function
         <div>
           <Link to="/dashboard">Dashboard</Link>
         </div>

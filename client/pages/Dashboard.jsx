@@ -1,6 +1,7 @@
 import React from 'react';
 import Overview from '../components/overview/Overview.jsx';
 import PastPresentationView from '../components/past_presentation/PastPresentationView.jsx';
+import Login from '../components/authentication/Login.jsx';
 import styles from './Dashboard.css';
 
 
@@ -12,8 +13,7 @@ const Dashboard = () => {
   return (
       // { -------PAGE WRAPPER------ }
     <div className={dashboardStyles} >
-
-
+      <Login />
       {/* -------LEFT HAND COLUMN------- */}
       <div className={overviewStyles}>
         <Overview />
