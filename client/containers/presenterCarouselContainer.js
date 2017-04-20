@@ -22,15 +22,6 @@ const bundledActionCreators = Object.assign({},
 
 const mapDispatchToProps = dispatch => bindActionCreators(bundledActionCreators, dispatch);
 
-// YourPresentationsContainer.propTypes = {
-//   presentations: PropTypes.arrayOf(PropTypes.shape({
-//     id: PropTypes.number.isRequired,
-//     title: PropTypes.string.isRequired,
-//     slides: PropTypes.array
-//   })).isRequired,
-//   selectPresentation: PropTypes.func.isRequired
-// };
-
 export default connect(
   mapStateToProps,
   mapDispatchToProps
