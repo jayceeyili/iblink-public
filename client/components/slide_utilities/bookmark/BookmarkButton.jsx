@@ -16,15 +16,10 @@ class Bookmark extends React.Component {
 
   handleClickBookmark(event) {
     event.preventDefault();
-    // if (this.props.bookmarks.bookmarkButtonColor === 'purple') {
-    //   this.props.changeBookmarkButtonColor('black');
-    //   console.log('changing to black');
-    //   return;
-    // }
+    console.log('this.props.bookmarks.currentAudienceSlide: ', this.props.bookmarks.currentAudienceSlide);
     this.props.addBookmark(this.props.bookmarks.currentAudienceSlide);
     this.props.changeBookmarkButtonColor('purple');
     console.log('changing to purple');
-    // console.log('button color: ', this.props.bookmarks.bookmarkButtonColor);
   }
 
   render() {
