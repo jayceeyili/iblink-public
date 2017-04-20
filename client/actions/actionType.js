@@ -17,6 +17,7 @@ const actionType = {
   ChangeBookmarkButtonColor: 'CHANGE_BOOKMARK_BUTTON_COLOR',
 
   // Sockets
+  CreateRoom: 'CREATE_ROOM',
   SendURL: 'SEND_URL',
   ReceiveURL: 'RECEIVE_URL',
   UpdateURL: 'UPDATE_URL',

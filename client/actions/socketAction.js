@@ -1,5 +1,12 @@
 import ActionType from './actionType';
 
+export function CreateRoom( channel ) {
+  return {
+    type: ActionType.CreateRoom,
+    channel
+  }
+}
+
 export function SendStatus() {
   return {
     type: ActionType.SendStatus

@@ -7,12 +7,23 @@ let socket = null;
 
 export function broadcastMiddleware(store) {
   return next => (action) => {
-    console.log('In broadcastMiddleware...');
-    if (socket && action.type === actionType.SendURL) {
-      socket.emit('broadcastSlide', action.url);
-      console.log('... emitting action url', action.url);
-    } else {
-      console.log('... NOT emitting');
+    if ( socket && action.type === actionType.SendURL) {
+      console.log('In broadcastMiddleware...');
+      let channel = store.getState().sockets.channel;
+        socket.emit( 'broadcastSlide', {
+          maxSlideIndex: action.url,
+          channel: channel
+        } );
+    }
+
+    return next(action);
+  }
+}
+
+export function createRoomMiddleware( store ) {
+  return next => action => {
+    if ( socket && action.type === actionType.CreateRoom ) {
+      socket.emit( 'room', action.channel );
     }
 
     return next(action);
@@ -23,7 +34,11 @@ export function redirectMiddleware(store) {
   return next => (action) => {
     if (socket && action.type === actionType.SendStatus) {
       const status = store.getState().sockets.presenterIsOn;
-      socket.emit('redirect', status);
+      const channel = store.getState().sockets.channel;
+      socket.emit( 'redirect', {
+        status: status,
+        channel: channel
+      });
     }
 
     return next(action);

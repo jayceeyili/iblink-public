@@ -7,6 +7,7 @@ const controller = require('./controllers');
 router.get('/', controller.homepage.get);
 router.get('/:id([0-9]{1,5})', controller.channel.get);  // id: a number from 1 to 5 digits long
 
+router.get('/liveChannel', controller.liveChannel.get);
 
 router.get('/presentations', controller.presentation.get);
 router.post('/presentations', controller.presentation.post);

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Promise from 'bluebird';
 import store from '../../../pages/store.js';
-import { SendStatus } from './../../../actions/socketAction';
+import { SendStatus, CreateRoom } from './../../../actions/socketAction';
 
 class SendStatusButton extends React.Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class SendStatusButton extends React.Component {
   handlePresentButton() {
     this.props.SendStatus();
     this.setState({presenterIsOn: !this.state.presenterIsOn}, () => {
-      if (!this.state.presenterIsOn) {
+      if (this.state.presenterIsOn) {
         fetch('/audience_presentation/get_bookmarks')
         .then(response => response.json())
         .then((bookmarkedSlides) => {
@@ -26,6 +26,11 @@ class SendStatusButton extends React.Component {
         .catch((error) => {
           console.error(error);
         });
+      } else {
+        fetch('/liveChannel')
+        .then( response => response.json())
+        .then( channel => this.props.CreateRoom( channel ) )
+        .catch( error => console.error( error ));
       }
     });
   }
@@ -34,7 +39,7 @@ class SendStatusButton extends React.Component {
     return (
       <div>
         {
-          this.state.presenterIsOn ?
+          !this.state.presenterIsOn ?
             <button type="button" className="btn btn-danger"
               onClick={this.handlePresentButton}>End Presentation
             </button> :
@@ -55,7 +60,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    SendStatus
+    SendStatus,
+    CreateRoom
   }, dispatch);
 };
 

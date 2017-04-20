@@ -57,6 +57,13 @@ module.exports = {
     }
   },
 
+  liveChannel: {
+    get(req, res) {
+      let newChannel = liveChannel.getNewChannel();
+      res.json( newChannel );
+    }
+  },
+
   presentation: {
     get(req, res) {
       res.json(presentation.getPresentation());

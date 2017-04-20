@@ -1,8 +1,16 @@
 import rootReducer from './../reducers';
 import { createStore, applyMiddleware } from 'redux';
-import { broadcastMiddleware, redirectMiddleware } from './../socketOn.js';
+import {
+  broadcastMiddleware,
+  redirectMiddleware,
+  createRoomMiddleware
+} from './../socketOn.js';
 
-const createStoreWithMiddleware = applyMiddleware(broadcastMiddleware, redirectMiddleware)(createStore);
+const createStoreWithMiddleware = applyMiddleware(
+  broadcastMiddleware,
+  redirectMiddleware,
+  createRoomMiddleware
+)(createStore);
 
 const store = createStoreWithMiddleware(
   rootReducer,
