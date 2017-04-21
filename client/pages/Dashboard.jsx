@@ -1,7 +1,7 @@
 import React from 'react';
 import Overview from '../components/overview/Overview.jsx';
 import PastPresentationView from '../components/past_presentation/PastPresentationView.jsx';
-import Login from '../components/authentication/Login.jsx';
+import Login from '../components/authentication/LoginView.jsx';
 import styles from './Dashboard.css';
 
 

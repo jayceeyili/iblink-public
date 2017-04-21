@@ -2,13 +2,13 @@ import React from 'react';
 import firebase from 'firebase';
 
 var config = {
-    apiKey: 'AIzaSyBbMAiPs4GxjlWQbkAV-0OkvpB1GM-y_BQ',
-    authDomain: "iblink-86850.firebaseapp.com",
-    databaseURL: "https://iblink-86850.firebaseio.com",
-    projectId: "iblink-86850",
-    storageBucket: "iblink-86850.appspot.com",
-    messagingSenderId: "477575412539"
-  };
+      apiKey: 'AIzaSyBbMAiPs4GxjlWQbkAV-0OkvpB1GM-y_BQ',
+      authDomain: "iblink-86850.firebaseapp.com",
+      databaseURL: "https://iblink-86850.firebaseio.com",
+      projectId: "iblink-86850",
+      storageBucket: "iblink-86850.appspot.com",
+      messagingSenderId: "477575412539"
+    };
 
 firebase.initializeApp(config);
 
@@ -29,19 +29,6 @@ class Login extends React.Component {
     this.loginProvider = this.loginProvider.bind(this)
 
   }
-  // 
-  // ComponentDidMount() {
-  //   firebase.auth().onAuthStateChanged(user => {
-  //     if (user) {
-  //       // User is signed in.
-  //       console.log(user);
-  //     } else {
-  //       // No user is signed in.
-  //       console.log('none');
-  //     }
-  //   });
-  //
-  // }
 
   handleChange(e) {
     this.setState({email: e.target.value})
@@ -142,3 +129,19 @@ class Login extends React.Component {
 }
 
 export default Login;
+
+
+
+//
+// ComponentDidMount() {
+//   firebase.auth().onAuthStateChanged(user => {
+//     if (user) {
+//       // User is signed in.
+//       console.log(user);
+//     } else {
+//       // No user is signed in.
+//       console.log('none');
+//     }
+//   });
+//
+// }
