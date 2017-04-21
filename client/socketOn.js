@@ -22,7 +22,6 @@ export function broadcastMiddleware(store) {
 export function createRoomMiddleware( store ) {
   return next => action => {
     if ( socket && action.type === actionType.CreateRoom ) {
-      console.log('In createRoomMiddleware...');
       socket.emit( 'room', action.channel );
     }
 

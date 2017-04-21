@@ -1,4 +1,4 @@
-const _liveChannels = [0];
+const _liveChannels = [];
 
 module.exports.getNewChannel = function () {
   const length = _liveChannels.length;
@@ -19,4 +19,3 @@ module.exports.deleteChannel = function (channel) {
 module.exports.channelIsLive = function (channel) {
   return !!_liveChannels[channel];
 };
-
