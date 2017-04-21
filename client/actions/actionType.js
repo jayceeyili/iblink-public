@@ -20,9 +20,11 @@ const actionType = {
   CreateRoom: 'CREATE_ROOM',
   SendURL: 'SEND_URL',
   ReceiveURL: 'RECEIVE_URL',
-  UpdateURL: 'UPDATE_URL',
   SendStatus: 'TOGGLE_PRESENT',
   ReceiveStatus: 'RECEIVE_STATUS',
+
+  // Notes
+  UpdateText: 'UPDATE_TEXT',
 
   // Not sure needed! TODO review
   GetSlides: 'GET_SLIDES',
