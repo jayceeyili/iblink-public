@@ -7,29 +7,29 @@ const sequelize = require('sequelize');
 // const pg = require('pg');
 
 module.exports.storeBookmarks = function () {
-  let presentation = presentationObject.getPresentation();
+  const presentation = presentationObject.getPresentation();
   // insert presentation into db
   models.Presentation.create({
     title: presentation.title,
     user_id: 46231074627482
   })
   .then(() => {
-    for (var i = 0; i < presentation.slides.length; i++) {
-      models.Slide.create({
-        image_url: presentation.slides[i].original,
-        slide_index: i,
-        presentation_id: models.Presentation.findAll({
-          attributes: ['id'],
-          where: {
-            title: presentation.title
-          }
-        })
-        .then((id) => {
-          return id;
-        })
-        .catch(err => console.log(err))
-      });
-    }
+    models.Presentation.findAll({
+      attributes: ['id'],
+      where: {
+        title: presentation.title
+      }
+    })
+    .then((id) => {
+      for (var i = 0; i < presentation.slides.length; i++) {
+        models.Slide.create({
+          image_url: presentation.slides[i].original,
+          slide_index: i,
+          presentation_id: id
+        });
+      }
+    })
+    .catch(err => console.log(err));
   });
 
   // Bookmarks.create();
