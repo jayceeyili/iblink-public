@@ -1,4 +1,4 @@
-const _liveChannels = [];
+const _liveChannels = [0];
 
 module.exports.getNewChannel = function () {
   const length = _liveChannels.length;
