@@ -3,7 +3,7 @@ const path = require('path');
 const presentation = require('../models/presentation');
 const channel = require('../models/channel');
 // const configureStore = require('../../common/store/configureStore');
-
+const bookmarkUtil = require('../models/bookmark');
 
 let maxSlide = 0;  // TODO: improve after MVP to support multiple presentations
 const tempBookmarkStore = [];
@@ -116,6 +116,7 @@ module.exports = {
   audience_presentation_get_bookmarks: {
     get(req, res) {
       console.log('storing ', bookmarkedSlides, ' into DB');
+      // bookmarkUtil.storeBookmarks();
       res.json(bookmarkedSlides);
     }
   }
