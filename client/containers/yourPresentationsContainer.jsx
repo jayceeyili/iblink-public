@@ -14,6 +14,7 @@ const YourPresentationsContainer = ({ presentations, selectPresentationIndex }) 
         title={presentation.title}
         onPresentationTitleClicked={() => selectPresentationIndex(index)}
       />
+      <Upload />
     )}
   </PresentationList>
 );
