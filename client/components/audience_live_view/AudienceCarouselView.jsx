@@ -17,6 +17,7 @@ class AudienceCarouselView extends React.Component {
 
   componentWillMount() {
     this.setAudienceAccess(this.props.maxSlide);
+    this.props.CreateRoom( this.props.channel );
   }
 
   componentWillUpdate(nextProps, nextState) {

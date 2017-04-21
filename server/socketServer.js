@@ -1,33 +1,29 @@
 const io = require('socket.io');
+const liveChannel = require('./models/channel');
 
 module.exports = function (server) {
   const socketServer = io(server);
-  const connections = [];
+  // const connections = [];
 
   socketServer.on('connection', socket => {
-    connections.push(socket);
+    // connections.push(socket);
+
+    socket.on('room', channel => {
+      socket.join('room-' + channel);
+    });
 
     socket.on('broadcastSlide', data => {
-      console.log(`Socket received new url: ${ data }`);
-      connections.forEach(connectedSocket => {
-        if (connectedSocket !== socket) {
-          connectedSocket.emit('broadcastSlide', data);
-        }
-      });
+      socket.broadcast.to('room-' + data.channel).emit('broadcastSlide', data.maxSlideIndex);
     });
 
     socket.on('redirect', data => {
-      console.log(`Socket received new status: ${ data }`);
-      connections.forEach(connectedSocket => {
-        if (connectedSocket !== socket) {
-          connectedSocket.emit('redirect', data);
-        }
-      });
+      liveChannel.deleteChannel( data.channel );
+      socket.broadcast.to('room-' + data.channel).emit('redirect', data.status);
     });
 
-    socket.on('disconnect', () => {
-      const index = connections.indexOf(socket);
-      connections.splice(index, 1);
-    });
+    // socket.on('disconnect', () => {
+      // const index = connections.indexOf(socket);
+      // connections.splice(index, 1);
+    // });
   });
 };

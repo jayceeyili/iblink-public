@@ -13,6 +13,12 @@ class PresenterCarouselView extends React.Component {
   }
 
   render() {
+    const spanStyle = {
+      color: 'blue'
+    };
+
+    let audienceURL = `www.iblink.net/${ this.props.channel }`;
+
     return (
       <div>
         <ImageGallery
@@ -22,6 +28,10 @@ class PresenterCarouselView extends React.Component {
           onSlide={this.props.sendURL}
           showIndex
         />
+        {
+          !this.props.presenterIsOn &&
+          <span style={ spanStyle }>{ audienceURL }</span>
+        }
       </div>
     );
   }
