@@ -29,6 +29,19 @@ class Login extends React.Component {
     this.loginProvider = this.loginProvider.bind(this)
 
   }
+  // 
+  // ComponentDidMount() {
+  //   firebase.auth().onAuthStateChanged(user => {
+  //     if (user) {
+  //       // User is signed in.
+  //       console.log(user);
+  //     } else {
+  //       // No user is signed in.
+  //       console.log('none');
+  //     }
+  //   });
+  //
+  // }
 
   handleChange(e) {
     this.setState({email: e.target.value})
@@ -58,6 +71,7 @@ class Login extends React.Component {
           console.log(errorCode, errorMessage)
         });
     }
+
   }
 
   loginProvider(provider) {
