@@ -2,14 +2,22 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootReducer from '../reducers';
-import { broadcastMiddleware, redirectMiddleware } from '../socketOn.js';
+import {
+  broadcastMiddleware,
+  createRoomMiddleware,
+  redirectMiddleware
+} from '../socketOn.js';
 
 
 const configureStore = (preloadedState) => {
   const store = createStore(
   	rootReducer,
   	preloadedState,
-  	composeWithDevTools(applyMiddleware(broadcastMiddleware, redirectMiddleware))
+  	composeWithDevTools(applyMiddleware(
+      broadcastMiddleware,
+      redirectMiddleware,
+      createRoomMiddleware 
+    ))
 );
   return store;
 };

@@ -23,7 +23,7 @@ module.exports = function (server) {
     });
 
     socket.on('redirect', data => {
-      console.log(`Socket received new status: ${ data }`);
+      console.log(`Socket received new status: ${ data.channel }`);
       channel.deleteChannel( data.channel );
       connections.forEach(connectedSocket => {
         if (connectedSocket !== socket) {
