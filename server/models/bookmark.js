@@ -24,7 +24,9 @@ module.exports.storeBookmarks = function () {
             title: presentation.title
           }
         })
-        .then(id => id)
+        .then((id) => {
+          return id;
+        })
         .catch(err => console.log(err))
       });
     }
