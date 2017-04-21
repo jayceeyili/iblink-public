@@ -13,6 +13,7 @@ class AudienceCarouselView extends React.Component {
 
     this.setAudienceAccess = this.setAudienceAccess.bind(this);
     this.handleSlideChange = this.handleSlideChange.bind(this);
+    this.handleImageLoad = this.handleImageLoad.bind(this);
   }
 
   componentWillMount() {
@@ -36,6 +37,7 @@ class AudienceCarouselView extends React.Component {
 
   handleImageLoad(event) {
     // console.log('Image loaded ', event.target);
+    this.props.getCurrentAudienceSlide(this.ImageGallery.state.currentIndex);
   }
 
   handleSlideChange() {
