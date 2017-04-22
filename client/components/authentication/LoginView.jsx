@@ -12,7 +12,7 @@ var config = {
 
 firebase.initializeApp(config);
 
-class Login extends React.Component {
+class LoginView extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -39,14 +39,16 @@ class Login extends React.Component {
   }
 
   handleSubmit(e) {
+
     e.preventDefault()
     var email = this.state.email
     var password = this.state.password
 
     if (this.state.signup === false) {
       firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(function(results) {
-        console.log('these are the email results',results.uid)
+      .then(results => {
+        console.log('Success! Welcome', results.uid);
+        this.props.loggedIn(results.uid)
       })
       .catch(function(error) {
           var errorCode = error.code;
@@ -65,11 +67,12 @@ class Login extends React.Component {
   }
 
   loginProvider(provider) {
-    firebase.auth().signInWithPopup(provider).then(function(result) {
+    firebase.auth().signInWithPopup(provider).then(result => {
       var token = result.credential.accessToken;
       var secret = result.credential.secret;
       var user = result.user;
-      console.log('hello',user.uid);
+      console.log('Success! Welcome', user.uid);
+      this.props.loggedIn(user.uid)
     }).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -95,7 +98,6 @@ class Login extends React.Component {
 
 
   render() {
-    console.log('this is a test',this.props.authentication)
     return (
         this.state.signup === false ?
           <div>
@@ -132,7 +134,7 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default LoginView;
 
 
 
