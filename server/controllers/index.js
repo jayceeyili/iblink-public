@@ -122,7 +122,8 @@ module.exports = {
   audience_presentation_store_bookmarks: {
     get(req, res) {
       console.log('storing ', bookmarkedSlides, ' into DB');
-      bookmarkUtil.storeBookmarks(bookmarkedSlides, 46231074627482);
+      let userId = 46231074627482;
+      bookmarkUtil.storeBookmarks(bookmarkedSlides, userId);
       res.json(bookmarkedSlides);
     }
   }

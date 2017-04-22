@@ -1,6 +1,5 @@
 const presentationObject = require('./presentation');
 const models = require('../../database/models/index');
-const sequelize = require('sequelize');
 
 module.exports.storeBookmarks = function (bookmarkList, userId) {
   const presentation = presentationObject.getPresentation();
@@ -16,9 +15,7 @@ module.exports.storeBookmarks = function (bookmarkList, userId) {
         presentation_id: presentationCreateResult.dataValues.id
       })
       .then((slideCreateResult) => {
-        // console.log('HEREEEEEEE slideCreateResult: ', slideCreateResult.dataValues.image_url);
         for (var j = 0; j < bookmarkList.length; j++) {
-          console.log('Does slideCreateResult.dataValues.image_url === bookmarkList[j].original ? ', slideCreateResult.dataValues.image_url === bookmarkList[j].original);
           if (slideCreateResult.dataValues.image_url === bookmarkList[j].original) {
             models.Bookmark.create({
               slide_id: slideCreateResult.dataValues.id,
