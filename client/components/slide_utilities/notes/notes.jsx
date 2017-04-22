@@ -8,11 +8,11 @@ class Notes extends Component {
     this.handleChange = this.handleChange.bind( this );
   }
 
-
-
   handleSubmit() {
     event.preventDefault();
     let body = {
+      presentationId: this.props.presentationId,
+      userId: this.props.userId,
       text: this.props.text,
       currentAudienceSlide: this.props.currentAudienceSlide
     }
