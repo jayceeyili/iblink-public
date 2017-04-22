@@ -18,6 +18,7 @@ router.post('/audience_presentation', controller.audience_presentation.post);
 router.post('/audience_presentation/add_bookmark', controller.audience_presentation_add_bookmark.post);
 router.post('/audience_presentation/add_note', controller.audience_presentation_add_note.post);
 
+router.get('/audience_presentation/get_bookmarks', controller.audience_presentation_get_bookmarks.get);
 router.get('/audience_presentation/store_bookmarks', controller.audience_presentation_store_bookmarks.get);
 
 module.exports = router;
