@@ -17,7 +17,7 @@ export function addNote( body ) {
   })
   .then( res => {
     if ( !res.ok ) {
-      throw new Error( 'Faild to Add Note!' );
+      throw new Error( 'Failed to Add Note!' );
     }
     return res.json()
   } )
