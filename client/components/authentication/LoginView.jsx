@@ -88,7 +88,7 @@ class LoginView extends React.Component {
       console.log('you\'ve signed out')
     }).catch(function(error) {
       // An error happened.
-      console.log('oh oh spaghettios');
+      console.log('There has been an error with signing out', error);
     });
   }
 
