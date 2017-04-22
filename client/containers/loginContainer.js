@@ -4,13 +4,9 @@ import { bindActionCreators } from 'redux';
 import LoginView from '../components/authentication/LoginView.jsx';
 import * as authenticateActionCreators from '../actions/authenticationActions.js';
 
-// import AudienceCarouselView from '../components/audience_live_view/AudienceCarouselView.jsx';
-// import * as bookmarkActionCreators from '../actions/bookmarkActions.js';
-// import * as socketActionCreators from '../actions/socketAction.js';
-
 const mapStateToProps = (state) => {
   return {
-    userId: state.userState.userId
+    authentication: state.authentication.userId
   };
 };
 

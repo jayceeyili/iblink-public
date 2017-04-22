@@ -45,6 +45,9 @@ class Login extends React.Component {
 
     if (this.state.signup === false) {
       firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(function(results) {
+        console.log('these are the email results',results.uid)
+      })
       .catch(function(error) {
           var errorCode = error.code;
           var errorMessage = error.message;
@@ -66,7 +69,7 @@ class Login extends React.Component {
       var token = result.credential.accessToken;
       var secret = result.credential.secret;
       var user = result.user;
-      console.log('hello',user);
+      console.log('hello',user.uid);
     }).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -92,6 +95,7 @@ class Login extends React.Component {
 
 
   render() {
+    console.log('this is a test',this.props.authentication)
     return (
         this.state.signup === false ?
           <div>

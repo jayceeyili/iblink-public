@@ -7,7 +7,7 @@ import presentations from './presentations';
 import selectedPresentationIndex from './selectedPresentation';
 import sockets from './socketReducers';
 import notes from './noteReducers';
-import userId from './authentication.js';
+import authentication from './authentication.js';
 
 
 // pass reducers into combineReducers (in first object)
@@ -18,7 +18,7 @@ const rootReducer = combineReducers({
   presentations,
   selectedPresentationIndex,
   bookmarks,
-  userId,
+  authentication,
   routing: routerReducer
 });
 
