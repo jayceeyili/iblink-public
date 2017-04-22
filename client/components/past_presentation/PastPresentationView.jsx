@@ -1,7 +1,7 @@
 import React from 'react';
 import Bookmark from '../slide_utilities/bookmark/BookmarkButton.jsx';
 import SendStatusButton from '../slide_utilities/toggle_present_button/SendStatusButton.jsx';
-import Notes from '../slide_utilities/notes/notes.jsx';
+import NotesContainer from '../slide_utilities/notes/notesContainer.jsx';
 import PresenterCarouselContainer from '../../containers/presenterCarouselContainer';
 import styles from './presenterStyle.css';
 
@@ -27,7 +27,7 @@ const PastPresentationView = props => (
           <SendStatusButton />
         </div>
         <div>
-          <Notes />
+          <NotesContainer />
         </div>
       </section>
     </div>
