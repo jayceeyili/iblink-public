@@ -25,6 +25,7 @@ const actionType = {
 
   // Notes
   UpdateText: 'UPDATE_TEXT',
+  AddNote: 'ADD_NOTE',
 
   // Not sure needed! TODO review
   GetSlides: 'GET_SLIDES',

@@ -8,7 +8,6 @@ import * as socketActionCreators from '../actions/socketAction';
 
 
 const mapStateToProps = (state) => {
-  console.log('mapStateToprops, state:', state);
   return {
     images: state.presentations[state.selectedPresentationIndex].slides,
     presenterIsOn: state.sockets.presenterIsOn,

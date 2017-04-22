@@ -113,6 +113,13 @@ module.exports = {
     }
   },
 
+  audience_presentation_add_note: {
+    post( req, res ) {
+      console.log( 'received new note: ', req.body );
+      res.status( 201 ).send({}); 
+    }
+  },
+
   audience_presentation_get_bookmarks: {
     get(req, res) {
       console.log('storing ', bookmarkedSlides, ' into DB');
