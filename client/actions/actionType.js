@@ -29,7 +29,9 @@ const actionType = {
 
   // Not sure needed! TODO review
   GetSlides: 'GET_SLIDES',
-  GetCurrentAudienceSlide: 'GET_CURRENT_AUDIENCE_SLIDE'
+  GetCurrentAudienceSlide: 'GET_CURRENT_AUDIENCE_SLIDE',
+
+  GetUserID: 'GET_UID'
 };
 
 export default actionType;

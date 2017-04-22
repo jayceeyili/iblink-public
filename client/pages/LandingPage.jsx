@@ -21,15 +21,6 @@ export default class LandingPage extends React.Component {
     return (
       <div>
         <h2>This is the Landing page</h2>
-        <button
-          onClick={this.handleLoginClick}
-        >Login
-        </button>
-        <button
-          onClick={this.handleSignupClick}
-        >Signup
-        </button>
-
         <div>
           <Link to="/dashboard">Dashboard</Link>
         </div>
