@@ -1,5 +1,5 @@
 import React from 'react';
-import YourPresentationsContainer from '../../containers/yourPresentationsContainer';
+import YourPresentationsContainer from '../../containers/yourPresentationsContainer.jsx';
 
 const text = {
   fontSize: '.5em'
