@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { selectPresentationIndex } from '../actions/selectedPresentationActions';
 import PresentationList from '../components/overview/presentationList.jsx';
 import PresentationTitle from '../components/overview/presentationTitle.jsx';
-import Upload from '../components/overview/upload.jsx';
+import Upload from '../components/overview/Upload.jsx';
 
 const YourPresentationsContainer = ({ presentations, selectPresentationIndex }) => (
   <PresentationList title="Your Presentations">
