@@ -1,33 +1,35 @@
 const presentationObject = require('./presentation');
 const models = require('../../database/models/index');
-// const Presentation = require('../../database/models/presentation');
-// const Bookmarks = require('../../database/models/bookmark');
-// const Slides = require('../../database/models/slide');
 const sequelize = require('sequelize');
-// const pg = require('pg');
 
-module.exports.storeBookmarks = function () {
+module.exports.storeBookmarks = function (bookmarkList, userId) {
   const presentation = presentationObject.getPresentation();
   models.Presentation.create({
     title: presentation.title,
-    user_id: 46231074627482
+    user_id: userId
   })
-  .then(() => {
-    models.Presentation.findAll({
-      attributes: ['id'],
-      where: {
-        title: presentation.title
-      }
-    })
-    .then((id) => {
-      for (var i = 0; i < presentation.slides.length; i++) {
-        models.Slide.create({
-          image_url: presentation.slides[i].original,
-          slide_index: i,
-          presentation_id: id[0].dataValues.id
-        });
-      }
-    })
-    .catch(err => console.log(err));
-  });
+  .then((presentationCreateResult) => {
+    for (var i = 0; i < presentation.slides.length; i++) {
+      models.Slide.create({
+        image_url: presentation.slides[i].original,
+        slide_index: i,
+        presentation_id: presentationCreateResult.dataValues.id
+      })
+      .then((slideCreateResult) => {
+        // console.log('HEREEEEEEE slideCreateResult: ', slideCreateResult.dataValues.image_url);
+        for (var j = 0; j < bookmarkList.length; j++) {
+          console.log('Does slideCreateResult.dataValues.image_url === bookmarkList[j].original ? ', slideCreateResult.dataValues.image_url === bookmarkList[j].original);
+          if (slideCreateResult.dataValues.image_url === bookmarkList[j].original) {
+            models.Bookmark.create({
+              slide_id: slideCreateResult.dataValues.id,
+              user_id: userId
+            })
+            .catch(err => console.log(err));
+          }
+        }
+      })
+      .catch(err => console.log(err));
+    }
+  })
+  .catch(err => console.log(err));
 };

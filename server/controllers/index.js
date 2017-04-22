@@ -115,7 +115,6 @@ module.exports = {
 
   audience_presentation_get_bookmarks: {
     get(req, res) {
-      console.log('storing ', bookmarkedSlides, ' into DB');
       res.json(bookmarkedSlides);
     }
   },
@@ -123,7 +122,7 @@ module.exports = {
   audience_presentation_store_bookmarks: {
     get(req, res) {
       console.log('storing ', bookmarkedSlides, ' into DB');
-      bookmarkUtil.storeBookmarks();
+      bookmarkUtil.storeBookmarks(bookmarkedSlides, 46231074627482);
       res.json(bookmarkedSlides);
     }
   }
