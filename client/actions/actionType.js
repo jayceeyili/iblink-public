@@ -1,12 +1,7 @@
 const actionType = {
 
-  // Live presentations actions
-  SetChannel: 'SET_CHANNEL',
-  DeleteChannel: 'DELETE_CHANNEL',
-  setCurrentSlideIndex: 'SET_CURRENT_SLIDE_INDEX',
-  setMaxSlide: 'SET_MAX_SLIDE_INDEX',
-
   // Other presentation actions
+  AddPresentation: 'ADD_PRESENTATION',
   RemovePresentation: 'REMOVE_PRESENTATION',
   SelectPresentationIndex: 'SELECT_PRESENTATION_INDEX',
 
