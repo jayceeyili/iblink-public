@@ -49,6 +49,10 @@ class LoginView extends React.Component {
       .then(results => {
         console.log('Success! Welcome', results.uid);
         this.props.loggedIn(results.uid)
+        this.setState({
+          email: '',
+          password: ''
+        })
       })
       .catch(function(error) {
           var errorCode = error.code;
