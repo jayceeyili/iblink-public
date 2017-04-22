@@ -115,7 +115,7 @@ module.exports = {
 
   audience_presentation_add_note: {
     post( req, res ) {
-      console.log( 'received new note: ', req.body.text );
+      console.log( 'received new note: ', req.body );
     }
   },
 

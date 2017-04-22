@@ -12,7 +12,8 @@ class Notes extends Component {
 
   handleSubmit() {
     let body = {
-      text: this.props.text
+      text: this.props.text,
+      currentAudienceSlide: this.props.currentAudienceSlide
     }
     this.props.addNote( body );
     event.preventDefault();
