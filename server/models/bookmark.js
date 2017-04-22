@@ -8,7 +8,6 @@ const sequelize = require('sequelize');
 
 module.exports.storeBookmarks = function () {
   const presentation = presentationObject.getPresentation();
-  // insert presentation into db
   models.Presentation.create({
     title: presentation.title,
     user_id: 46231074627482
@@ -25,12 +24,10 @@ module.exports.storeBookmarks = function () {
         models.Slide.create({
           image_url: presentation.slides[i].original,
           slide_index: i,
-          presentation_id: id
+          presentation_id: id[0].dataValues.id
         });
       }
     })
     .catch(err => console.log(err));
   });
-
-  // Bookmarks.create();
 };
