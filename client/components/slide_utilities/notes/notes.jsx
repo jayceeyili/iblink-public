@@ -11,12 +11,12 @@ class Notes extends Component {
 
 
   handleSubmit() {
+    event.preventDefault();
     let body = {
       text: this.props.text,
       currentAudienceSlide: this.props.currentAudienceSlide
     }
     this.props.addNote( body );
-    event.preventDefault();
   }
 
   handleChange( ev ) {
