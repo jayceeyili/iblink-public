@@ -3,8 +3,8 @@ const mvpPres = {
   id: 1,
   slides: [
     {
-    original: 'http://i.imgur.com/1NDbR9t.jpg',
-    thumbnail: 'http://i.imgur.com/1NDbR9t.jpg'
+      original: 'http://i.imgur.com/1NDbR9t.jpg',
+      thumbnail: 'http://i.imgur.com/1NDbR9t.jpg'
     },
     {
       original: 'http://i.imgur.com/kTQhA6J.jpg',
