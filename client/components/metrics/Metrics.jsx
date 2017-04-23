@@ -8,49 +8,55 @@ class BarStack extends React.Component {
   }
 
   render() {
-    const generalChartData = require('dsv-loader?delimiter=,!./age.csv');
+    const activityData = [
+      {
+        notes: '10',
+        bookmarks: '13',
+        slide: '1'
+      }, {
+        notes: '0',
+        bookmarks: '2',
+        slide: '2'
+      }, {
+        notes: '5',
+        bookmarks: '6',
+        slide: '3'
+      }, {
+        notes: '12',
+        bookmarks: '0',
+        slide: '4'
+      }, {
+        notes: '7',
+        bookmarks: '2',
+        slide: '5'
+      }
+    ];
+    activityData.columns = [
+      'slide', 'notes', 'bookmarks'
+    ];
+    console.log('Activity data:', activityData);
+
     let width = 700,
       height = 400,
       chartSeries = [
         {
-          field: 'Under 5 Years',
-          name: 'Under 5 Years'
+          field: 'notes',
+          name: 'Notes'
         },
         {
-          field: '5 to 13 Years',
-          name: '5 to 13 Years'
-        },
-        {
-          field: '14 to 17 Years',
-          name: '14 to 17 Years'
-        },
-        {
-          field: '18 to 24 Years',
-          name: '18 to 24 Years'
-        },
-        {
-          field: '25 to 44 Years',
-          name: '25 to 44 Years'
-        },
-        {
-          field: '45 to 64 Years',
-          name: '45 to 64 Years'
-        },
-        {
-          field: '65 Years and Over',
-          name: '65 Years and Over'
+          field: 'bookmarks',
+          name: 'Bookmarks'
         }
-
       ],
       x = function (d) {
-        return d.State;
+        return d.slide;
       },
       xScale = 'ordinal',
       yTickFormat = d3.format('.2s');
 
     return (
       <BarStackChart
-        data={generalChartData}
+        data={activityData}
         width={width}
         height={height}
         chartSeries={chartSeries}

@@ -30,9 +30,9 @@ const PastPresentationView = props => (
         <div>
           <NotesContainer />
         </div>
-      </section>
-      <section>
-        <MetricsContainer />
+        <div>
+          <MetricsContainer />
+        </div>
       </section>
     </div>
   </div>
