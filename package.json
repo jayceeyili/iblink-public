@@ -45,6 +45,7 @@
     "pg-hstore": "^2.3.2",
     "prop-types": "^15.5.8",
     "react": "^15.4.2",
+    "react-d3-basic": "^1.6.11",
     "react-dom": "^15.4.2",
     "react-image-gallery": "^0.7.15",
     "react-redux": "^5.0.3",

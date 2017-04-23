@@ -1,0 +1,71 @@
+import React from 'react';
+import { BarStackChart } from 'react-d3-basic';
+// import generalChartData from './age.csv';
+
+class BarStack extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const activityData = [
+      {
+        notes: '10',
+        bookmarks: '13',
+        slide: '1'
+      }, {
+        notes: '0',
+        bookmarks: '2',
+        slide: '2'
+      }, {
+        notes: '5',
+        bookmarks: '6',
+        slide: '3'
+      }, {
+        notes: '12',
+        bookmarks: '0',
+        slide: '4'
+      }, {
+        notes: '7',
+        bookmarks: '2',
+        slide: '5'
+      }
+    ];
+    activityData.columns = [
+      'slide', 'notes', 'bookmarks'
+    ];
+    console.log('Activity data:', activityData);
+
+    let width = 700,
+      height = 400,
+      chartSeries = [
+        {
+          field: 'notes',
+          name: 'Notes'
+        },
+        {
+          field: 'bookmarks',
+          name: 'Bookmarks'
+        }
+      ],
+      x = function (d) {
+        return d.slide;
+      },
+      xScale = 'ordinal',
+      yTickFormat = d3.format('.2s');
+
+    return (
+      <BarStackChart
+        data={activityData}
+        width={width}
+        height={height}
+        chartSeries={chartSeries}
+        x={x}
+        xScale={xScale}
+        yTickFormat={yTickFormat}
+      />
+    );
+  }
+}
+
+export default BarStack;

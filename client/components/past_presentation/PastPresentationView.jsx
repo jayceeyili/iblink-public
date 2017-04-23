@@ -2,16 +2,17 @@ import React from 'react';
 import Bookmark from '../slide_utilities/bookmark/BookmarkButton.jsx';
 import SendStatusButton from '../slide_utilities/toggle_present_button/SendStatusButton.jsx';
 import NotesContainer from '../slide_utilities/notes/notesContainer.jsx';
+import MetricsContainer from '../metrics/metricsContainer';
 import PresenterCarouselContainer from '../../containers/presenterCarouselContainer';
 import styles from './presenterStyle.css';
 
 
 const images = `${styles.image}`;
 const title = {
-  'color': 'black',
-  'textAlign': 'center'
-}
-const buttons = `${styles.buttons}`
+  color: 'black',
+  textAlign: 'center'
+};
+const buttons = `${styles.buttons}`;
 
 const PastPresentationView = props => (
   <div>
@@ -28,6 +29,9 @@ const PastPresentationView = props => (
         </div>
         <div>
           <NotesContainer />
+        </div>
+        <div>
+          <MetricsContainer />
         </div>
       </section>
     </div>
