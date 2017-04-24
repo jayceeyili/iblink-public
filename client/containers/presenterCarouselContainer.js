@@ -11,13 +11,13 @@ const mapStateToProps = (state) => {
   return {
     images: state.presentations[state.selectedPresentationIndex].slides,
     presenterIsOn: state.sockets.presenterIsOn,
-    channel: state.sockets.channel
-    // bookmarks: state.bookmarks
+    channel: state.sockets.channel,
+    bookmarks: state.bookmarks
   };
 };
 
 const bundledActionCreators = Object.assign({},
-                                          // bookmarkActionCreators,
+                                          bookmarkActionCreators,
                                           socketActionCreators
                                         );
 

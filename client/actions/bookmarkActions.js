@@ -40,7 +40,7 @@ export function removeBookmark(slideIndex) {
     })
   })
   .then(() => {
-    console.log('Slide ', slideIndex, ' is successfully bookmarked.');
+    console.log('Slide ', slideIndex, ' is successfully removed.');
   })
   .catch((error) => {
     console.error(error);

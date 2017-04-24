@@ -7,13 +7,14 @@ const bookmarks = (state = { bookmark: false, bookmarks: [], currentAudienceSlid
     case actionType.ToggleBookmark:
       return { ...state, bookmark: !state.bookmark };
     case actionType.AddBookmark:
-      return { ...state, bookmarks: !state.bookmarks.includes(state.currentAudienceSlide) ? state.bookmarks.concat(state.currentAudienceSlide) : state.bookmarks };
+      return { ...state, bookmarks: state.bookmarks.concat(state.currentAudienceSlide) };
     case actionType.RemoveBookmark:
-      return { ...state, bookmarks: state.bookmarks.includes(state.currentAudienceSlide) ? state.bookmarks.splice(state.bookmarks.indexOf(state.currentAudienceSlide)) : state.bookmarks };
+      state.bookmarks.splice(state.bookmarks.indexOf(state.currentAudienceSlide), 1);
+      return { ...state, bookmarks: state.bookmarks };
     case actionType.GetCurrentAudienceSlide:
       return { ...state, currentAudienceSlide: action.currentAudienceSlide };
     case actionType.ChangeBookmarkButtonColor:
-      return { ...state, bookmarkButtonColor: action.bookmarkButtonColor}
+      return { ...state, bookmarkButtonColor: action.bookmarkButtonColor };
     default: return state;
   }
 };

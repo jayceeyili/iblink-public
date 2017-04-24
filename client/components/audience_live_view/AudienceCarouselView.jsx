@@ -31,9 +31,9 @@ class AudienceCarouselView extends React.Component {
     const temp = [];
     for (let i = 0; i <= maxSlide; i++) {
       temp.push(this.props.images[i]);
-    }
-    this.setState({ audienceImages: temp });
-  }
+        }
+        this.setState({ audienceImages: temp });
+      }
 
   handleImageLoad(event) {
     // console.log('Image loaded ', event.target);
@@ -42,23 +42,12 @@ class AudienceCarouselView extends React.Component {
 
   handleSlideChange() {
     this.props.getCurrentAudienceSlide(this.ImageGallery.state.currentIndex);
-    fetch('/audience_presentation/get_bookmarks')
-    .then(response => response.json())
-    .then((bookmarkedSlides) => {
-      for (var i = 0; i < bookmarkedSlides.length; i++) {
-        if (JSON.stringify(bookmarkedSlides[i]) === JSON.stringify(this.state.audienceImages[this.ImageGallery.state.currentIndex])) {
-          console.log('changing to purple');
-          this.props.changeBookmarkButtonColor('purple');
-          break;
-        } else {
-          console.log('changing to black');
-          this.props.changeBookmarkButtonColor('black');
-        }
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+
+    if (this.props.bookmarks.bookmarks.includes(this.ImageGallery.state.currentIndex)) {
+      this.props.changeBookmarkButtonColor('purple');
+    } else {
+      this.props.changeBookmarkButtonColor('black');
+    }
   }
 
   render() {

@@ -95,7 +95,6 @@ module.exports = {
 
   audience_presentation_add_bookmark: {
     get(req, res) {
-      console.log('storing bookmarked slides into DB');
       res.json(bookmarkedSlides);
     },
     post(req, res) {
@@ -104,10 +103,22 @@ module.exports = {
         tempBookmarkStore.push(slideIndex);
         const slides = presentation.getPresentation();
         bookmarkedSlides.push(slides.slides[slideIndex]);
-
-        console.log('slide ', slideIndex, ' is being bookmarked');
+        console.log('slide at index ', slideIndex, ' is being added to bookmarked');
       }
-      res.json();
+      res.json('slide at index ', slideIndex, ' is being added to bookmarked');
+      console.log('tempBookmarkStore', tempBookmarkStore);
+      console.log('bookmarkedSlides', bookmarkedSlides);
+    }
+  },
+
+  audience_presentation_remove_bookmark: {
+    post(req, res) {
+      const slideIndex = req.body.slideIndex;
+      tempBookmarkStore.splice(tempBookmarkStore.indexOf(slideIndex), 1);
+      const slides = presentation.getPresentation();
+      bookmarkedSlides.splice(slides.slides[slideIndex], 1);
+      console.log('slide at index ', slideIndex, ' is being removed from bookmarked');
+      res.json('slide at index ', slideIndex, ' is removed from bookmarked');
       console.log('tempBookmarkStore', tempBookmarkStore);
       console.log('bookmarkedSlides', bookmarkedSlides);
     }
@@ -128,10 +139,13 @@ module.exports = {
 
   audience_presentation_store_bookmarks: {
     get(req, res) {
-      console.log('storing ', bookmarkedSlides, ' into DB');
+      console.log('storing ', tempBookmarkStore, ' into DB');
       let userId = 46231074627482;
-      bookmarkUtil.storeBookmarks(bookmarkedSlides, userId);
-      res.json(bookmarkedSlides);
+      const slides = presentation.getPresentation();
+      let bookmarkResults = tempBookmarkStore.map(index => slides.slides[index]);
+      console.log('bookmarkResults', bookmarkResults);
+      bookmarkUtil.storeBookmarks(bookmarkResults, userId);
+      res.json(bookmarkResults);
     }
   },
 

@@ -16,9 +16,14 @@ class Bookmark extends React.Component {
   handleClickBookmark(event) {
     event.preventDefault();
     console.log('this.props.bookmarks.currentAudienceSlide: ', this.props.bookmarks.currentAudienceSlide);
-    this.props.addBookmark(this.props.bookmarks.currentAudienceSlide);
-    this.props.changeBookmarkButtonColor('purple');
-    console.log('changing to purple');
+
+    if (!this.props.bookmarks.bookmarks.includes(this.props.bookmarks.currentAudienceSlide)) {
+      this.props.addBookmark(this.props.bookmarks.currentAudienceSlide);
+      this.props.changeBookmarkButtonColor('purple');
+    } else {
+      this.props.removeBookmark(this.props.bookmarks.currentAudienceSlide);
+      this.props.changeBookmarkButtonColor('black');
+    }
   }
 
   render() {
@@ -29,8 +34,6 @@ class Bookmark extends React.Component {
     );
   }
 }
-
-{/* <button className="btn btn-icon btn-info" onClick={this.handleAddBookmark} style={{ backgroundColor: this.props.bookmarkButtonColor }}><span className="glyphicon glyphicon-bookmark active" >Bookmark</span></button> */}
 
 const bundledActionCreators = Object.assign({},
                                           bookmarkActionCreators
