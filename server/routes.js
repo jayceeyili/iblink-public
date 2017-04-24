@@ -21,4 +21,6 @@ router.post('/audience_presentation/add_note', controller.audience_presentation_
 router.get('/audience_presentation/get_bookmarks', controller.audience_presentation_get_bookmarks.get);
 router.get('/audience_presentation/store_bookmarks', controller.audience_presentation_store_bookmarks.get);
 
+router.post('/presenter_presentation', controller.presenter_presentation.post)
+
 module.exports = router;

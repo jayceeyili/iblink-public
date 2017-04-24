@@ -26,6 +26,7 @@ const actionType = {
   GetSlides: 'GET_SLIDES',
   GetCurrentAudienceSlide: 'GET_CURRENT_AUDIENCE_SLIDE',
 
+  //Login/authentication
   GetUserID: 'GET_UID'
 };
 

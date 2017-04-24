@@ -116,7 +116,7 @@ module.exports = {
   audience_presentation_add_note: {
     post( req, res ) {
       console.log( 'received new note: ', req.body );
-      res.status( 201 ).send({}); 
+      res.status( 201 ).send({});
     }
   },
 
@@ -132,6 +132,14 @@ module.exports = {
       let userId = 46231074627482;
       bookmarkUtil.storeBookmarks(bookmarkedSlides, userId);
       res.json(bookmarkedSlides);
+    }
+  },
+
+//upload slides into database
+  presenter_presentation: {
+    post(req, res) {
+      console.log('your presentation is persistent')
+      res.status(201)
     }
   }
 };

@@ -13,7 +13,7 @@ export const selectPresentationIndex = selectedPresentationIndex => ({
 });
 
 export function uploadPresentation(newPresentation) {
-  fetch('/audience_presentation', {
+  fetch('/presenter_presentation', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -33,4 +33,3 @@ export function uploadPresentation(newPresentation) {
     newPresentation
   };
 }
-

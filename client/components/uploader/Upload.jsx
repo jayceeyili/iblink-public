@@ -52,7 +52,7 @@ class Upload extends React.Component {
 
         }
       });
-
+    this.props.uploadPresentation(newPresentation)
   }
 
   render() {
