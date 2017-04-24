@@ -55,8 +55,8 @@ class BarStack extends React.Component {
       yTickFormat = d3.format('.2s');
 
 
-    const max = d3.max(data, d => d.value);
-    chart.selectAll('rect').filter(d => d.value === max).classed('max', true).attr('fill', 'green');
+    // const max = d3.max(data, d => d.value);
+    // chart.selectAll('rect').filter(d => d.value === max).classed('max', true).attr('fill', 'green');
       // example of doing a different display for a specific column
 
 
