@@ -1,4 +1,4 @@
- import React from 'react';
+import React from 'react';
 import Bookmark from '../slide_utilities/bookmark/BookmarkButton.jsx';
 import SendStatusButton from '../slide_utilities/toggle_present_button/SendStatusButton.jsx';
 import NotesContainer from '../slide_utilities/notes/notesContainer.jsx';
