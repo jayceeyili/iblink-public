@@ -16,18 +16,17 @@ class PresenterCarouselView extends React.Component {
 
   handleImageLoad(event) {
     event.preventDefault();
-    // this.props.getCurrentAudienceSlide(this.ImageGallery.state.currentIndex);
+    this.props.getCurrentAudienceSlide(this.ImageGallery.state.currentIndex);
   }
 
   handleSlideChange() {
     this.props.sendURL(this.ImageGallery.state.currentIndex);
-    // this.props.getCurrentAudienceSlide(this.ImageGallery.state.currentIndex);
-    //
-    // if (this.props.bookmarks.bookmarks.includes(this.ImageGallery.state.currentIndex)) {
-    //   this.props.changeBookmarkButtonColor('purple');
-    // } else {
-    //   this.props.changeBookmarkButtonColor('black');
-    // }
+    this.props.getCurrentAudienceSlide(this.ImageGallery.state.currentIndex);
+    if (this.props.bookmarks.bookmarks.includes(this.ImageGallery.state.currentIndex)) {
+      this.props.changeBookmarkButtonColor('purple');
+    } else {
+      this.props.changeBookmarkButtonColor('black');
+    }
   }
 
   render() {

@@ -31,9 +31,9 @@ class AudienceCarouselView extends React.Component {
     const temp = [];
     for (let i = 0; i <= maxSlide; i++) {
       temp.push(this.props.images[i]);
-    }
-    this.setState({ audienceImages: temp });
-  }
+        }
+        this.setState({ audienceImages: temp });
+      }
 
   handleImageLoad(event) {
     // console.log('Image loaded ', event.target);
