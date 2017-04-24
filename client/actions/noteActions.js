@@ -21,10 +21,56 @@ export function addNote( body ) {
     }
     return res.json()
   } )
-  .then( ( data ) => { console.log('Successfully Added Note for current slide') } )
-  .catch( error => { console.error( error) } );
+  .then( ( data ) => console.log( data ) )
+  .catch( error => console.error( error) );
 
   return {
     type: ActionType.AddNote
+  }
+}
+
+export function updateNote( body ) {
+  // fetch('/audience_presentation/update_note', {
+  //   method: 'PUT',
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   },
+  //   body: JSON.stringify( body )
+  // })
+  // .then( res => {
+  //   if ( !res.ok ) {
+  //     throw new Error( 'Failed to Add Note!' );
+  //   }
+  //   return res.json()
+  // } )
+  // .then( ( data ) => console.log( data ) )
+  // .catch( error => console.error( error) );
+
+  return {
+    type: ActionType.UpdateNote,
+    text: body.text
+  }
+}
+
+export function deleteNote( body ) {
+  // fetch('/audience_presentation/delete_note', {
+  //   method: 'DELETE',
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   },
+  //   body: JSON.stringify( body )
+  // })
+  // .then( res => {
+  //   if ( !res.ok ) {
+  //     throw new Error( 'Failed to Add Note!' );
+  //   }
+  //   return res.json()
+  // } )
+  // .then( ( data ) => console.log( data ) )
+  // .catch( error => console.error( error) );
+
+  return {
+    type: ActionType.DeleteNote,
+    text: body.text
   }
 }

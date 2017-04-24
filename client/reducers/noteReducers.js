@@ -10,6 +10,10 @@ const notes = ( state = initialState, action ) => {
       return { ...state, text: action.text };
     case actionType.AddNote:
       return state;
+    case actionType.UpdateNote:
+      return { ...state, text: actione.text };
+    case actionType.DeleteNote:
+      return { ...state, text: '' };
     default:
       return state;
   }

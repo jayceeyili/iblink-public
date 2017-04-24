@@ -4,6 +4,7 @@ const presentation = require('../models/presentation');
 const channel = require('../models/channel');
 // const configureStore = require('../../common/store/configureStore');
 const bookmarkUtil = require('../models/bookmark');
+const noteUtil = require('../models/note');
 
 let maxSlide = 0;  // TODO: improve after MVP to support multiple presentations
 const tempBookmarkStore = [];
@@ -124,10 +125,20 @@ module.exports = {
     }
   },
 
-  audience_presentation_add_note: {
+  audience_presentation_note: {
     post( req, res ) {
-      console.log( 'received new note: ', req.body );
-      res.status( 201 ).send({});
+      noteUtil.storeNote( req.body );
+      res.status( 201 ).send( JSON.stringify( 'Note Saved Successfully!' ) );
+    },
+
+    put( req, res ) {
+      noteUtil.updateNote( req.body );
+      res.status( 200 ).send( JSON.stringify( 'Note Updated Successfully!' ) );
+    },
+
+    delete( req, res ) {
+      noteUtil.deleteNote( req.body );
+      res.status( 200 ).send( JSON.stringify( 'Note Deleted Successfully!' ) );
     }
   },
 
