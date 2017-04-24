@@ -5,8 +5,12 @@ const text = {
   fontSize: '.5em'
 };
 
+const container = {
+  overflow: 'auto'
+}
+
 const Overview = props => (
-  <div>
+  <div style={container}>
     <div className="col-sm-12 yourPresentations" style={text}>
       <YourPresentationsContainer />
     </div>

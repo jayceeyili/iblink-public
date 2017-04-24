@@ -1,4 +1,5 @@
 import React, { Component }from 'react';
+import style from './style.css'
 
 class Notes extends Component {
   constructor( props ) {
@@ -26,24 +27,27 @@ class Notes extends Component {
   }
 
   render() {
-    const style = {
-      'color': 'black',
-      'textAlign': 'center'
-    }
+    const textArea = `${style.textArea}`
+    const button = `btn btn-basic ${style.button}`
 
     return (
       <div>
-        <input
+        <textarea
+          className={ textArea }
           type="text"
-          style={ style }
-          placeholder='Add Note here'
+          placeholder='take some notes!'
           value={ this.props.text }
           onChange={ this.handleChange }
-        ></input>
-        <button
-          style={ style }
-          onClick={ this.handleSubmit }
-        >Add</button>
+        ></textarea>
+        <div>
+          <button
+            className={ button }
+            onClick={ this.handleSubmit }
+          >
+            Add Note
+          </button>
+        </div>
+
       </div>
     )
   }

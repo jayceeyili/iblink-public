@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './style.css';
 
 class Upload extends React.Component {
   constructor(props) {
@@ -55,17 +56,12 @@ class Upload extends React.Component {
     this.props.uploadPresentation(newPresentation)
   }
 
-  render() {
-    const style = {
-      color: 'white',
-      textAlign: 'center',
-      float: 'right',
-      clear: 'left'
-    };
 
+  render() {
+    const button = `btn btn-primary ${style.button}`
     return (
       <div>
-        <button className="btn btn-primary" style={style} onClick={this.handleUpload}>Upload a presentation +</button>
+        <button className={button} onClick={this.handleUpload}>Upload a presentation +</button>
       </div>
     );
   }

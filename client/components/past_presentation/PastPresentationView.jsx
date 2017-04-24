@@ -13,9 +13,10 @@ const title = {
   textAlign: 'center'
 };
 const buttons = `${styles.buttons}`;
+const container = `${styles.container}`;
 
 const PastPresentationView = props => (
-  <div>
+  <div className={container}>
     <h3 style={title}>MVP Presentation
     </h3>
     <div>

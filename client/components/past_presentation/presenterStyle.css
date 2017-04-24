@@ -8,3 +8,10 @@
   margin: 5px;
   float: left;
 }
+
+.container {
+  overflow: auto;
+  height: 100%;
+  padding: 0 25px;
+  padding-bottom: 5%;
+}
