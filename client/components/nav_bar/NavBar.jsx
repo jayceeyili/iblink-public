@@ -1,6 +1,6 @@
 import React from 'react';
-import LoginViewContainer from '../../containers/loginContainer.js';
 import Upload from '../uploader/Upload.jsx';
+import style from './style.css';
 
 class NavBar extends React.Component {
   constructor() {
@@ -8,10 +8,11 @@ class NavBar extends React.Component {
   }
 
   render() {
+    var nav = `${style.nav}`
+
     return (
-      <div>
+      <div className={nav}>
         <Upload />
-        <LoginViewContainer />
       </div>
     )
   }

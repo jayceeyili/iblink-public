@@ -19,7 +19,7 @@ const PastPresentationView = props => (
     </h3>
     <div>
       <section className={images}>
-        <PresenterCarouselContainer />
+          <PresenterCarouselContainer />
         <div className={buttons}>
           <Bookmark />
         </div>
