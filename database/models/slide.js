@@ -1,13 +1,14 @@
-'use strict';
-module.exports = function(sequelize, DataTypes) {
-  var Slide = sequelize.define('Slide', {
+
+module.exports = function (sequelize, DataTypes) {
+  const Slide = sequelize.define('Slide', {
     image_url: DataTypes.STRING,
+    thumbnail_url: DataTypes.STRING,
     slide_index: DataTypes.INTEGER,
     thumbnail_url: DataTypes.STRING,
     presentation_id: DataTypes.BIGINT
   }, {
     classMethods: {
-      associate: function(models) {
+      associate(models) {
         // associations can be defined here
       }
     }

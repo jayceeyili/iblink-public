@@ -1,3 +1,30 @@
+const models = require('../../database/models/index');
+
+module.exports.storePresentation = function (presentation, userId) {
+  models.Presentation.create({
+    title: presentation.title,
+    user_id: userId
+  })
+  .then((presentationCreateResult) => {
+    for (let i = 0; i < presentation.slides.length; i++) {
+      models.Slide.create({
+        image_url: presentation.slides[i].secure_url,
+        thumbnail_url: presentation.slides[i].thumbnail_url,
+        slide_index: i,
+        presentation_id: presentationCreateResult.dataValues.id
+      })
+      .catch(err => {
+        console.log('Error creating slide in storePresentation:', err);
+      })
+    }
+  .catch(err => {
+    console.log('Error creating presentation in storePresentation:', err);
+  });
+}
+
+
+// -=--=-=-
+
 const mvpPres = {
   title: 'MVP Presentation',
   id: 1,

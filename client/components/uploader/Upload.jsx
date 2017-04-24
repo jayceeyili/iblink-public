@@ -2,16 +2,17 @@ import React from 'react';
 
 class Upload extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
 
-    }
+    };
 
     this.handleUpload = this.handleUpload.bind(this);
   }
 
   handleUpload() {
     console.log('Upload request detected!');
+
     const newPresentation = {};
     newPresentation.title = 'My presentation';  // TODO: Ask for a presentation title
 
@@ -40,19 +41,18 @@ class Upload extends React.Component {
           // send the presentation to the server
           newSlides = result.map((slide) => {
             const newSlide = {};
-            newSlide.height = slide.height;
-            newSlide.original_filename = slide.original_filename;
+            // newSlide.height = slide.height;
+            // newSlide.original_filename = slide.original_filename;
             newSlide.secure_url = slide.secure_url;
             newSlide.thumbnail_url = slide.thumbnail_url;
-            newSlide.url = slide.url;
-            newSlide.width = slide.width;
+            // newSlide.url = slide.url;
+            // newSlide.width = slide.width;
             return newSlide;
           });
           newPresentation.slides = newSlides;
-
         }
       });
-    this.props.uploadPresentation(newPresentation)
+    this.props.uploadPresentation(newPresentation);
   }
 
   render() {
