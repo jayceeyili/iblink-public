@@ -2,16 +2,16 @@ import React from 'react';
 
 class Upload extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
+    this.state = {
 
+    }
 
     this.handleUpload = this.handleUpload.bind(this);
   }
 
   handleUpload() {
     console.log('Upload request detected!');
-
-
     const newPresentation = {};
     newPresentation.title = 'My presentation';  // TODO: Ask for a presentation title
 
@@ -50,22 +50,22 @@ class Upload extends React.Component {
           });
           newPresentation.slides = newSlides;
 
-          // TODO trigger state action
         }
       });
-
-    // this.uploadWidget.open();
+    this.props.uploadPresentation(newPresentation)
   }
 
   render() {
     const style = {
-      color: 'black',
-      textAlign: 'center'
+      color: 'white',
+      textAlign: 'center',
+      float: 'right',
+      clear: 'left'
     };
 
     return (
       <div>
-        <button style={style} onClick={this.handleUpload}>Upload a presentation</button>
+        <button className="btn btn-primary" style={style} onClick={this.handleUpload}>Upload a presentation +</button>
       </div>
     );
   }

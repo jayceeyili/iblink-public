@@ -19,6 +19,7 @@ class LoginView extends React.Component {
       email: '',
       password: '',
       signup: false,
+      loggedIn: false
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -47,8 +48,13 @@ class LoginView extends React.Component {
     if (this.state.signup === false) {
       firebase.auth().signInWithEmailAndPassword(email, password)
       .then(results => {
-        console.log('Success! Welcome', results.uid);
+        console.log('Success! Welcome', results.uid)
         this.props.loggedIn(results.uid)
+        this.setState({
+          email: '',
+          password: '',
+          loggedIn: true
+        })
       })
       .catch(function(error) {
           var errorCode = error.code;
@@ -57,6 +63,15 @@ class LoginView extends React.Component {
         });
     } else {
       firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(results => {
+          console.log('Success! Welcome', results.uid)
+          this.props.loggedIn(results.uid)
+          this.setState({
+            email: '',
+            password: '',
+            loggedIn: true
+          })
+        })
         .catch(function(error) {
           var errorCode = error.code;
           var errorMessage = error.message;
@@ -73,6 +88,7 @@ class LoginView extends React.Component {
       var user = result.user;
       console.log('Success! Welcome', user.uid);
       this.props.loggedIn(user.uid)
+      this.setState({loggedIn: false})
     }).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
