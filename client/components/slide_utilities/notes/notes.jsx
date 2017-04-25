@@ -52,25 +52,41 @@ class Notes extends Component {
 
     return (
       <div>
-        <input
-          type="text"
-          style={ style }
-          placeholder='Add Note here'
-          value={ this.props.text }
-          onChange={ this.handleChange }
-        ></input>
-        <button
-          style={ style }
-          onClick={ this.handleSubmit }
-        >Add</button>
-        <button
-          style={ style }
-          onClick={ this.handleUpdate }
-        >Update</button>
-        <button
-          style={ style }
-          onClick={ this.handleDelete }
-        >Delete</button>
+      {
+        !this.props.note ?
+        <div>
+          <input
+            type="text"
+            style={ style }
+            placeholder='Add Note here'
+            value={ this.props.text }
+            onChange={ this.handleChange }
+            ></input>
+          <button
+            style={ style }
+            onClick={ this.handleSubmit }
+          >Add</button>
+        </div> :
+        <div>
+          <input
+            type="text"
+            style={ style }
+            placeholder={ this.props.note }
+            value={ this.props.text }
+            onChange={ this.handleChange }
+            ></input>
+          <span>
+            <button
+              style={ style }
+              onClick={ this.handleUpdate }
+            >Update</button>
+            <button
+              style={ style }
+              onClick={ this.handleDelete }
+            >Delete</button>
+          </span>
+        </div>
+      }
       </div>
     )
   }
