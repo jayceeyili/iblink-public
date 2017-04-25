@@ -11,8 +11,14 @@ const initialState = {
 
 const currentSlide = ( state = initialState, action ) => {
   switch ( action.type ) {
-    case actionType.UpdateText:
+    // case actionType.UpdateText:
+    //   return { ...state, note: action.text };
+    case actionType.AddNote:
       return { ...state, note: action.text };
+    case actionType.UpdateNote:
+      return state;
+    case actionType.DeleteNote:
+      return { ...state, note: '' };
     case actionType.UpdateSlideState:
       return {
         ...state,

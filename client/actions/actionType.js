@@ -14,6 +14,9 @@ const actionType = {
   // Slides
   UpdateSlideState: 'UPDATE_SLIDE_STATE',
   UpdateText: 'UPDATE_TEXT',
+  AddNote: 'ADD_NOTE',
+  UpdateNote: 'UPDATE_NOTE',
+  DeleteNote: 'DELETE_NOTE',
 
   // Sockets
   CreateRoom: 'CREATE_ROOM',
@@ -21,11 +24,6 @@ const actionType = {
   ReceiveURL: 'RECEIVE_URL',
   SendStatus: 'TOGGLE_PRESENT',
   ReceiveStatus: 'RECEIVE_STATUS',
-
-  // Notes
-  AddNote: 'ADD_NOTE',
-  UpdateNote: 'UPDATE_NOTE',
-  DeleteNote: 'DELETE_NOTE',
 
   // Not sure needed! TODO review
   GetSlides: 'GET_SLIDES',

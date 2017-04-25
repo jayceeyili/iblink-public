@@ -3,18 +3,22 @@ import React, { Component }from 'react';
 class Notes extends Component {
   constructor( props ) {
     super( props )
+    this.state = {
+      text: ''
+    }
 
     this.handleSubmit = this.handleSubmit.bind( this );
     this.handleUpdate = this.handleUpdate.bind( this );
     this.handleDelete = this.handleDelete.bind( this );
     this.handleChange = this.handleChange.bind( this );
+    this.clearText = this.clearText.bind( this );
   }
 
   handleSubmit() {
     event.preventDefault();
     let body = {
       userId: this.props.userId,
-      note: this.props.note,
+      note: this.state.text,
       slideId: this.props.slideId
     }
     this.props.addNote( body );
@@ -24,7 +28,7 @@ class Notes extends Component {
     event.preventDefault();
     let body = {
       userId: this.props.userId,
-      note: this.props.note,
+      note: this.state.text,
       slideId: this.props.slideId
     }
     this.props.updateNote( body );
@@ -37,11 +41,20 @@ class Notes extends Component {
       slideId: this.props.slideId
     }
     this.props.deleteNote( body );
+    this.clearText();
   }
 
   handleChange( ev ) {
     let text = ev.target.value;
-    this.props.updateText( text );
+    this.setState( {
+      text: text
+    } )
+  }
+
+  clearText() {
+    this.setState( {
+      text: ''
+    } )
   }
 
   render() {
@@ -59,7 +72,7 @@ class Notes extends Component {
             type="text"
             style={ style }
             placeholder='Add Note here'
-            value={ this.props.text }
+            value={ this.state.text }
             onChange={ this.handleChange }
             ></input>
           <button
@@ -72,7 +85,7 @@ class Notes extends Component {
             type="text"
             style={ style }
             placeholder={ this.props.note }
-            value={ this.props.text }
+            value={ this.state.text }
             onChange={ this.handleChange }
             ></input>
           <span>
