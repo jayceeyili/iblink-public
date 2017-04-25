@@ -11,6 +11,9 @@ const actionType = {
   RemoveBookmark: 'REMOVE_BOOKMARK',
   ChangeBookmarkButtonColor: 'CHANGE_BOOKMARK_BUTTON_COLOR',
 
+  // Slides
+  UpdateSlideState: 'UPDATE_SLIDE_STATE',
+
   // Sockets
   CreateRoom: 'CREATE_ROOM',
   SendURL: 'SEND_URL',

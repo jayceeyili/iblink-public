@@ -23,9 +23,9 @@ class PresenterCarouselView extends React.Component {
     this.props.sendURL( index );
     let currentSlide = this.props.images[ index ];
     this.props.updateSlideState( currentSlide );
-    
-    this.props.getCurrentAudienceSlide(this.ImageGallery.state.currentIndex);
-    if (this.props.bookmarks.bookmarks.includes(this.ImageGallery.state.currentIndex)) {
+
+    this.props.getCurrentAudienceSlide(index);
+    if (this.props.bookmarks.bookmarks.includes( index )) {
       this.props.changeBookmarkButtonColor('purple');
     } else {
       this.props.changeBookmarkButtonColor('black');

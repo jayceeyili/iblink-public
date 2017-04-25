@@ -19,6 +19,9 @@ class AudienceCarouselView extends React.Component {
   componentWillMount() {
     this.setAudienceAccess(this.props.maxSlide);
     this.props.CreateRoom( this.props.channel );
+    
+    let initialSlide = this.props.images[ 0 ];
+    this.props.updateSlideState( initialSlide );
   }
 
   componentWillUpdate(nextProps, nextState) {
@@ -40,7 +43,10 @@ class AudienceCarouselView extends React.Component {
     this.props.getCurrentAudienceSlide(this.ImageGallery.state.currentIndex);
   }
 
-  handleSlideChange() {
+  handleSlideChange( index ) {
+    let currentSlide = this.props.images[ index ];
+    this.props.updateSlideState( currentSlide );
+
     this.props.getCurrentAudienceSlide(this.ImageGallery.state.currentIndex);
 
     if (this.props.bookmarks.bookmarks.includes(this.ImageGallery.state.currentIndex)) {
