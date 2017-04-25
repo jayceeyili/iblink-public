@@ -36,11 +36,15 @@ class Notes extends Component {
       note: this.state.text,
       slideId: this.props.slideId
     }
+<<<<<<< 727bd35f9563b5be9463bc5075bd46dba0f70237
     if ( this.state.text ) {
       this.props.updateNote( body );
     } else {
       console.error( 'Input filed cannot be empty' );
     }
+=======
+    this.props.updateNote( body );
+>>>>>>> clean console logs
   }
 
   handleDelete() {
