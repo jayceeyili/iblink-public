@@ -14,8 +14,8 @@ export function addNote( body ) {
     }
     return res.json()
   } )
-  .then( ( data ) => console.log( data ) )
-  .catch( error => console.error( error) );
+  .then( ( data ) => console.log( 'message from addNote action: ', data ) )
+  .catch( error => console.error( 'error from addNote action: ', error) );
 
   return {
     type: ActionType.AddNote
