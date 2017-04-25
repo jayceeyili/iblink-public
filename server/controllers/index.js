@@ -154,8 +154,8 @@ module.exports = {
       const presentationId = req.query.presentationId;
       // declare a variable initialized at an empty array to store the resulting metrics data
       let metricsData = [];
-      // call dbUtil function 
-      // query db to get all the slides of that presentation id
+      // declare a variable that stores the result of the slideUtil function that queries db to get all the slides of that presentation id
+      // iterate over the target slides 
       // query db to get the count of bookmarks with set presentation id and set slide index
       // query db to get the count of notes with set presentation id and set slide index
       res.json(metricsData)
