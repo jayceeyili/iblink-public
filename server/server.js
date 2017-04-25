@@ -37,6 +37,7 @@ app.use(bodyParser.json({ entended: true }));
 app.use('/', router);
 app.use(express.static(path.join(__dirname, '../client/public')));
 
+require('./models/presentation').getAllPresentations();  // TODO: remove, just for testing
 
 // For testing purposes. TODO: Move to live presentation creation logic!
 // require('./models/channel').getNewChannel();
