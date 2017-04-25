@@ -31,10 +31,11 @@ export function uploadPresentation(newPresentation) {
 //  slide.id = res...
 // }));
     // select that presentation
-    return {
-      type: ActionType.AddPresentation,
-      presentations
-    };
+    // TODO: RETURN the data!
+    // return {
+    //   type: ActionType.AddPresentation,
+    //   presentations
+    // };
   })
   .catch((error) => {
     console.error('@@@@@ Error in uploadPresentation:', error);

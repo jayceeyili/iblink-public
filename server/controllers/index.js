@@ -151,7 +151,7 @@ module.exports = {
           res.sendStatus(500);
         } else {
           res.status(201);
-          res.send(result);  // return the whole presentation with IDs
+          res.send(JSON.stringify(result));  // return the whole presentation with IDs
         }
       });
     }
