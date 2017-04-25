@@ -23,8 +23,9 @@ export function uploadPresentation(newPresentation) {
       newPresentation
     })
   })
-  .then((res) => {
-    console.log('Presentation uploaded: ', res);
+  .then(res => res.json())
+  .then((json) => {
+    console.log('Hopefully resolved promise:', json);
     // update the presentation and slide ID fields of the state
 // TODO: update local state
 // presentation.push(newPresentation.map((slide, index) => {

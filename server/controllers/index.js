@@ -146,12 +146,18 @@ module.exports = {
     post(req, res) {
       console.log('In server controller, getting presentation:', req.body.newPresentation);
       presentation.storePresentation(req.body.newPresentation, (err, result) => {
+        // res.writeHead({
+        //   'Content-Type': 'application/json',
+        //   'Access-Control-Allow-Origin': '*',
+        //   'Access-Control-Allow-Headers': 'content-type'
+        // });
         if (err) {
           console.log('Server controller error:', err);
           res.sendStatus(500);
         } else {
-          res.status(201);
-          res.send(JSON.stringify(result));  // return the whole presentation with IDs
+          // res.status(201);
+          console.log('In server ctlr, sending updated pres:', result);
+          res.status(201).end(JSON.stringify(result));  // return the whole presentation with IDs
         }
       });
     }
