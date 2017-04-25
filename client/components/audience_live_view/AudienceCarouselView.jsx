@@ -19,7 +19,7 @@ class AudienceCarouselView extends React.Component {
   componentWillMount() {
     this.setAudienceAccess(this.props.maxSlide);
     this.props.CreateRoom( this.props.channel );
-    
+
     let initialSlide = this.props.images[ 0 ];
     this.props.updateSlideState( initialSlide );
   }
@@ -43,13 +43,12 @@ class AudienceCarouselView extends React.Component {
     this.props.getCurrentAudienceSlide(this.ImageGallery.state.currentIndex);
   }
 
-  handleSlideChange( index ) {
-    let currentSlide = this.props.images[ index ];
-    this.props.updateSlideState( currentSlide );
+  handleSlideChange(index) {
+    let currentSlide = this.props.images[index];
+    this.props.updateSlideState(currentSlide);
+    this.props.getCurrentAudienceSlide(index);
 
-    this.props.getCurrentAudienceSlide(this.ImageGallery.state.currentIndex);
-
-    if (this.props.bookmarks.bookmarks.includes(this.ImageGallery.state.currentIndex)) {
+    if (this.props.bookmarks.bookmarks.includes(index)) {
       this.props.changeBookmarkButtonColor('purple');
     } else {
       this.props.changeBookmarkButtonColor('black');
