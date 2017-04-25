@@ -145,8 +145,15 @@ module.exports = {
   presenter_presentation: {
     post(req, res) {
       console.log('In server controller, getting presentation:', req.body.newPresentation);
-      // presentation.storePresentation(req);
-      res.status(201);
+      presentation.storePresentation(req.body.newPresentation, (err, result) => {
+        if (err) {
+          console.log('Server controller error:', err);
+          res.sendStatus(500);
+        } else {
+          res.status(201);
+          res.send(result);  // return the whole presentation with IDs
+        }
+      });
     }
   },
 

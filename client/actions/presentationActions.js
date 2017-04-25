@@ -24,13 +24,19 @@ export function uploadPresentation(newPresentation) {
     })
   })
   .then((res) => {
-    console.log('Presentation uploaded', res);
+    console.log('Presentation uploaded: ', res);
+    // update the presentation and slide ID fields of the state
+// TODO: update local state
+// presentation.push(newPresentation.map((slide, index) => {
+//  slide.id = res...
+// }));
+    // select that presentation
+    return {
+      type: ActionType.AddPresentation,
+      presentations
+    };
   })
   .catch((error) => {
     console.error('@@@@@ Error in uploadPresentation:', error);
   });
-  return {
-    type: ActionType.AddPresentation,
-    newPresentation
-  };
 }

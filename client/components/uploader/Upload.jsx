@@ -13,7 +13,10 @@ class Upload extends React.Component {
   handleUpload() {
     const newPresentation = {};
     newPresentation.title = 'Untitled presentation';
-    newPresentation.author = this.props.authorId;
+    if (!this.props.authorId) {
+      console.error('PROBLEM: no user ID in upload, setting ID to 0 for debug');
+    }
+    newPresentation.author = this.props.authorId || 0;
 
     this.uploadWidget = cloudinary.openUploadWidget({
       upload_preset: 'nl29au84',
