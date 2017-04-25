@@ -11,7 +11,7 @@ module.exports.storePresentation = function (presentation, callback) {
     for (let i = 0; i < presentation.slides.length; i++) {
       models.Slide.create({
         image_url: presentation.slides[i].secure_url,
-        thumbnail_url: presentation.slides[i].thumbnail_url,  TODO: enable!
+        thumbnail_url: presentation.slides[i].thumbnail_url,
         slide_index: i,
         presentation_id: presentationCreationResult.dataValues.id
       })
