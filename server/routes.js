@@ -21,8 +21,8 @@ router.post('/audience_presentation/remove_bookmark', controller.audience_presen
 
 // notes
 router.post('/audience_presentation/add_note', controller.audience_presentation_note.post);
-router.put('/audience_presentation/update_note', controller.audience_presentation_note.put);
-router.delete('/audience_presentation/delete_note', controller.audience_presentation_note.delete);
+router.post('/audience_presentation/update_note', controller.audience_presentation_note.put);
+router.post('/audience_presentation/delete_note', controller.audience_presentation_note.delete);
 
 router.post('/presenter_presentation', controller.presenter_presentation.post);
 

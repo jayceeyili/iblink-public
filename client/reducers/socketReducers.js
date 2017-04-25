@@ -9,7 +9,6 @@ const initialState = {
 };
 
 const sockets = (state = initialState, action) => {
-  // console.log('In reduce sockets with state:', state, 'and action:', action);
 
   switch (action.type) {
     case actionType.CreateRoom:
@@ -23,7 +22,6 @@ const sockets = (state = initialState, action) => {
     case actionType.UpdateURL:
       return { ...state, sentUrl: action.url };
     case actionType.SendURL:
-      // console.log('Socket reducer: send URL');
       return state;
     default: return state;
   }
