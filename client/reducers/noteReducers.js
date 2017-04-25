@@ -9,7 +9,7 @@ const notes = ( state = initialState, action ) => {
     case actionType.AddNote:
       return state;
     case actionType.UpdateNote:
-      return { ...state, text: actione.text };
+      return { ...state, text: action.text };
     case actionType.DeleteNote:
       return { ...state, text: '' };
     default:

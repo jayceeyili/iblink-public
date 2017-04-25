@@ -14,8 +14,9 @@ class Notes extends Component {
       presentationId: this.props.presentationId,
       userId: this.props.userId,
       note: this.props.note,
-      slideId: this.props.id
+      slideId: this.props.slideId
     }
+    // console.log(this.props);
     this.props.addNote( body );
   }
 
