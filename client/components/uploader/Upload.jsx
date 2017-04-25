@@ -36,10 +36,10 @@ class Upload extends React.Component {
         if (error) {
       	  console.error('Error in upload:', error);
         } else {
-      	  console.log('Upload successful! Result:', result);
+          console.log('Upload successful! Result:', result);
           // update the state to add this presentation to the user's set
           // send the presentation to the server
-          newSlides = result.map((slide) => {
+          const newSlides = result.map((slide) => {
             const newSlide = {};
             // newSlide.height = slide.height;
             // newSlide.original_filename = slide.original_filename;
@@ -47,12 +47,14 @@ class Upload extends React.Component {
             newSlide.thumbnail_url = slide.thumbnail_url;
             // newSlide.url = slide.url;
             // newSlide.width = slide.width;
+            console.log('mapping to:', newSlide);
             return newSlide;
           });
+          console.log('newSlides is:', newSlides);
           newPresentation.slides = newSlides;
+          this.props.uploadPresentation(newPresentation);
         }
       });
-    this.props.uploadPresentation(newPresentation);
   }
 
   render() {

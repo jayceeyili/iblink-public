@@ -13,15 +13,15 @@ module.exports.storePresentation = function (presentation, userId) {
         slide_index: i,
         presentation_id: presentationCreateResult.dataValues.id
       })
-      .catch(err => {
+      .catch((err) => {
         console.log('Error creating slide in storePresentation:', err);
-      })
+      });
     }
-  .catch(err => {
-    console.log('Error creating presentation in storePresentation:', err);
-  });
-}
-
+  })
+    .catch((err) => {
+      console.log('Error creating presentation in storePresentation:', err);
+    });
+};
 
 // -=--=-=-
 

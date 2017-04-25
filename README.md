@@ -46,6 +46,11 @@ npm install
 bower install
 ```
 
+### iBlink database creation
+postgres -D /usr/local/var/postgres
+createdb iblink
+sequelize db:migrate
+
 ### Roadmap
 
 View the project roadmap [here](LINK_TO_DOC)
