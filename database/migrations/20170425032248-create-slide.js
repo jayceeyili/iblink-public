@@ -1,17 +1,23 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('Bookmarks', {
+    return queryInterface.createTable('Slides', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      slide_id: {
+      image_url: {
+        type: Sequelize.STRING
+      },
+      slide_index: {
         type: Sequelize.INTEGER
       },
-      user_id: {
+      thumbnail_url: {
+        type: Sequelize.STRING
+      },
+      presentation_id: {
         type: Sequelize.BIGINT
       },
       createdAt: {
@@ -25,6 +31,6 @@ module.exports = {
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('Bookmarks');
+    return queryInterface.dropTable('Slides');
   }
 };

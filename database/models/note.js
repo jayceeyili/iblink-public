@@ -2,7 +2,7 @@
 module.exports = function(sequelize, DataTypes) {
   var Note = sequelize.define('Note', {
     slide_id: DataTypes.INTEGER,
-    user_id: DataTypes.BIGINT,
+    user_id: DataTypes.STRING,
     text: DataTypes.STRING
   }, {
     classMethods: {

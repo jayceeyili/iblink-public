@@ -16,16 +16,7 @@ class SendStatusButton extends React.Component {
   handlePresentButton() {
     this.props.SendStatus();
     this.setState({presenterIsOn: !this.state.presenterIsOn}, () => {
-      if (this.state.presenterIsOn) {
-        fetch('/audience_presentation/store_bookmarks')
-        .then(response => response.json())
-        .then((bookmarkedSlides) => {
-          console.log('bookmarked: ', bookmarkedSlides);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-      } else {
+      if (!this.state.presenterIsOn) {
         fetch('/liveChannel')
         .then( response => response.json())
         .then( channel => this.props.CreateRoom( channel ) )
