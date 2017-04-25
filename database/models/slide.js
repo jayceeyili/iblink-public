@@ -3,6 +3,7 @@ module.exports = function(sequelize, DataTypes) {
   var Slide = sequelize.define('Slide', {
     image_url: DataTypes.STRING,
     slide_index: DataTypes.INTEGER,
+    thumbnail_url: DataTypes.STRING,
     presentation_id: DataTypes.BIGINT
   }, {
     classMethods: {

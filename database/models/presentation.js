@@ -2,7 +2,7 @@
 module.exports = function(sequelize, DataTypes) {
   var Presentation = sequelize.define('Presentation', {
     title: DataTypes.STRING,
-    user_id: DataTypes.BIGINT,
+    user_id: DataTypes.STRING,
     attendee_count: DataTypes.INTEGER
   }, {
     classMethods: {

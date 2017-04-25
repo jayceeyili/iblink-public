@@ -7,8 +7,7 @@ const bookmarkUtil = require('../models/bookmark');
 const noteUtil = require('../models/note');
 
 let maxSlide = 0;  // TODO: improve after MVP to support multiple presentations
-const tempBookmarkStore = [];
-const bookmarkedSlides = [];
+const slides = presentation.getPresentation().slides;
 
 module.exports = {
 
@@ -100,28 +99,22 @@ module.exports = {
     },
     post(req, res) {
       const slideIndex = req.body.slideIndex;
-      if (!tempBookmarkStore.includes(slideIndex)) {
-        tempBookmarkStore.push(slideIndex);
-        const slides = presentation.getPresentation();
-        bookmarkedSlides.push(slides.slides[slideIndex]);
-        console.log('slide at index ', slideIndex, ' is being added to bookmarked');
-      }
-      res.json('slide at index ', slideIndex, ' is being added to bookmarked');
-      console.log('tempBookmarkStore', tempBookmarkStore);
-      console.log('bookmarkedSlides', bookmarkedSlides);
+      const userId = '46231074627482';
+      const bookmarkedSlideUrl = slides[slideIndex].original;
+      bookmarkUtil.addBookmark(bookmarkedSlideUrl, userId);
+      console.log('slide at index ', slideIndex, ' is added to bookmarked');
+      res.json('slide at index ', slideIndex, ' is added to bookmarked');
     }
   },
 
   audience_presentation_remove_bookmark: {
     post(req, res) {
       const slideIndex = req.body.slideIndex;
-      tempBookmarkStore.splice(tempBookmarkStore.indexOf(slideIndex), 1);
-      const slides = presentation.getPresentation();
-      bookmarkedSlides.splice(slides.slides[slideIndex], 1);
+      const userId = '46231074627482';
+      const bookmarkedSlideUrl = slides[slideIndex].original;
+      bookmarkUtil.removeBookmark(bookmarkedSlideUrl, userId);
       console.log('slide at index ', slideIndex, ' is being removed from bookmarked');
       res.json('slide at index ', slideIndex, ' is removed from bookmarked');
-      console.log('tempBookmarkStore', tempBookmarkStore);
-      console.log('bookmarkedSlides', bookmarkedSlides);
     }
   },
 
@@ -142,23 +135,11 @@ module.exports = {
     }
   },
 
-  audience_presentation_get_bookmarks: {
-    get(req, res) {
-      res.json(bookmarkedSlides);
-    }
-  },
-
-  audience_presentation_store_bookmarks: {
-    get(req, res) {
-      console.log('storing ', tempBookmarkStore, ' into DB');
-      let userId = 46231074627482;
-      const slides = presentation.getPresentation();
-      let bookmarkResults = tempBookmarkStore.map(index => slides.slides[index]);
-      console.log('bookmarkResults', bookmarkResults);
-      bookmarkUtil.storeBookmarks(bookmarkResults, userId);
-      res.json(bookmarkResults);
-    }
-  },
+  // audience_presentation_get_bookmarks: {
+  //   get(req, res) {
+  //     res.json(bookmarkedSlides);
+  //   }
+  // },
 
 //upload slides into database
   presenter_presentation: {
