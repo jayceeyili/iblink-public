@@ -13,7 +13,6 @@ class Notes extends Component {
   handleSubmit() {
     event.preventDefault();
     let body = {
-      presentationId: this.props.presentationId,
       userId: this.props.userId,
       note: this.props.note,
       slideId: this.props.slideId
@@ -24,21 +23,17 @@ class Notes extends Component {
   handleUpdate() {
     event.preventDefault();
     let body = {
-      presentationId: this.props.presentationId,
       userId: this.props.userId,
       note: this.props.note,
       slideId: this.props.slideId
     }
-    console.log('handleUpdate', body);
     this.props.updateNote( body );
   }
 
   handleDelete() {
     event.preventDefault();
     let body = {
-      presentationId: this.props.presentationId,
       userId: this.props.userId,
-      note: this.props.note,
       slideId: this.props.slideId
     }
     this.props.deleteNote( body );
