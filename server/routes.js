@@ -26,4 +26,6 @@ router.delete('/audience_presentation/delete_note', controller.audience_presenta
 
 router.post('/presenter_presentation', controller.presenter_presentation.post);
 
+router.get('/metrics', controller.metrics.get);
+
 module.exports = router;
