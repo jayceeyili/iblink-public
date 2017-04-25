@@ -5,6 +5,8 @@ class Notes extends Component {
     super( props )
 
     this.handleSubmit = this.handleSubmit.bind( this );
+    this.handleUpdate = this.handleUpdate.bind( this );
+    this.handleDelete = this.handleDelete.bind( this );
     this.handleChange = this.handleChange.bind( this );
   }
 
@@ -16,8 +18,30 @@ class Notes extends Component {
       note: this.props.note,
       slideId: this.props.slideId
     }
-    // console.log(this.props);
     this.props.addNote( body );
+  }
+
+  handleUpdate() {
+    event.preventDefault();
+    let body = {
+      presentationId: this.props.presentationId,
+      userId: this.props.userId,
+      note: this.props.note,
+      slideId: this.props.slideId
+    }
+    console.log('handleUpdate', body);
+    this.props.updateNote( body );
+  }
+
+  handleDelete() {
+    event.preventDefault();
+    let body = {
+      presentationId: this.props.presentationId,
+      userId: this.props.userId,
+      note: this.props.note,
+      slideId: this.props.slideId
+    }
+    this.props.deleteNote( body );
   }
 
   handleChange( ev ) {
@@ -44,6 +68,14 @@ class Notes extends Component {
           style={ style }
           onClick={ this.handleSubmit }
         >Add</button>
+        <button
+          style={ style }
+          onClick={ this.handleUpdate }
+        >Update</button>
+        <button
+          style={ style }
+          onClick={ this.handleDelete }
+        >Delete</button>
       </div>
     )
   }
