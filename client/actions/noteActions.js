@@ -1,12 +1,5 @@
 import ActionType from './actionType';
 
-export function updateText( text ) {
-  return {
-    type: ActionType.UpdateText,
-    text
-  };
-}
-
 export function addNote( body ) {
   fetch('/audience_presentation/add_note', {
     method: 'POST',

@@ -13,8 +13,8 @@ class Notes extends Component {
     let body = {
       presentationId: this.props.presentationId,
       userId: this.props.userId,
-      text: this.props.text,
-      currentAudienceSlide: this.props.currentAudienceSlide
+      note: this.props.note,
+      slideId: this.props.id
     }
     this.props.addNote( body );
   }

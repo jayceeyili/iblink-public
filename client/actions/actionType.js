@@ -13,6 +13,7 @@ const actionType = {
 
   // Slides
   UpdateSlideState: 'UPDATE_SLIDE_STATE',
+  UpdateText: 'UPDATE_TEXT',
 
   // Sockets
   CreateRoom: 'CREATE_ROOM',
@@ -22,7 +23,6 @@ const actionType = {
   ReceiveStatus: 'RECEIVE_STATUS',
 
   // Notes
-  UpdateText: 'UPDATE_TEXT',
   AddNote: 'ADD_NOTE',
   UpdateNote: 'UPDATE_NOTE',
   DeleteNote: 'DELETE_NOTE',
