@@ -8,11 +8,11 @@ class Notes extends Component {
       text: ''
     }
 
-    this.handleSubmit = this.handleSubmit.bind( this );
-    this.handleUpdate = this.handleUpdate.bind( this );
-    this.handleDelete = this.handleDelete.bind( this );
-    this.handleChange = this.handleChange.bind( this );
-    this.clearText = this.clearText.bind( this );
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.clearText = this.clearText.bind(this);
   }
 
   handleSubmit() {
@@ -36,15 +36,12 @@ class Notes extends Component {
       note: this.state.text,
       slideId: this.props.slideId
     }
-<<<<<<< 727bd35f9563b5be9463bc5075bd46dba0f70237
-    if ( this.state.text ) {
-      this.props.updateNote( body );
+
+    if (this.state.text) {
+      this.props.updateNote(body);
     } else {
-      console.error( 'Input filed cannot be empty' );
+      console.error('Input filed cannot be empty');
     }
-=======
-    this.props.updateNote( body );
->>>>>>> clean console logs
   }
 
   handleDelete() {
@@ -57,7 +54,7 @@ class Notes extends Component {
     this.clearText();
   }
 
-  handleChange( ev ) {
+  handleChange(ev) {
     let text = ev.target.value;
     this.setState( {
       text: text
@@ -82,16 +79,16 @@ class Notes extends Component {
           !this.props.note ?
           <div>
             <textarea
-              className={ textArea }
+              className={textArea}
               type="text"
               placeholder='take some notes!'
-              value={ this.props.text }
-              onChange={ this.handleChange }
+              value={this.props.text}
+              onChange={this.handleChange}
             ></textarea>
             <div>
               <button
-                className={ addNote }
-                onClick={ this.handleSubmit }
+                className={addNote}
+                onClick={this.handleSubmit}
               >
                 Add Note
               </button>
@@ -100,20 +97,20 @@ class Notes extends Component {
           :
           <div>
             <textarea
-              className={ textArea }
+              className={textArea}
               type="text"
               placeholder='take some notes!'
-              value={ this.props.text }
-              onChange={ this.handleChange }
+              value={this.props.text}
+              onChange={this.handleChange}
             ></textarea>
             <span>
               <button
-                className={ updateNote }
-                onClick={ this.handleUpdate }
+                className={updateNote}
+                onClick={this.handleUpdate}
               >Update</button>
               <button
-                className={ deleteNote }
-                onClick={ this.handleDelete }
+                className={deleteNote}
+                onClick={this.handleDelete}
               >Delete</button>
             </span>
           </div>
