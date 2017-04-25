@@ -8,14 +8,15 @@ class Notes extends Component {
     this.handleChange = this.handleChange.bind( this );
   }
 
-
-
   handleSubmit() {
     event.preventDefault();
     let body = {
-      text: this.props.text,
-      currentAudienceSlide: this.props.currentAudienceSlide
+      presentationId: this.props.presentationId,
+      userId: this.props.userId,
+      note: this.props.note,
+      slideId: this.props.slideId
     }
+    // console.log(this.props);
     this.props.addNote( body );
   }
 

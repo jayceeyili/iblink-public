@@ -9,9 +9,9 @@ class PresenterCarouselView extends React.Component {
     this.handleSlideChange = this.handleSlideChange.bind(this);
   }
 
-  componentWillMount() {
-    // console.log('in willmount, this props:', this.props);
-    this.props.sendURL;
+  componentDidMount() {
+    let initialSlide = this.props.images[ 0 ];
+    this.props.updateSlideState( initialSlide );
   }
 
   handleImageLoad(event) {
@@ -19,10 +19,13 @@ class PresenterCarouselView extends React.Component {
     this.props.getCurrentAudienceSlide(this.ImageGallery.state.currentIndex);
   }
 
-  handleSlideChange() {
-    this.props.sendURL(this.ImageGallery.state.currentIndex);
-    this.props.getCurrentAudienceSlide(this.ImageGallery.state.currentIndex);
-    if (this.props.bookmarks.bookmarks.includes(this.ImageGallery.state.currentIndex)) {
+  handleSlideChange( index ) {
+    this.props.sendURL( index );
+    let currentSlide = this.props.images[ index ];
+    this.props.updateSlideState( currentSlide );
+
+    this.props.getCurrentAudienceSlide(index);
+    if (this.props.bookmarks.bookmarks.includes( index )) {
       this.props.changeBookmarkButtonColor('purple');
     } else {
       this.props.changeBookmarkButtonColor('black');

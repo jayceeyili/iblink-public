@@ -11,6 +11,10 @@ const actionType = {
   RemoveBookmark: 'REMOVE_BOOKMARK',
   ChangeBookmarkButtonColor: 'CHANGE_BOOKMARK_BUTTON_COLOR',
 
+  // Slides
+  UpdateSlideState: 'UPDATE_SLIDE_STATE',
+  UpdateText: 'UPDATE_TEXT',
+
   // Sockets
   CreateRoom: 'CREATE_ROOM',
   SendURL: 'SEND_URL',
@@ -19,8 +23,9 @@ const actionType = {
   ReceiveStatus: 'RECEIVE_STATUS',
 
   // Notes
-  UpdateText: 'UPDATE_TEXT',
   AddNote: 'ADD_NOTE',
+  UpdateNote: 'UPDATE_NOTE',
+  DeleteNote: 'DELETE_NOTE',
 
   // Not sure needed! TODO review
   GetSlides: 'GET_SLIDES',
