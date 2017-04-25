@@ -10,7 +10,7 @@
   "scripts": {
     "lint": "eslint client server",
     "lint-fix": "eslint client server",
-    "start": "node server/index.js",
+    "start": "sequelize db:migrate && node server/index.js",
     "dev": "webpack -d --watch & nodemon server/index.js",
     "build": "webpack -p",
     "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
