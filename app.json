@@ -25,9 +25,6 @@
   "formation": {
   },
   "addons": [
-    {
-      "plan": "heroku-postgresql:hobby-dev"
-    }
   ],
   "buildpacks": [
     {
