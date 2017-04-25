@@ -9,10 +9,8 @@ const db = {};
 
 let sequelize;
 if (config.use_env_variable) {
-  console.log(config);
-  sequelize = new Sequelize('using production', config.use_env_variable, config);
+  sequelize = new Sequelize(config.database, config.username, config.password, config);
 } else {
-  console.log('using development', config);
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
