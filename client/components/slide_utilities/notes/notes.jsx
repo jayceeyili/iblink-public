@@ -21,7 +21,11 @@ class Notes extends Component {
       note: this.state.text,
       slideId: this.props.slideId
     }
-    this.props.addNote( body );
+    if ( this.state.text ) {
+      this.props.addNote( body );
+    } else {
+      console.error( 'Sorry, please enter your note first' );
+    }
   }
 
   handleUpdate() {
@@ -31,7 +35,11 @@ class Notes extends Component {
       note: this.state.text,
       slideId: this.props.slideId
     }
-    this.props.updateNote( body );
+    if ( this.state.text ) {
+      this.props.updateNote( body );
+    } else {
+      console.error( 'Input filed cannot be empty' );
+    }
   }
 
   handleDelete() {
