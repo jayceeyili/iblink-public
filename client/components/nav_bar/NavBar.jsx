@@ -1,22 +1,22 @@
 import React from 'react';
-import Upload from '../uploader/Upload.jsx';
+import UploadContainer from '../../containers/uploadContainer';
 import style from './style.css';
 import Login from '../../containers/loginContainer.js';
 
 class NavBar extends React.Component {
   constructor() {
-    super()
+    super();
   }
 
   render() {
-    var nav = `${style.nav}`
+    const nav = `${style.nav}`;
 
     return (
       <div className={nav}>
         <Login />
-        <Upload />
+        <UploadContainer />
       </div>
-    )
+    );
   }
 }
 
