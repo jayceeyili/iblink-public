@@ -3,9 +3,6 @@
   "scripts": {
   },
   "env": {
-    "HEROKU_APP_NAME": {
-      "required": true
-    }
   },
   "formation": {
   },
