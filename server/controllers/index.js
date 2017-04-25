@@ -125,6 +125,7 @@ module.exports = {
     },
 
     put( req, res ) {
+      console.log('received update note body:', req.body);
       noteUtil.updateNote( req.body );
       res.status( 200 ).send( JSON.stringify( 'Note Updated Successfully!' ) );
     },
