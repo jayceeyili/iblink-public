@@ -147,5 +147,41 @@ module.exports = {
       console.log('your presentation is persistent')
       res.status(201)
     }
+  },
+
+  metrics: {
+    get(req, res) {
+      const presentationId = req.query.presentationId;
+      // declare a variable initialized at an empty array to store the resulting metrics data
+      let metricsData = [];
+      // declare a variable that stores the result of the slideUtil function that queries db to get all the slides of that presentation id
+      // iterate over the target slides 
+      // query db to get the count of bookmarks with set presentation id and set slide index
+      // query db to get the count of notes with set presentation id and set slide index
+      res.json(metricsData)
+      // [
+      //   {
+      //     notes: '10',
+      //     bookmarks: '13',
+      //     slide: '1'
+      //   }, {
+      //     notes: '0',
+      //     bookmarks: '2',
+      //     slide: '2'
+      //   }, {
+      //     notes: '5',
+      //     bookmarks: '6',
+      //     slide: '3'
+      //   }, {
+      //     notes: '12',
+      //     bookmarks: '0',
+      //     slide: '4'
+      //   }, {
+      //     notes: '7',
+      //     bookmarks: '2',
+      //     slide: '5'
+      //   }
+      // ]
+    }
   }
 };
