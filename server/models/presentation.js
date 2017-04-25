@@ -1,9 +1,9 @@
 const models = require('../../database/models/index');
 
-module.exports.storePresentation = function (presentation, userId) {
+module.exports.storePresentation = function (presentation) {
   models.Presentation.create({
     title: presentation.title,
-    user_id: userId
+    user_id: presentation.author
   })
   .then((presentationCreateResult) => {
     for (let i = 0; i < presentation.slides.length; i++) {

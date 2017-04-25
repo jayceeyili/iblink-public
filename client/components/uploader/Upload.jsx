@@ -11,10 +11,9 @@ class Upload extends React.Component {
   }
 
   handleUpload() {
-    console.log('Upload request detected!');
-
     const newPresentation = {};
-    newPresentation.title = 'My presentation';  // TODO: Ask for a presentation title
+    newPresentation.title = 'Untitled presentation';
+    newPresentation.author = this.props.authorId;
 
     this.uploadWidget = cloudinary.openUploadWidget({
       upload_preset: 'nl29au84',
