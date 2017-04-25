@@ -37,17 +37,41 @@ module.exports.storePresentation = function (presentation, callback) {
 };
 
 module.exports.getAllPresentations = function (userId, callback) {
-  models.Presentation.findAll({
-    user_id: userId
-  })
-  .then((presentations) => {
-    console.log('presentations:', presentations);
-  })
-  .catch((err) => {
-    console.log('Error retrieving all presentations:', err);
-    callback(err, null);
+  let presentations = [];
+  models.Presentation.findAll({ where: { user_id: userId } })
+  .then((presentationsStructure) => {
+    // console.log('presentations sturcture:', presentationsStructure);
+    presentations = presentationsStructure.map((obj) => {
+      const presentation = {
+        title: obj.dataValues.title,
+        id: obj.dataValues.id,
+        userId: obj.dataValues.user_id,
+        attendeeCount: obj.dataValues.attendee_count
+      };
+      console.log('will look for slides that belong to pres id:', obj.dataValues.id);
+      models.Slide.findAll({ where: { presentation_id: obj.dataValues.id } })
+      .then((slideObjects) => {
+        // console.log('Slide objects:', slideObjects);
+        const slides = slideObjects.map(slideObject => ({
+          original: slideObject.dataValues.image_url,
+          thumbnail: slideObject.dataValues.thumbnail_url,
+          id: slideObject.dataValues.id,
+          bookmark: false,
+          note: '',
+          tweet: false
+        }));
+        presentation.slides = slides;
+        console.log('>>>>>>> Cool pres:', presentation);
+      });
+    });
   });
 };
+
+
+  // .catch((err) => {
+  //   console.log('Error retrieving all presentations:', err);
+  //   callback(err, null);
+  // });
 
 // -=--=-=-
 
