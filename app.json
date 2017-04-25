@@ -3,6 +3,9 @@
   "scripts": {
   },
   "env": {
+    "NODE_ENV": {
+      "required": true
+    }
   },
   "formation": {
   },
