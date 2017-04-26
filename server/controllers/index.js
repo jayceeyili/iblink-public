@@ -27,27 +27,36 @@ module.exports = {
         sockets.receivedUrlId = null;
       }
 
-      // ************* INITIAL STORE ******************
-      let preloadedState = {
-        // livePresentation,
+      presentation.getAllPresentations('0', (err, presentations) => {
+        if (err) {
+          console.log('Error getting all presentations', err);
+        }
+        // console.log('Success getting all presentations!!!! presentations:', presentations);
+        // ************* INITIAL STORE ******************
+        let preloadedState = {
+          // livePresentation,
           // Object with:
           // * channel,
           // * presentationIndex, (in the presentations array below)
           // * currentSlideIndex, (in the slides array below)
           // * maxSlideIndex (in the slides array below)
-        selectedPresentationIndex: 0,
-        presentations: [presentation.getPresentation()],
+          selectedPresentationIndex: 0,
+          presentations,
           // title,
           // id,  (database ID)
           // slides: [ {original: url, thumbnail: url}, ... ]
-        sockets
-      };
-      // ***********************************************
+          sockets
+        };
+        // ***********************************************
 
-      // const store = configureStore(preloadedState);
-      preloadedState = JSON.stringify(preloadedState).replace(/</g, '\\x3c');
+        // const store = configureStore(preloadedState);
+        console.log('*******************************');
+        console.log('Sending the following state to the React client:', preloadedState);
+
+        preloadedState = JSON.stringify(preloadedState).replace(/</g, '\\x3c');
       // console.log('preloadedState', preloadedState);
-      res.render('master', { preloadedState });
+        res.render('master', { preloadedState });
+      });
     }
   },
 
@@ -167,12 +176,12 @@ module.exports = {
     get(req, res) {
       const presentationId = req.query.presentationId;
       // declare a variable initialized at an empty array to store the resulting metrics data
-      let metricsData = [];
+      const metricsData = [];
       // declare a variable that stores the result of the slideUtil function that queries db to get all the slides of that presentation id
-      // iterate over the target slides 
+      // iterate over the target slides
       // query db to get the count of bookmarks with set presentation id and set slide index
       // query db to get the count of notes with set presentation id and set slide index
-      res.json(metricsData)
+      res.json(metricsData);
       // [
       //   {
       //     notes: '10',
