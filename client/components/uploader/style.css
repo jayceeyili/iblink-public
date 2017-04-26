@@ -1,0 +1,9 @@
+.button {
+  color: white;
+  text-align: center;
+  transition: .4s background-color;
+}
+
+.button:hover {
+  background-color: #86c5da;
+}

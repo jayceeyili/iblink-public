@@ -1,4 +1,5 @@
 import React, { Component }from 'react';
+import style from './style.css'
 
 class Notes extends Component {
   constructor( props ) {
@@ -7,11 +8,11 @@ class Notes extends Component {
       text: ''
     }
 
-    this.handleSubmit = this.handleSubmit.bind( this );
-    this.handleUpdate = this.handleUpdate.bind( this );
-    this.handleDelete = this.handleDelete.bind( this );
-    this.handleChange = this.handleChange.bind( this );
-    this.clearText = this.clearText.bind( this );
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.clearText = this.clearText.bind(this);
   }
 
   handleSubmit() {
@@ -35,10 +36,11 @@ class Notes extends Component {
       note: this.state.text,
       slideId: this.props.slideId
     }
-    if ( this.state.text ) {
-      this.props.updateNote( body );
+
+    if (this.state.text) {
+      this.props.updateNote(body);
     } else {
-      console.error( 'Input filed cannot be empty' );
+      console.error('Input filed cannot be empty');
     }
   }
 
@@ -52,7 +54,7 @@ class Notes extends Component {
     this.clearText();
   }
 
-  handleChange( ev ) {
+  handleChange(ev) {
     let text = ev.target.value;
     this.setState( {
       text: text
@@ -66,48 +68,53 @@ class Notes extends Component {
   }
 
   render() {
-    const style = {
-      'color': 'black',
-      'textAlign': 'center'
-    }
+    const textArea = `${style.textArea}`
+    const addNote = `btn btn-basic ${style.button}`
+    const updateNote = `btn btn-info`
+    const deleteNote = `btn btn-danger`
 
     return (
       <div>
-      {
-        !this.props.note ?
-        <div>
-          <input
-            type="text"
-            style={ style }
-            placeholder='Add Note here'
-            value={ this.state.text }
-            onChange={ this.handleChange }
-            ></input>
-          <button
-            style={ style }
-            onClick={ this.handleSubmit }
-          >Add</button>
-        </div> :
-        <div>
-          <input
-            type="text"
-            style={ style }
-            placeholder={ this.props.note }
-            value={ this.state.text }
-            onChange={ this.handleChange }
-            ></input>
-          <span>
-            <button
-              style={ style }
-              onClick={ this.handleUpdate }
-            >Update</button>
-            <button
-              style={ style }
-              onClick={ this.handleDelete }
-            >Delete</button>
-          </span>
-        </div>
-      }
+        {
+          !this.props.note ?
+          <div>
+            <textarea
+              className={textArea}
+              type="text"
+              placeholder='take some notes!'
+              value={this.props.text}
+              onChange={this.handleChange}
+            ></textarea>
+            <div>
+              <button
+                className={addNote}
+                onClick={this.handleSubmit}
+              >
+                Add Note
+              </button>
+            </div>
+          </div>
+          :
+          <div>
+            <textarea
+              className={textArea}
+              type="text"
+              placeholder='take some notes!'
+              value={this.props.text}
+              onChange={this.handleChange}
+            ></textarea>
+            <span>
+              <button
+                className={updateNote}
+                onClick={this.handleUpdate}
+              >Update</button>
+              <button
+                className={deleteNote}
+                onClick={this.handleDelete}
+              >Delete</button>
+            </span>
+          </div>
+        }
       </div>
     )
   }

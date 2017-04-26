@@ -1,23 +1,25 @@
 import React from 'react';
-import UploadContainer from '../../containers/uploadContainer';
+import Upload from '../uploader/Upload.jsx';
+import LoginModal from '../modal/LoginModal.jsx';
 import style from './style.css';
-import Login from '../../containers/loginContainer.js';
 
+
+//Login component used for testing purpose. Permanent solution will be through a seperate page
 class NavBar extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render() {
-    const nav = `${style.nav}`;
-
+    const container = `${style.nav}`
     return (
-      <div className={nav}>
-        <Login />
-        <UploadContainer />
+      <div className={container}>
+        <LoginModal />
+        <Upload />
       </div>
-    );
+    )
   }
+
 }
 
 export default NavBar;
