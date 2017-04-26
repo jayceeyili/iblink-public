@@ -206,5 +206,11 @@ module.exports = {
       //   }
       // ]
     }
+  },
+
+  get_user_data: {
+    get(req, res) {
+      console.log('successfully gotten user data', req.params.userId)
+    }
   }
 };

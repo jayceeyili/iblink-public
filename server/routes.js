@@ -28,4 +28,7 @@ router.post('/presenter_presentation', controller.presenter_presentation.post);
 
 router.get('/metrics', controller.metrics.get);
 
+//get user specific databaseURL
+router.get('/:userId', controller.get_user_data.get);
+
 module.exports = router;
