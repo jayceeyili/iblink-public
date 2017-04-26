@@ -1,8 +1,6 @@
 .button {
   color: white;
   text-align: center;
-  float: right;
-  margin: 10px;
   transition: .4s background-color;
 }
 

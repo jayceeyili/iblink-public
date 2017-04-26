@@ -6,7 +6,8 @@ import BookmarkButton from './BookmarkButton.jsx';
 
 const mapStateToProps = (state) => {
   return {
-    bookmarks: state.bookmarks
+    bookmarks: state.bookmarks,
+    userId: state.authentication.userId
   };
 };
 
