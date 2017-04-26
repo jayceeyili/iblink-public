@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Redirect } from 'react-router';
 import firebase from 'firebase';
 
 var config = {
@@ -118,7 +119,8 @@ class LoginView extends React.Component {
 
   render() {
     return (
-        this.state.signup === false ?
+      <div>
+        {this.props.authentication === '' ?
           <div>
             <h2>Login</h2>
             <form onSubmit={this.handleSubmit}>
@@ -127,30 +129,34 @@ class LoginView extends React.Component {
               <input type="submit" value="Enter" />
               <button onClick={this.signOut}>Log Out</button>
             </form>
-            <button onClick={this.signUp}>Or Sign Up</button>
             <button
               onClick={() => {this.loginProvider(new firebase.auth.TwitterAuthProvider())}}
             >
               Twitter Login
             </button>
           </div>
-        :
-          <div>
-            <h2>Sign Up</h2>
-            <form onSubmit={this.handleSubmit}>
-              <input type="text" value={this.state.email} onChange={this.handleChange} />
-              <input type="password" value={this.state.password} onChange={this.handlePasswordChange} placeholder="enter your password" />
-              <input type="submit" value="Enter" />
-            </form>
-            <button onClick={this.signUp}>Or Login</button>
-            <button
-              onClick={() => {this.loginProvider(new firebase.auth.TwitterAuthProvider())}}
-            >
-              Twitter Login
-            </button>
-          </div>
+          :
+          <Redirect to="/dashboard" />
+        }
+      </div>
     )
   }
 }
 
 export default LoginView;
+
+
+{/* <div>
+  <h2>Sign Up</h2>
+  <form onSubmit={this.handleSubmit}>
+    <input type="text" value={this.state.email} onChange={this.handleChange} />
+    <input type="password" value={this.state.password} onChange={this.handlePasswordChange} placeholder="enter your password" />
+    <input type="submit" value="Enter" />
+  </form>
+  <button onClick={this.signUp}>Or Login</button>
+  <button
+    onClick={() => {this.loginProvider(new firebase.auth.TwitterAuthProvider())}}
+    >
+      Twitter Login
+    </button>
+  </div> */}
