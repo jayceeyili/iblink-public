@@ -4,9 +4,10 @@ import { bindActionCreators } from 'redux';
 import Upload from '../components/uploader/Upload.jsx';
 import { uploadPresentation } from '../actions/presentationActions.js';
 
+const mapStateToProps = state => ({
+  authorId: state.authentication.userId
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators(uploadPresentation, dispatch);
-};
+// const mapDispatchToProps = dispatch => bindActionCreators(uploadPresentation, dispatch);
 
-export default connect(mapDispatchToProps)(Upload);
+export default connect(mapStateToProps, { uploadPresentation })(Upload);

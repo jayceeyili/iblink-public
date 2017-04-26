@@ -59,8 +59,8 @@ module.exports = {
 
   liveChannel: {
     get(req, res) {
-      let newChannel = channel.getNewChannel();
-      res.json( newChannel );
+      const newChannel = channel.getNewChannel();
+      res.json(newChannel);
     }
   },
 
@@ -119,19 +119,19 @@ module.exports = {
   },
 
   audience_presentation_note: {
-    post( req, res ) {
-      noteUtil.storeNote( req.body );
-      res.status( 201 ).send( JSON.stringify( 'Note Saved Successfully!' ) );
+    post(req, res) {
+      noteUtil.storeNote(req.body);
+      res.status(201).send(JSON.stringify('Note Saved Successfully!'));
     },
 
-    put( req, res ) {
-      noteUtil.updateNote( req.body );
-      res.status( 200 ).send( JSON.stringify( 'Note Updated Successfully!' ) );
+    put(req, res) {
+      noteUtil.updateNote(req.body);
+      res.status(200).send(JSON.stringify('Note Updated Successfully!'));
     },
 
-    delete( req, res ) {
-      noteUtil.deleteNote( req.body );
-      res.status( 200 ).send( JSON.stringify( 'Note Deleted Successfully!' ) );
+    delete(req, res) {
+      noteUtil.deleteNote(req.body);
+      res.status(200).send(JSON.stringify('Note Deleted Successfully!'));
     }
   },
 
@@ -141,11 +141,61 @@ module.exports = {
   //   }
   // },
 
-//upload slides into database
+  // upload slides into database
   presenter_presentation: {
     post(req, res) {
-      console.log('your presentation is persistent')
-      res.status(201)
+      console.log('In server controller, getting presentation:', req.body.newPresentation);
+      presentation.storePresentation(req.body.newPresentation, (err, result) => {
+        // res.writeHead({
+        //   'Content-Type': 'application/json',
+        //   'Access-Control-Allow-Origin': '*',
+        //   'Access-Control-Allow-Headers': 'content-type'
+        // });
+        if (err) {
+          console.log('Server controller error:', err);
+          res.sendStatus(500);
+        } else {
+          // res.status(201);
+          console.log('In server ctlr, sending updated pres:', result);
+          res.status(201).end(JSON.stringify(result));  // return the whole presentation with IDs
+        }
+      });
+    }
+  },
+
+  metrics: {
+    get(req, res) {
+      const presentationId = req.query.presentationId;
+      // declare a variable initialized at an empty array to store the resulting metrics data
+      let metricsData = [];
+      // declare a variable that stores the result of the slideUtil function that queries db to get all the slides of that presentation id
+      // iterate over the target slides 
+      // query db to get the count of bookmarks with set presentation id and set slide index
+      // query db to get the count of notes with set presentation id and set slide index
+      res.json(metricsData)
+      // [
+      //   {
+      //     notes: '10',
+      //     bookmarks: '13',
+      //     slide: '1'
+      //   }, {
+      //     notes: '0',
+      //     bookmarks: '2',
+      //     slide: '2'
+      //   }, {
+      //     notes: '5',
+      //     bookmarks: '6',
+      //     slide: '3'
+      //   }, {
+      //     notes: '12',
+      //     bookmarks: '0',
+      //     slide: '4'
+      //   }, {
+      //     notes: '7',
+      //     bookmarks: '2',
+      //     slide: '5'
+      //   }
+      // ]
     }
   }
 };

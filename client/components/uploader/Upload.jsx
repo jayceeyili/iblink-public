@@ -3,18 +3,21 @@ import style from './style.css';
 
 class Upload extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
 
-    }
+    };
 
     this.handleUpload = this.handleUpload.bind(this);
   }
 
   handleUpload() {
-    console.log('Upload request detected!');
     const newPresentation = {};
-    newPresentation.title = 'My presentation';  // TODO: Ask for a presentation title
+    newPresentation.title = 'Untitled presentation';
+    if (!this.props.authorId) {
+      console.error('PROBLEM: no user ID in upload, setting ID to 0 for debug');
+    }
+    newPresentation.author = this.props.authorId || 0;
 
     this.uploadWidget = cloudinary.openUploadWidget({
       upload_preset: 'nl29au84',
@@ -36,24 +39,30 @@ class Upload extends React.Component {
         if (error) {
       	  console.error('Error in upload:', error);
         } else {
-      	  console.log('Upload successful! Result:', result);
+          console.log('Image upload successful! Result:', result);
           // update the state to add this presentation to the user's set
           // send the presentation to the server
-          newSlides = result.map((slide) => {
+          const newSlides = result.map((slide) => {
             const newSlide = {};
-            newSlide.height = slide.height;
-            newSlide.original_filename = slide.original_filename;
+            // newSlide.height = slide.height;
+            // newSlide.original_filename = slide.original_filename;
             newSlide.secure_url = slide.secure_url;
-            newSlide.thumbnail_url = slide.thumbnail_url;
-            newSlide.url = slide.url;
-            newSlide.width = slide.width;
+            // newSlide.thumbnail_url = slide.thumbnail_url;
+            // newSlide.url = slide.url;
+            // newSlide.width = slide.width;
+            console.log('mapping to:', newSlide);
             return newSlide;
           });
+          console.log('newSlides is:', newSlides);
           newPresentation.slides = newSlides;
+          this.props.uploadPresentation(newPresentation);
 
+          // .then((pres) => {
+          //   console.log('!! Resulting pres back from upload:', pres);
+          // })
+          // .catch((err) => { console.log('error in end of Upload!!!', err); });
         }
       });
-    this.props.uploadPresentation(newPresentation)
   }
 
 

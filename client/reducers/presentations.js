@@ -18,15 +18,20 @@ const presentation = (state, action) => {
 }
 
 const presentations = (state = [], action) => {
-  // console.log('In reduce presentationS with state:', state, 'and action:', action );
+  console.log('In reduce presentationS with state:', state, 'and action:', action );
   switch (action.type) {
     case ActionType.RemovePresentation:
       return state.map(pres =>
         presentation(pres, action)
-      )
+      );
+    case ActionType.UploadPresentation:
+      return state;
     case ActionType.SelectPresentationIndex:
       return {...state,
         selectedPresentationIndex: action.selectedPresentationIndex}
+    // case ActionType.CreatePresentation:
+    //   return {...state,
+    //     presentations:  // push TODO}
     default:
       return state
   }

@@ -13,6 +13,7 @@ export const selectPresentationIndex = selectedPresentationIndex => ({
 });
 
 export function uploadPresentation(newPresentation) {
+  console.log('pres Action: uploading pres:', newPresentation);
   fetch('/presenter_presentation', {
     method: 'POST',
     headers: {
@@ -22,14 +23,26 @@ export function uploadPresentation(newPresentation) {
       newPresentation
     })
   })
-  .then((res) => {
-    console.log('Presentation uploaded. TODO: add db id from res=', res);
+  .then(res => res.json())
+  .then((json) => {
+    console.log('Hopefully resolved promise:', json);
+    // update the presentation and slide ID fields of the state
+// TODO: update local state
+// presentation.push(newPresentation.map((slide, index) => {
+//  slide.id = res...
+// }));
+    // select that presentation
+    // TODO: RETURN the data!
+    // return {
+    //   type: ActionType.AddPresentation,
+    //   presentations
+    // };
   })
   .catch((error) => {
     console.error('@@@@@ Error in uploadPresentation:', error);
   });
+
   return {
-    type: ActionType.AddPresentation,
-    newPresentation
-  };
+    type: ActionType.UploadPresentation
+  }
 }
