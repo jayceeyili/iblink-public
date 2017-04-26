@@ -6,3 +6,14 @@ export function loggedIn(userId) {
     userId
   })
 }
+
+export function getUserData(userId) {
+  fetch('/' + userId, {
+    method: 'GET'})
+  .then(function(response) {
+	  return response;
+  })
+  .catch(function(err) {
+    console.log('you have an error', err)
+  });
+}

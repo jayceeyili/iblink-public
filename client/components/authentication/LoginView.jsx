@@ -50,6 +50,7 @@ class LoginView extends React.Component {
       .then(results => {
         console.log('Success! Welcome', results.uid)
         this.props.loggedIn(results.uid)
+        this.props.getUserData(results.uid)
         this.setState({
           email: '',
           password: '',
@@ -66,6 +67,7 @@ class LoginView extends React.Component {
         .then(results => {
           console.log('Success! Welcome', results.uid)
           this.props.loggedIn(results.uid)
+          this.props.getUserData(results.uid)
           this.setState({
             email: '',
             password: '',
@@ -88,6 +90,7 @@ class LoginView extends React.Component {
       var user = result.user;
       console.log('Success! Welcome', user.uid);
       this.props.loggedIn(user.uid)
+      this.props.getUserData(user.uid)
       this.setState({loggedIn: false})
     }).catch(function(error) {
       var errorCode = error.code;
@@ -151,19 +154,3 @@ class LoginView extends React.Component {
 }
 
 export default LoginView;
-
-
-
-//
-// ComponentDidMount() {
-//   firebase.auth().onAuthStateChanged(user => {
-//     if (user) {
-//       // User is signed in.
-//       console.log(user);
-//     } else {
-//       // No user is signed in.
-//       console.log('none');
-//     }
-//   });
-//
-// }
