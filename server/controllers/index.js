@@ -31,7 +31,7 @@ module.exports = {
         if (err) {
           console.log('Error getting all presentations', err);
         }
-        console.log('Success getting all presentations!!!! presentations:', presentations);
+        // console.log('Success getting all presentations!!!! presentations:', presentations);
         // ************* INITIAL STORE ******************
         let preloadedState = {
           // livePresentation,
@@ -47,9 +47,12 @@ module.exports = {
           // slides: [ {original: url, thumbnail: url}, ... ]
           sockets
         };
-      // ***********************************************
+        // ***********************************************
 
-      // const store = configureStore(preloadedState);
+        // const store = configureStore(preloadedState);
+        console.log('*******************************');
+        console.log('Sending the following state to the React client:', preloadedState);
+
         preloadedState = JSON.stringify(preloadedState).replace(/</g, '\\x3c');
       // console.log('preloadedState', preloadedState);
         res.render('master', { preloadedState });

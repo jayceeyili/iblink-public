@@ -17,7 +17,8 @@ const store = configureStore(preloadedState);
 // Load the state one more time for Redux dev tools
 import reduxTest from '../store/redux-dev.jsx';
 reduxTest(preloadedState);
-// console.log('state after redux test: ', preloadedState);
+console.log('*********************************');
+console.log(' Preloaded state:', preloadedState);
 
 SocketOn(store);
 

@@ -49,7 +49,7 @@ module.exports.getAllPresentations = function (userId, callback) {
         userId: obj.dataValues.user_id,
         attendeeCount: obj.dataValues.attendee_count
       };
-      console.log('will look for slides that belong to pres id:', obj.dataValues.id);
+      // console.log('will look for slides that belong to pres id:', obj.dataValues.id);
 
       models.Slide.findAll({ where: { presentation_id: obj.dataValues.id } })
       .then((slideObjects) => {
@@ -83,11 +83,6 @@ module.exports.getAllPresentations = function (userId, callback) {
   });
 };
 
-
-  // .catch((err) => {
-  //   console.log('Error retrieving all presentations:', err);
-  //   callback(err, null);
-  // });
 
 // -=--=-=-
 

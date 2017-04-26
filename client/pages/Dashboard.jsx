@@ -1,6 +1,6 @@
 import React from 'react';
 import Overview from '../components/overview/Overview.jsx';
-import PastPresentationView from '../components/past_presentation/PastPresentationView.jsx';
+import PastPresentationContainer from '../containers/PastPresentationContainer';
 import NavBar from '../components/nav_bar/NavBar.jsx';
 import styles from './Dashboard.css';
 
@@ -21,7 +21,7 @@ const Dashboard = () => {
 
       {/* -------RIGHT HAND COLUMN------- */}
       <div className={presentationStyles}>
-        <PastPresentationView />
+        <PastPresentationContainer />
       </div>
     </div>
     );

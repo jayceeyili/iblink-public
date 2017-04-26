@@ -20,21 +20,25 @@ const PastPresentationView = props => (
     <h3 style={title}>MVP Presentation
     </h3>
     <div>
-      <section className={images}>
-        <PresenterCarouselContainer />
-        <div className={buttons}>
-          <BookmarkButtonContainer />
-        </div>
-        <div className={buttons}>
-          <SendStatusButton />
-        </div>
-        <div>
-          <NotesContainer />
-        </div>
-        <div>
-          <MetricsContainer />
-        </div>
-      </section>
+      {props.noPresentations ? (
+        <div>Empty site. Please upload a presentation to get started.</div>
+        ) : (
+          <section className={images}>
+            <PresenterCarouselContainer />
+            <div className={buttons}>
+              <BookmarkButtonContainer />
+            </div>
+            <div className={buttons}>
+              <SendStatusButton />
+            </div>
+            <div>
+              <NotesContainer />
+            </div>
+            <div>
+              <MetricsContainer />
+            </div>
+          </section>
+        )}
     </div>
   </div>
 );
