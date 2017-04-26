@@ -8,12 +8,13 @@ import selectedPresentationIndex from './selectedPresentation';
 import sockets from './socketReducers';
 import currentSlide from './slideReducers';
 import authentication from './authentication.js';
-
+import matrix from './matrixReducers';
 
 // pass reducers into combineReducers (in first object)
 const rootReducer = combineReducers({
   // ES6 method for adding in key-value pairs
   currentSlide,
+  matrix,
   sockets,
   presentations,
   selectedPresentationIndex,
