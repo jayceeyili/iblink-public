@@ -38,11 +38,11 @@ app.use('/', router);
 app.use(express.static(path.join(__dirname, '../client/public')));
 
 // DEBUG!
-require('./models/presentation').getAllPresentations('0', (err, result) => {
+require('./models/presentation').getAllPresentations('0', (err, presentations) => {
   if (err) {
     console.error('Error in test of getAllPresentations', err);
   } else {
-    console.log('Success in getAllPresentations, getting:', result);
+    console.log('Success in getAllPresentations, getting:', presentations);
   }
 });  // TODO: remove, just for testing
 

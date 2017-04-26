@@ -31,6 +31,7 @@ module.exports = {
         if (err) {
           console.log('Error getting all presentations', err);
         }
+        console.log('Success getting all presentations!!!! presentations:', presentations);
         // ************* INITIAL STORE ******************
         let preloadedState = {
           // livePresentation,

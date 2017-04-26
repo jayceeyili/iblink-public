@@ -37,11 +37,12 @@ module.exports.storePresentation = function (presentation, callback) {
 };
 
 module.exports.getAllPresentations = function (userId, callback) {
-  const presentations = [];
+  // const presentations = [];
   models.Presentation.findAll({ where: { user_id: userId } })
   .then((presentationsStructure) => {
     // console.log('presentations sturcture:', presentationsStructure);
-    Promise.all(presentationsStructure.map((obj) => {
+    const presentations = [];
+    Promise.all(presentationsStructure.map((obj, presentationIndex) => new Promise((resolve, reject) => {
       const presentation = {
         title: obj.dataValues.title,
         id: obj.dataValues.id,
@@ -49,6 +50,8 @@ module.exports.getAllPresentations = function (userId, callback) {
         attendeeCount: obj.dataValues.attendee_count
       };
       console.log('will look for slides that belong to pres id:', obj.dataValues.id);
+
+
       models.Slide.findAll({ where: { presentation_id: obj.dataValues.id } })
       .then((slideObjects) => {
         // console.log('Slide objects:', slideObjects);
@@ -62,13 +65,26 @@ module.exports.getAllPresentations = function (userId, callback) {
         }));
         presentation.slides = slides;
         // console.log('>>>>>>> Cool pres:', presentation);
-        return presentation;
+        presentations[presentationIndex] = presentation;
+        resolve();
+      })
+      .catch((err) => {
+        reject(err);
       });
-    }))
+    })))
     .then(() => {
-      console.log('end of promise all, with preses:', presentations);
-      return presentations;
+      callback(null, presentations);
+    })
+    .catch((err) => {
+      callback(err, null);
     });
+    // .then(() => {
+    //   console.log('end of promise all, with preses:', presentations);
+    //   return presentations;
+    // });
+  })
+  .catch((err) => {
+    callback(err, null);
   });
 };
 
