@@ -37,11 +37,11 @@ module.exports.storePresentation = function (presentation, callback) {
 };
 
 module.exports.getAllPresentations = function (userId, callback) {
-  let presentations = [];
+  const presentations = [];
   models.Presentation.findAll({ where: { user_id: userId } })
   .then((presentationsStructure) => {
     // console.log('presentations sturcture:', presentationsStructure);
-    presentations = presentationsStructure.map((obj) => {
+    Promise.all(presentationsStructure.map((obj) => {
       const presentation = {
         title: obj.dataValues.title,
         id: obj.dataValues.id,
@@ -61,8 +61,13 @@ module.exports.getAllPresentations = function (userId, callback) {
           tweet: false
         }));
         presentation.slides = slides;
-        console.log('>>>>>>> Cool pres:', presentation);
+        // console.log('>>>>>>> Cool pres:', presentation);
+        return presentation;
       });
+    }))
+    .then(() => {
+      console.log('end of promise all, with preses:', presentations);
+      return presentations;
     });
   });
 };

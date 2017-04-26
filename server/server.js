@@ -37,6 +37,7 @@ app.use(bodyParser.json({ entended: true }));
 app.use('/', router);
 app.use(express.static(path.join(__dirname, '../client/public')));
 
+// DEBUG!
 require('./models/presentation').getAllPresentations('0', (err, result) => {
   if (err) {
     console.error('Error in test of getAllPresentations', err);

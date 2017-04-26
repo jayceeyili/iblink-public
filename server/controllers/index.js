@@ -36,7 +36,7 @@ module.exports = {
           // * currentSlideIndex, (in the slides array below)
           // * maxSlideIndex (in the slides array below)
         selectedPresentationIndex: 0,
-        presentations: [presentation.getPresentation()],
+        presentations: presentation.getAllPresentations(),
           // title,
           // id,  (database ID)
           // slides: [ {original: url, thumbnail: url}, ... ]
@@ -167,12 +167,12 @@ module.exports = {
     get(req, res) {
       const presentationId = req.query.presentationId;
       // declare a variable initialized at an empty array to store the resulting metrics data
-      let metricsData = [];
+      const metricsData = [];
       // declare a variable that stores the result of the slideUtil function that queries db to get all the slides of that presentation id
-      // iterate over the target slides 
+      // iterate over the target slides
       // query db to get the count of bookmarks with set presentation id and set slide index
       // query db to get the count of notes with set presentation id and set slide index
-      res.json(metricsData)
+      res.json(metricsData);
       // [
       //   {
       //     notes: '10',
