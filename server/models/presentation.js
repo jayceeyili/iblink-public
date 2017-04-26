@@ -51,7 +51,6 @@ module.exports.getAllPresentations = function (userId, callback) {
       };
       console.log('will look for slides that belong to pres id:', obj.dataValues.id);
 
-
       models.Slide.findAll({ where: { presentation_id: obj.dataValues.id } })
       .then((slideObjects) => {
         // console.log('Slide objects:', slideObjects);
@@ -78,10 +77,6 @@ module.exports.getAllPresentations = function (userId, callback) {
     .catch((err) => {
       callback(err, null);
     });
-    // .then(() => {
-    //   console.log('end of promise all, with preses:', presentations);
-    //   return presentations;
-    // });
   })
   .catch((err) => {
     callback(err, null);
