@@ -27,27 +27,32 @@ module.exports = {
         sockets.receivedUrlId = null;
       }
 
-      // ************* INITIAL STORE ******************
-      let preloadedState = {
-        // livePresentation,
+      presentation.getAllPresentations('0', (err, presentations) => {
+        if (err) {
+          console.log('Error getting all presentations', err);
+        }
+        // ************* INITIAL STORE ******************
+        let preloadedState = {
+          // livePresentation,
           // Object with:
           // * channel,
           // * presentationIndex, (in the presentations array below)
           // * currentSlideIndex, (in the slides array below)
           // * maxSlideIndex (in the slides array below)
-        selectedPresentationIndex: 0,
-        presentations: presentation.getAllPresentations(),
+          selectedPresentationIndex: 0,
+          presentations,
           // title,
           // id,  (database ID)
           // slides: [ {original: url, thumbnail: url}, ... ]
-        sockets
-      };
+          sockets
+        };
       // ***********************************************
 
       // const store = configureStore(preloadedState);
-      preloadedState = JSON.stringify(preloadedState).replace(/</g, '\\x3c');
+        preloadedState = JSON.stringify(preloadedState).replace(/</g, '\\x3c');
       // console.log('preloadedState', preloadedState);
-      res.render('master', { preloadedState });
+        res.render('master', { preloadedState });
+      });
     }
   },
 
