@@ -1,6 +1,7 @@
 const actionType = {
 
   // Other presentation actions
+  UploadPresentation: 'UPLOAD_PRESENTATION',
   AddPresentation: 'ADD_PRESENTATION',
   RemovePresentation: 'REMOVE_PRESENTATION',
   SelectPresentationIndex: 'SELECT_PRESENTATION_INDEX',
