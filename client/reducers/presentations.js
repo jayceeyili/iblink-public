@@ -23,7 +23,9 @@ const presentations = (state = [], action) => {
     case ActionType.RemovePresentation:
       return state.map(pres =>
         presentation(pres, action)
-      )
+      );
+    case ActionType.UploadPresentation:
+      return state;
     case ActionType.SelectPresentationIndex:
       return {...state,
         selectedPresentationIndex: action.selectedPresentationIndex}

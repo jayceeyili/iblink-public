@@ -41,4 +41,8 @@ export function uploadPresentation(newPresentation) {
   .catch((error) => {
     console.error('@@@@@ Error in uploadPresentation:', error);
   });
+
+  return {
+    type: ActionType.UploadPresentation
+  }
 }
