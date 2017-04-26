@@ -1,5 +1,5 @@
 import React from 'react';
-import Upload from '../uploader/Upload.jsx';
+import UploadContainer from '../../containers/uploadContainer.js';
 import LoginModal from '../modal/LoginModal.jsx';
 import style from './style.css';
 
@@ -15,7 +15,7 @@ class NavBar extends React.Component {
     return (
       <div className={container}>
         <LoginModal />
-        <Upload />
+        <UploadContainer />
       </div>
     )
   }
