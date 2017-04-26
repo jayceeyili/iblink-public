@@ -1,6 +1,6 @@
 import React from 'react';
 import Overview from '../components/overview/Overview.jsx';
-import PastPresentationContainer from '../containers/PastPresentationContainer';
+import PastPresentationContainer from '../containers/pastPresentationContainer';
 import NavBar from '../components/nav_bar/NavBar.jsx';
 import styles from './Dashboard.css';
 
