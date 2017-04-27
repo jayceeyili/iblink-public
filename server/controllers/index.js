@@ -109,8 +109,9 @@ module.exports = {
     post(req, res) {
       const slideIndex = req.body.slideIndex;
       const userId = '46231074627482';
+      const presentationId = 1;
       const bookmarkedSlideUrl = slides[slideIndex].original;
-      bookmarkUtil.addBookmark(bookmarkedSlideUrl, userId);
+      bookmarkUtil.addBookmark(bookmarkedSlideUrl, userId, presentationId);
       console.log('slide at index ', slideIndex, ' is added to bookmarked');
       res.json('slide at index ', slideIndex, ' is added to bookmarked');
     }
@@ -120,6 +121,7 @@ module.exports = {
     post(req, res) {
       const slideIndex = req.body.slideIndex;
       const userId = '46231074627482';
+      const presentationId = 1;
       const bookmarkedSlideUrl = slides[slideIndex].original;
       bookmarkUtil.removeBookmark(bookmarkedSlideUrl, userId);
       console.log('slide at index ', slideIndex, ' is being removed from bookmarked');
