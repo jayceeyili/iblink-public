@@ -32,9 +32,10 @@ class BarStack extends React.Component {
       }
     ];
     activityData.columns = [
-      'slide', 'notes', 'bookmarks'
+      'slide', 'notes'
     ];
-    console.log('Activity data:', activityData);
+    //'bookmarks'
+    console.log('Activity data:', this.props.activeData);
 
     let width = 700,
       height = 400,
@@ -43,10 +44,10 @@ class BarStack extends React.Component {
           field: 'notes',
           name: 'Notes'
         },
-        {
-          field: 'bookmarks',
-          name: 'Bookmarks'
-        }
+        // {
+        //   field: 'bookmarks',
+        //   name: 'Bookmarks'
+        // }
       ],
       x = function (d) {
         return d.slide;
@@ -62,7 +63,7 @@ class BarStack extends React.Component {
 
     return (
       <BarStackChart
-        data={activityData}
+        data={this.props.activeData}
         width={width}
         height={height}
         chartSeries={chartSeries}

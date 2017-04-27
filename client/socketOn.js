@@ -64,9 +64,10 @@ export default function (store) {
 
   socket.on('fetchMatrix', (data) => {
     // here we save the return data from server to the globle store, then the Matrix can access it
+    console.log('client received matrixData: ', data.data);
     store.dispatch({
       type: actionType.ReceiveMatrixData,
-      matrixData: data
+      matrixData: data.data
     });
   });
 

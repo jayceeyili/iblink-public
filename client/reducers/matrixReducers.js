@@ -1,13 +1,9 @@
 import actionType from '../actions/actionType.js';
 
-const initialState = {
-  matrixData: ''
-};
-
-const matrix = (state = initialState, action) => {
+const matrix = (state = [], action) => {
   switch (action.type) {
     case actionType.ReceiveMatrixData:
-      return { ...state, matrixData: action.matrixData };
+      return action.matrixData;
     default: return state;
   }
 };
