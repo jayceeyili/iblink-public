@@ -4,7 +4,7 @@ import SendStatusButton from '../slide_utilities/toggle_present_button/SendStatu
 // import NotesContainer from '../slide_utilities/notes/notesContainer.jsx';
 import MetricsContainer from '../metrics/metricsContainer';
 import PresenterCarouselContainer from '../../containers/presenterCarouselContainer';
-import LoginModal from '../modal/LoginModal.jsx';
+import LoginModal from '../authentication/LoginView.jsx';
 import styles from './presenterStyle.css';
 
 

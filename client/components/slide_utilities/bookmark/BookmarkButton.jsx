@@ -29,16 +29,15 @@ class Bookmark extends React.Component {
     return (
       <div>
         {this.props.bookmarks.bookmarkButtonColor === "black" ?
-          <Button onClick={this.handleClickBookmark} basic>
+          <Button onClick={this.handleClickBookmark} className="ui button">
             <Icon name="bookmark" size="big"/>
             Bookmark
           </Button>
           :
-          <Button onClick={this.handleClickBookmark} basic color='red'>
-            <Icon name="remove bookmark" color="red" size="big"/>
+          <Button onClick={this.handleClickBookmark} className='ui twitter button'>
+            <Icon name="remove bookmark" size="big"/>
             Unbookmark
           </Button>
-
         }
       </div>
     );

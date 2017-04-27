@@ -19,7 +19,6 @@ class NavBar extends React.Component {
       // </div>
       <Menu
         className={container}
-        floated='right'
         attached
         >
         <Menu.Item>

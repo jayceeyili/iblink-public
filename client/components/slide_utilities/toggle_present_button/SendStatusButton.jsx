@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Promise from 'bluebird';
-import { Button, Icon } from 'semantic-ui-react';
+import { Button,Icon } from 'semantic-ui-react';
 import { SendStatus, CreateRoom } from './../../../actions/socketAction';
 
 class SendStatusButton extends React.Component {
