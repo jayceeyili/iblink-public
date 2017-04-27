@@ -6,7 +6,8 @@ module.exports.getMetricsData = (presentationId, callback) => {
     let metricsData = [];
     Promise.all(slides.map((obj, slideIndex) => new Promise((resolve, reject) => {
       let column = {
-        slide: obj.dataValues.slide_index + 1
+        // slide: obj.dataValues.slide_index + 1
+        slide: obj.dataValues.slide_index
       };
 
       models.Note.findAndCountAll({ where: { slide_id: obj.dataValues.id }})
@@ -16,17 +17,19 @@ module.exports.getMetricsData = (presentationId, callback) => {
 
         models.Bookmark.findAndCountAll({ where: { slide_id: obj.dataValues.id }})
         .then( bookmarkFindResult => {
+          console.log('!!!!!@@@@@ bookmarkFindResult.count: ', bookmarkFindResult.count);
+          // bookmark is being saved after findAndCountAll
           column.bookmarks = bookmarkFindResult.count;
           metricsData[slideIndex] = column;
+          resolve();
         })
-
-        resolve();
+        .catch(err => reject(err));
       })
       .catch( err => reject(err));
-
-
     })))
-    .then( () => callback(null, metricsData))
+    .then( () => {
+      return callback(null, metricsData)
+    })
     .catch( err => callback(err, null));
   })
   .catch( err => callback(err, null));

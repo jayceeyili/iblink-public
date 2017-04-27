@@ -59,6 +59,7 @@ class BarStack extends React.Component {
     // chart.selectAll('rect').filter(d => d.value === max).classed('max', true).attr('fill', 'green');
       // example of doing a different display for a specific column
 
+    console.log(this.props.activeData);
 
     return (
       <BarStackChart

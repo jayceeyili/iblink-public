@@ -14,11 +14,11 @@ class Bookmark extends React.Component {
   handleClickBookmark(event) {
     event.preventDefault();
     if (!this.props.bookmarks.bookmarks.includes(this.props.bookmarks.currentAudienceSlide)) {
-      console.log('BOOKMARK PROPS: ', this.props);
-      this.props.addBookmark(this.props.bookmarks.currentAudienceSlide, this.props.userId, this.props.presentationId);
+      console.log('@@@@@@@ SLIDES[this.props.bookmarks.currentAudienceSlide].id: ', this.props.slides[this.props.bookmarks.currentAudienceSlide].id);
+      this.props.addBookmark(this.props.bookmarks.currentAudienceSlide, this.props.userId, this.props.slides[this.props.bookmarks.currentAudienceSlide].id);
       this.props.changeBookmarkButtonColor('purple');
     } else {
-      this.props.removeBookmark(this.props.bookmarks.currentAudienceSlide, this.props.userId, this.props.presentationId);
+      this.props.removeBookmark(this.props.bookmarks.currentAudienceSlide, this.props.userId, this.props.slides[this.props.bookmarks.currentAudienceSlide].id);
       this.props.changeBookmarkButtonColor('black');
     }
   }
