@@ -1,7 +1,6 @@
 import React from 'react';
 import UploadContainer from '../../containers/uploadContainer.js';
 import LoginModal from '../../containers/loginContainer.js';
-// import LoginModal from '../modal/LoginModal.jsx';
 import SendStatusButton from '../slide_utilities/toggle_present_button/SendStatusButton.jsx';
 import { Button, Menu } from 'semantic-ui-react';
 import style from './style.css';
