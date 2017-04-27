@@ -1,10 +1,10 @@
 import React from 'react';
-import BookmarkButtonContainer from '../slide_utilities/bookmark/BookmarkButtonContainer.jsx';
+// import BookmarkButtonContainer from '../slide_utilities/bookmark/BookmarkButtonContainer.jsx';
 import SendStatusButton from '../slide_utilities/toggle_present_button/SendStatusButton.jsx';
-import NotesContainer from '../slide_utilities/notes/notesContainer.jsx';
+// import NotesContainer from '../slide_utilities/notes/notesContainer.jsx';
 import MetricsContainer from '../metrics/metricsContainer';
 import PresenterCarouselContainer from '../../containers/presenterCarouselContainer';
-import LoginModal from '../modal/LoginModal.jsx';
+import LoginModal from '../authentication/LoginView.jsx';
 import styles from './presenterStyle.css';
 
 
@@ -33,13 +33,7 @@ const PastPresentationView = props => (
                   :
                   <div>
                     <div className={buttons}>
-                      <BookmarkButtonContainer />
-                    </div>
-                    <div className={buttons}>
                       <SendStatusButton />
-                    </div>
-                    <div>
-                      <NotesContainer />
                     </div>
                     <div>
                       <MetricsContainer />

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Promise from 'bluebird';
+import { Button,Icon } from 'semantic-ui-react';
 import { SendStatus, CreateRoom } from './../../../actions/socketAction';
 
 class SendStatusButton extends React.Component {
@@ -28,14 +29,21 @@ class SendStatusButton extends React.Component {
   render() {
     return (
       <div>
-        {
-          !this.state.presenterIsOn ?
-            <button type="button" className="btn btn-danger"
+        {!this.state.presenterIsOn ?
+
+            <Button
+              basic
+              color='red'
+              size='massive'
               onClick={this.handlePresentButton}>End Presentation
-            </button> :
-          <button type="button" className="btn btn-success"
-            onClick={this.handlePresentButton}>Start Presentation
-          </button>
+            </Button>
+            :
+            <Button
+              basic
+              color='green'
+              size='massive'
+              onClick={this.handlePresentButton}>Start Presentation
+            </Button>
         }
       </div>
     );
