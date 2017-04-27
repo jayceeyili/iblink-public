@@ -122,12 +122,23 @@ class LoginView extends React.Component {
       <div>
         {this.props.authentication === '' ?
           <div>
-            <h2>Login</h2>
+            {this.state.signup === false ?
+              <h2>Login</h2>
+              :
+              <h2>Sign Up</h2>
+            }
             <form onSubmit={this.handleSubmit}>
               <input type="text" value={this.state.email} onChange={this.handleChange} />
               <input type="password" value={this.state.password} onChange={this.handlePasswordChange} placeholder="enter your password" />
               <input type="submit" value="Enter" />
             </form>
+
+            {this.state.signup === false ?
+              <button basic onClick={this.signUp}>Sign Up</button>
+              :
+              <div></div>
+            }
+
             <button
               className="ui twitter button"
               onClick={() => {this.loginProvider(new firebase.auth.TwitterAuthProvider())}}
@@ -138,7 +149,7 @@ class LoginView extends React.Component {
           </div>
           :
           <div>
-            {this.props.authentication === '' && this.props.audienceCheck !== null ?
+            {this.props.authentication === '' ?
               <Redirect to="/" />
               :
               <Redirect to="/dashboard" />
