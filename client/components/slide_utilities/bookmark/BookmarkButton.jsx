@@ -15,13 +15,12 @@ class Bookmark extends React.Component {
 
   handleClickBookmark(event) {
     event.preventDefault();
-    console.log('this.props.bookmarks.currentAudienceSlide: ', this.props.bookmarks.currentAudienceSlide);
-
     if (!this.props.bookmarks.bookmarks.includes(this.props.bookmarks.currentAudienceSlide)) {
-      this.props.addBookmark(this.props.bookmarks.currentAudienceSlide);
+      console.log('BOOKMARK PROPS: ', this.props);
+      this.props.addBookmark(this.props.bookmarks.currentAudienceSlide, this.props.userId, this.props.presentationId);
       this.props.changeBookmarkButtonColor('purple');
     } else {
-      this.props.removeBookmark(this.props.bookmarks.currentAudienceSlide);
+      this.props.removeBookmark(this.props.bookmarks.currentAudienceSlide, this.props.userId, this.props.presentationId);
       this.props.changeBookmarkButtonColor('black');
     }
   }

@@ -1,4 +1,5 @@
 const path = require('path');
+const Promise = require('bluebird');
 
 const presentation = require('../models/presentation');
 const channel = require('../models/channel');
@@ -7,7 +8,7 @@ const bookmarkUtil = require('../models/bookmark');
 const noteUtil = require('../models/note');
 
 let maxSlide = 0;  // TODO: improve after MVP to support multiple presentations
-const slides = presentation.getPresentation().slides;
+const getTargetPresentationSlides = Promise.promisify(require('../models/slide').getTargetPresentationSlides);
 
 module.exports = {
 
@@ -108,22 +109,32 @@ module.exports = {
     },
     post(req, res) {
       const slideIndex = req.body.slideIndex;
-      const userId = '46231074627482';
-      const bookmarkedSlideUrl = slides[slideIndex].original;
-      bookmarkUtil.addBookmark(bookmarkedSlideUrl, userId);
-      console.log('slide at index ', slideIndex, ' is added to bookmarked');
-      res.json('slide at index ', slideIndex, ' is added to bookmarked');
+      const userId = req.body.userId;
+      const presentationId = req.body.presentationId;
+
+      getTargetPresentationSlides(presentationId)
+      .then((targetPresentationSlides) => {
+        bookmarkUtil.addBookmark(targetPresentationSlides[slideIndex].dataValues.image_url, userId, presentationId);
+        console.log('slide at index ', slideIndex, ' is added to bookmarked');
+        res.json('slide at index ', slideIndex, ' is added to bookmarked');
+      })
+      .catch(err => console.log(err));
     }
   },
 
   audience_presentation_remove_bookmark: {
     post(req, res) {
       const slideIndex = req.body.slideIndex;
-      const userId = '46231074627482';
-      const bookmarkedSlideUrl = slides[slideIndex].original;
-      bookmarkUtil.removeBookmark(bookmarkedSlideUrl, userId);
-      console.log('slide at index ', slideIndex, ' is being removed from bookmarked');
-      res.json('slide at index ', slideIndex, ' is removed from bookmarked');
+      const userId = req.body.userId;
+      const presentationId = req.body.presentationId;
+
+      getTargetPresentationSlides(presentationId)
+      .then((targetPresentationSlides) => {
+        bookmarkUtil.removeBookmark(targetPresentationSlides[slideIndex].dataValues.image_url, userId, presentationId);
+        console.log('slide at index ', slideIndex, ' is being removed from bookmarked');
+        res.json('slide at index ', slideIndex, ' is removed from bookmarked');
+      })
+      .catch(err => console.log(err));
     }
   },
 
