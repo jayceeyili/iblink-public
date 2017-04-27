@@ -1,3 +1,5 @@
+const models = require('../../database/models/index');
+
 module.exports.getTargetPresentationSlides = function (presentationId, callback) {
   models.Slide.findAll({
     where: {

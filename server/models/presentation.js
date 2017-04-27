@@ -1,4 +1,6 @@
+const Promise = require('bluebird');
 const models = require('../../database/models/index');
+const checkIsSlideBookmarked = Promise.promisify(require('./bookmark').checkIsSlideBookmarked);
 
 module.exports.storePresentation = function (presentation, callback) {
   // callback(null, { hello: 'world' });
