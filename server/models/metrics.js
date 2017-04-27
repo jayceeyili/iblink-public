@@ -6,7 +6,7 @@ module.exports.getMetricsData = (presentationId, callback) => {
     let metricsData = [];
     Promise.all(slides.map((obj, slideIndex) => new Promise((resolve, reject) => {
       let column = {
-        slide: obj.dataValues.slide_index
+        slide: obj.dataValues.slide_index + 1
       };
 
       models.Note.findAndCountAll({ where: { slide_id: obj.dataValues.id }})

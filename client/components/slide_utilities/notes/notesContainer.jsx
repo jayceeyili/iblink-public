@@ -9,7 +9,7 @@ const bundledActionCreators = Object.assign( {},
   // noteActions,
 );
 const mapStateToProps = state => ( {
-  presentationId: state.presentations[0].id,
+  presentationId: state.presentations[state.selectedPresentationIndex].id,
   userId: state.authentication.userId,
   note: state.currentSlide.note,
   slideId: state.currentSlide.id
