@@ -60,7 +60,7 @@ class Upload extends React.Component {
             // newSlide.height = slide.height;
             // newSlide.original_filename = slide.original_filename;
             newSlide.secure_url = slide.secure_url;
-            // newSlide.thumbnail_url = slide.thumbnail_url;
+            newSlide.thumbnail_url = slide.thumbnail_url;
             // newSlide.url = slide.url;
             // newSlide.width = slide.width;
             console.log('mapping to:', newSlide);
