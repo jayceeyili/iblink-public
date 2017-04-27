@@ -6,7 +6,7 @@ export function toggleBookmark() {
   };
 }
 
-export function addBookmark(slideIndex, userId) {
+export function addBookmark(slideIndex, userId, presentationId) {
   console.log('addBookmark received slideIndex', slideIndex);
   fetch('/audience_presentation/add_bookmark', {
     method: 'POST',
@@ -14,8 +14,9 @@ export function addBookmark(slideIndex, userId) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      slideIndex: slideIndex,
-      userId: userId
+      slideIndex,
+      userId,
+      presentationId
     })
   })
   .then(() => {
@@ -30,15 +31,16 @@ export function addBookmark(slideIndex, userId) {
   };
 }
 
-export function removeBookmark(slideIndex, userId) {
+export function removeBookmark(slideIndex, userId, presentationId) {
   fetch('/audience_presentation/remove_bookmark', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      slideIndex: slideIndex,
-      userId: userId
+      slideIndex,
+      userId,
+      presentationId
     })
   })
   .then(() => {

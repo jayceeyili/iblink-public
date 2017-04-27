@@ -110,8 +110,8 @@ module.exports = {
     post(req, res) {
       const slideIndex = req.body.slideIndex;
       const userId = req.body.userId;
-      // const userId = '46231074627482';
-      const presentationId = 1;
+      const presentationId = req.body.presentationId;
+
       getTargetPresentationSlides(presentationId)
       .then((targetPresentationSlides) => {
         bookmarkUtil.addBookmark(targetPresentationSlides[slideIndex].dataValues.image_url, userId, presentationId);
@@ -126,8 +126,7 @@ module.exports = {
     post(req, res) {
       const slideIndex = req.body.slideIndex;
       const userId = req.body.userId;
-      // const userId = '46231074627482';
-      const presentationId = 1;
+      const presentationId = req.body.presentationId;
 
       getTargetPresentationSlides(presentationId)
       .then((targetPresentationSlides) => {
