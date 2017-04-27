@@ -9,6 +9,7 @@ import * as socketActionCreators from '../actions/socketAction';
 
 
 const mapStateToProps = (state) => {
+  // console.log('Executing mapStateToProps of pres Carousel container selected pres:', state);
   return {
     currentSlideState: state.currentSlide,
     images: state.presentations[state.selectedPresentationIndex].slides,
