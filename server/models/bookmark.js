@@ -7,10 +7,8 @@ module.exports.addBookmark = function (bookmarkedSlideUrl, userId, presentationI
   .then((slides) => {
     console.log('TARGET SLIDESSSSSS URL: ', slides[0].dataValues.image_url);
     for (let i = 0; i < slides.length; i++) {
-      console.log(i);
       console.log('slides[i].dataValues.image_url === bookmarkedSlideUrl')
       if (slides[i].dataValues.image_url === bookmarkedSlideUrl) {
-        console.log('ADDING BOOKMARK TO DB');
         models.Bookmark.create({
           slide_id: slides[i].dataValues.id,
           user_id: userId
