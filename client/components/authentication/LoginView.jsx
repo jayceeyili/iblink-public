@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router';
+import { Button, Icon } from 'semantic-ui-react';
 import firebase from 'firebase';
 
 var config = {
@@ -126,11 +127,12 @@ class LoginView extends React.Component {
               <input type="text" value={this.state.email} onChange={this.handleChange} />
               <input type="password" value={this.state.password} onChange={this.handlePasswordChange} placeholder="enter your password" />
               <input type="submit" value="Enter" />
-              <button onClick={this.signOut}>Log Out</button>
             </form>
             <button
+              className="ui twitter button"
               onClick={() => {this.loginProvider(new firebase.auth.TwitterAuthProvider())}}
             >
+              <i class="twitter icon"></i>
               Twitter Login
             </button>
           </div>
@@ -150,6 +152,7 @@ class LoginView extends React.Component {
 
 export default LoginView;
 
+{/* <button className="ui inverted red button" onClick={this.signOut}>Log Out</button> */}
 
 {/* <div>
   <h2>Sign Up</h2>

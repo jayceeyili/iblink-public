@@ -17,7 +17,9 @@ class NavBar extends React.Component {
       // <div className={container}>
       // </div>
       <Menu
+        className={container}
         floated={'right'}
+        attached
         >
         <Menu.Item>
           <LoginModal />

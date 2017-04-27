@@ -5,7 +5,7 @@ import Login from '../../containers/loginContainer.js';
 const LoginModal = () => {
   return (
     <Modal
-      trigger={<Button>Sign In</Button>}
+      trigger={<Button positive>Sign In</Button>}
       size='small'
     >
       <Modal.Content image>
