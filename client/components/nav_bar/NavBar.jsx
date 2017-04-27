@@ -1,6 +1,8 @@
 import React from 'react';
 import UploadContainer from '../../containers/uploadContainer.js';
-import LoginModal from '../modal/LoginModal.jsx';
+import LoginModal from '../../containers/loginContainer.js';
+// import LoginModal from '../modal/LoginModal.jsx';
+import SendStatusButton from '../slide_utilities/toggle_present_button/SendStatusButton.jsx';
 import { Button, Menu } from 'semantic-ui-react';
 import style from './style.css';
 
@@ -18,7 +20,7 @@ class NavBar extends React.Component {
       // </div>
       <Menu
         className={container}
-        floated={'right'}
+        floated='right'
         attached
         >
         <Menu.Item>
@@ -27,6 +29,10 @@ class NavBar extends React.Component {
 
         <Menu.Item>
           <UploadContainer />
+        </Menu.Item>
+
+        <Menu.Item>
+          <SendStatusButton />
         </Menu.Item>
       </Menu>
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button, Icon } from 'semantic-ui-react';
 import style from './style.css';
 
 class Upload extends React.Component {
@@ -88,12 +89,26 @@ class Upload extends React.Component {
             <input
               value={this.presentationTitle}
               onChange={this.handleChange.bind(this)} />
-            <button onClick={this.handleUpload}>
-              OK
-            </button>
+            <Button
+              basic
+              color="blue"
+              onClick={this.handleUpload}
+              size="medium"
+            >
+              Add
+            </Button>
           </div>
           ) : (
-            <button className={button} onClick={this.handleGetTitle}>Upload a presentation +</button>
+          <Button
+            className={button}
+            basic
+            color="blue"
+            onClick={this.handleGetTitle}
+            size="medium"
+          >
+            <Icon name="add circle" />
+            Upload a presentation
+          </Button>
         )}
       </div>
     );
