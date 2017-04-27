@@ -12,6 +12,12 @@ module.exports = function (server) {
       socket.join('room-' + channel);
     });
 
+    socket.on('fetchMatrix', data => {
+      // TODO: require some function here and pass the data.presentation_id to the function as argument,
+      // then broadcast the return result to everyone in the room
+      socket.broadcast.to('room-' + data.channel).emit('fetchMatrix', data.presentation_id);
+    });
+
     socket.on('broadcastSlide', data => {
       socket.broadcast.to('room-' + data.channel).emit('broadcastSlide', data.maxSlideIndex);
     });

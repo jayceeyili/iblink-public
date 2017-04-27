@@ -5,7 +5,8 @@ import rootReducer from '../reducers';
 import {
   broadcastMiddleware,
   createRoomMiddleware,
-  redirectMiddleware
+  redirectMiddleware,
+  matrixMiddleware
 } from '../socketOn.js';
 
 
@@ -16,7 +17,8 @@ const configureStore = (preloadedState) => {
   	composeWithDevTools(applyMiddleware(
       broadcastMiddleware,
       redirectMiddleware,
-      createRoomMiddleware 
+      createRoomMiddleware,
+      matrixMiddleware
     ))
 );
   return store;

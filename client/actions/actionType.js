@@ -6,6 +6,9 @@ const actionType = {
   RemovePresentation: 'REMOVE_PRESENTATION',
   SelectPresentationIndex: 'SELECT_PRESENTATION_INDEX',
 
+  // Matrix
+  ReceiveMatrixData: 'RECEIVE_MATRIX_DATA',
+
   // Bookmarks
   ToggleBookmark: 'TOGGLE_BOOKMARK',
   AddBookmark: 'ADD_BOOKMARK',
