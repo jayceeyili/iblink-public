@@ -1,4 +1,6 @@
 import React from 'react';
+import { Route, Redirect } from 'react-router';
+import { Button, Icon } from 'semantic-ui-react';
 import firebase from 'firebase';
 
 var config = {
@@ -115,42 +117,54 @@ class LoginView extends React.Component {
     this.setState({signup: !this.state.signup })
   }
 
-
   render() {
     return (
-        this.state.signup === false ?
+      <div>
+        {this.props.authentication === '' ?
           <div>
             <h2>Login</h2>
             <form onSubmit={this.handleSubmit}>
               <input type="text" value={this.state.email} onChange={this.handleChange} />
               <input type="password" value={this.state.password} onChange={this.handlePasswordChange} placeholder="enter your password" />
               <input type="submit" value="Enter" />
-              <button onClick={this.signOut}>Log Out</button>
             </form>
-            <button onClick={this.signUp}>Or Sign Up</button>
             <button
+              className="ui twitter button"
               onClick={() => {this.loginProvider(new firebase.auth.TwitterAuthProvider())}}
             >
+              <i class="twitter icon"></i>
               Twitter Login
             </button>
           </div>
-        :
+          :
           <div>
-            <h2>Sign Up</h2>
-            <form onSubmit={this.handleSubmit}>
-              <input type="text" value={this.state.email} onChange={this.handleChange} />
-              <input type="password" value={this.state.password} onChange={this.handlePasswordChange} placeholder="enter your password" />
-              <input type="submit" value="Enter" />
-            </form>
-            <button onClick={this.signUp}>Or Login</button>
-            <button
-              onClick={() => {this.loginProvider(new firebase.auth.TwitterAuthProvider())}}
-            >
-              Twitter Login
-            </button>
+            {this.props.authentication === '' && this.props.audienceCheck !== null ?
+              <Redirect to="/" />
+              :
+              <Redirect to="/dashboard" />
+            }
           </div>
+        }
+      </div>
     )
   }
 }
 
 export default LoginView;
+
+{/* <button className="ui inverted red button" onClick={this.signOut}>Log Out</button> */}
+
+{/* <div>
+  <h2>Sign Up</h2>
+  <form onSubmit={this.handleSubmit}>
+    <input type="text" value={this.state.email} onChange={this.handleChange} />
+    <input type="password" value={this.state.password} onChange={this.handlePasswordChange} placeholder="enter your password" />
+    <input type="submit" value="Enter" />
+  </form>
+  <button onClick={this.signUp}>Or Login</button>
+  <button
+    onClick={() => {this.loginProvider(new firebase.auth.TwitterAuthProvider())}}
+    >
+      Twitter Login
+    </button>
+  </div> */}

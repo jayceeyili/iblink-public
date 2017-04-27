@@ -1,5 +1,7 @@
 .nav {
   height: 10%;
+  width: 100%;
+  border-radius: 0px;
   background: red; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(left, red , yellow); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(right, red, yellow); /* For Opera 11.1 to 12.0 */

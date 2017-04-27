@@ -6,7 +6,8 @@ import * as authenticateActionCreators from '../actions/authenticationActions.js
 
 const mapStateToProps = (state) => {
   return {
-    authentication: state.authentication.userId
+    authentication: state.authentication.userId,
+    audienceCheck: state.sockets.channel
   };
 };
 
