@@ -35,10 +35,6 @@ const PastPresentationView = props => (
                     <div className={buttons}>
                       <SendStatusButton />
                     </div>
-                    {/* <div>
-                      <NotesContainer />
-                      <BookmarkButtonContainer />
-                    </div> */}
                     <div>
                       <MetricsContainer />
                     </div>
