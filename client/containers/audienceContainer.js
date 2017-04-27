@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import AudiencePresentationContainer from './containers/AudiencePresentationContainer.jsx';
+import AudiencePresentationContainer from './containers/audiencePresentationContainer.jsx';
 import * as authenticateActionCreators from '../actions/authenticationActions.js';
 
 const mapStateToProps = (state) => {
   return {
-    authentication: state.authentication.userId
+    authentication: state.authentication.userId,
+    audienceCheck: state.sockets.channel
   };
 };
 

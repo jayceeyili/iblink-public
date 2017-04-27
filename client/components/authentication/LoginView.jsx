@@ -116,7 +116,6 @@ class LoginView extends React.Component {
     this.setState({signup: !this.state.signup })
   }
 
-
   render() {
     return (
       <div>
@@ -136,7 +135,13 @@ class LoginView extends React.Component {
             </button>
           </div>
           :
-          <Redirect to="/dashboard" />
+          <div>
+            {this.props.authentication === '' && this.props.audienceCheck !== null ?
+              <Redirect to="/" />
+              :
+              <Redirect to="/dashboard" />
+            }
+          </div>
         }
       </div>
     )

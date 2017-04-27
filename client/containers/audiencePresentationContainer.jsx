@@ -1,7 +1,8 @@
 import React from 'react';
 import FeaturesContainer from '../components/slide_utilities/index.jsx';
-import styles from '../components/audience_live_view/style.css';
 import AudienceCarouselContainer from './audienceCarouselContainer';
+import LoginContainer from './loginContainer.js';
+import styles from '../components/audience_live_view/style.css';
 
 
 class AudiencePresentationContainer extends React.Component {
@@ -18,13 +19,16 @@ class AudiencePresentationContainer extends React.Component {
         <section className={container}>
           <AudienceCarouselContainer />
         </section>
-        <section className={bookmark}>
+        {this.props.authentication === '' ?
+          <LoginContainer />
+          :
+          <section className={bookmark}>
           <FeaturesContainer />
-        </section>
+          </section>
+        }
       </div>
     );
   }
 }
 
 export default AudiencePresentationContainer;
-
