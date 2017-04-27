@@ -1,12 +1,6 @@
 import actionType from '../actions/actionType.js';
 
-const initialState = [
-  {
-    notes: 0,
-    // bookmarks: 0,
-    slide: 0
-  }
-];
+const initialState = [];
 
 const matrix = (state = initialState, action) => {
   switch (action.type) {

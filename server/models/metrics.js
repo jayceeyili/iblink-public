@@ -12,16 +12,18 @@ module.exports.getMetricsData = (presentationId, callback) => {
       models.Note.findAndCountAll({ where: { slide_id: obj.dataValues.id }})
       .then( data => {
         column.notes = data.count;
-
         metricsData[slideIndex] = column;
+
+        models.Bookmark.findAndCountAll({ where: { slide_id: obj.dataValues.id }})
+        .then( data => {
+          column.bookmarks = data.count;
+          metricsData[slideIndex] = column;
+        })
+
         resolve();
       })
       .catch( err => reject(err));
 
-      // models.Bookmarks.findAndCountAll({ where: { slide_id: obj.dataValues.id }})
-      // .then( count => {
-      //   column.bookmarks = count;
-      // })
 
     })))
     .then( () => callback(null, metricsData))
