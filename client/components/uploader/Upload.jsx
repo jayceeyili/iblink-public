@@ -94,13 +94,10 @@ class Upload extends React.Component {
           </div>
           ) : (
             <button className={button} onClick={this.handleGetTitle}>Upload a presentation +</button>
-          )}
+        )}
       </div>
     );
   }
 }
 
 export default Upload;
-
-
-

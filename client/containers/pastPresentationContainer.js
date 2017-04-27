@@ -5,7 +5,7 @@ import pastPresentationView from '../components/past_presentation/PastPresentati
 const mapStateToProps = (state) => {
   // console.log('in past pres container. Is there valid selectedPresentationIndex? state is:', state);
   var noPresentations, title;
-  
+
   if (state.presentations.length === 0) {
   	noPresentations = true;
   	title = '';
@@ -15,7 +15,8 @@ const mapStateToProps = (state) => {
   }
   return {
     noPresentations,
-    title
+    title,
+    authentication: state.authentication.userId
   };
 };
 
