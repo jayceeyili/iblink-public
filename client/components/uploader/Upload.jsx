@@ -5,15 +5,28 @@ class Upload extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      getTitle: false,
+      presentationTitle: 'Untitled presentation'
     };
 
+    // this.handleTitle = this.handleTitle.bind(this);
     this.handleUpload = this.handleUpload.bind(this);
+    this.handleGetTitle = this.handleGetTitle.bind(this);
   }
 
-  handleUpload() {
+  handleChange(e) {
+    this.setState({presentationTitle: e.target.value});
+  }
+
+  handleGetTitle(e) {
+    this.setState({getTitle: true});
+  }
+
+  handleUpload(event) {
+    this.setState({getTitle: false});
+    event.preventDefault();
     const newPresentation = {};
-    newPresentation.title = 'Untitled presentation';
+    newPresentation.title = this.state.presentationTitle;
     if (!this.props.authorId) {
       console.error('PROBLEM: no user ID in upload, setting ID to 0 for debug');
     }
@@ -70,10 +83,24 @@ class Upload extends React.Component {
     const button = `btn btn-primary ${style.button}`
     return (
       <div>
-        <button className={button} onClick={this.handleUpload}>Upload a presentation +</button>
+        { this.state.getTitle ? (
+          <div>Please enter a presentation title:
+            <input
+              value={this.presentationTitle}
+              onChange={this.handleChange.bind(this)} />
+            <button onClick={this.handleUpload}>
+              OK
+            </button>
+          </div>
+          ) : (
+            <button className={button} onClick={this.handleGetTitle}>Upload a presentation +</button>
+          )}
       </div>
     );
   }
 }
 
 export default Upload;
+
+
+
