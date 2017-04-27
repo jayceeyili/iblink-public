@@ -10,8 +10,6 @@ const presentation = (state, action) => {
       return {
         null
       }
-    case ActionType.SelectPresentationIndex:
-      return action.selectedPresentationIndex
     default:
       return state
   }
@@ -26,12 +24,6 @@ const presentations = (state = [], action) => {
       );
     case ActionType.UploadPresentation:
       return state;
-    case ActionType.SelectPresentationIndex:
-      return {...state,
-        selectedPresentationIndex: action.selectedPresentationIndex}
-    // case ActionType.CreatePresentation:
-    //   return {...state,
-    //     presentations:  // push TODO}
     default:
       return state
   }

@@ -7,11 +7,6 @@ export const removePresentationIndex = selectedPresentationIndex => ({
   selectedPresentationIndex
 });
 
-export const selectPresentationIndex = selectedPresentationIndex => ({
-  type: ActionType.SelectPresentationIndex,
-  selectedPresentationIndex
-});
-
 export function uploadPresentation(newPresentation) {
   console.log('pres Action: uploading pres:', newPresentation);
   fetch('/presenter_presentation', {

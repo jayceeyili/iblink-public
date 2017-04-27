@@ -17,7 +17,7 @@ const container = `${styles.container}`;
 
 const PastPresentationView = props => (
   <div className={container}>
-    <h3 style={title}>MVP Presentation
+    <h3 style={title}> {props.title}
     </h3>
     <div>
       {props.noPresentations ? (

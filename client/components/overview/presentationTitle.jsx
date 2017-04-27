@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PresentationTitle = ({ title }) => (
-  <div>
+const PresentationTitle = ({ title, onPresentationTitleClicked }) => (
+  <div     
+    onClick={onPresentationTitleClicked}
+  >
     {title}
   </div>
 );
