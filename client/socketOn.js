@@ -8,7 +8,8 @@ let socket = null;
 export function matrixMiddleware(store) {
   return next => (action) => {
     if ( socket && (action.type === actionType.AddNote || action.type === actionType.AddBookmark)) {
-      var presentation_id = store.getState().presentations[0].id;
+      var selectedPresentationIndex = store.getState().selectedPresentationIndex;
+      var presentation_id = store.getState().presentations[selectedPresentationIndex].id;
       var channel = store.getState().sockets.channel;
       socket.emit('fetchMatrix', {
           presentation_id: presentation_id,
@@ -64,9 +65,10 @@ export default function (store) {
 
   socket.on('fetchMatrix', (data) => {
     // here we save the return data from server to the globle store, then the Matrix can access it
+    console.log('client received matrixData: ', data.data);
     store.dispatch({
       type: actionType.ReceiveMatrixData,
-      matrixData: data
+      matrixData: data.data
     });
   });
 

@@ -20,4 +20,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, () => {} )(pastPresentationView);
+export default connect(mapStateToProps)(pastPresentationView);

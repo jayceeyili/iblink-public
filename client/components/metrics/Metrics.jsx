@@ -34,7 +34,7 @@ class BarStack extends React.Component {
     activityData.columns = [
       'slide', 'notes', 'bookmarks'
     ];
-    console.log('Activity data:', activityData);
+    console.log('Activity data:', this.props.activeData);
 
     let width = 700,
       height = 400,
@@ -62,7 +62,7 @@ class BarStack extends React.Component {
 
     return (
       <BarStackChart
-        data={activityData}
+        data={this.props.activeData}
         width={width}
         height={height}
         chartSeries={chartSeries}
