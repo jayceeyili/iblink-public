@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Icon } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
-
 import * as bookmarkActionCreators from './../../../actions/bookmarkActions';
 import style from './bookmark-button.css'
 
@@ -26,19 +25,24 @@ class Bookmark extends React.Component {
   //this.props.bookmarks.bookmarkButtonColor
 
   render() {
-    const bookmarkedButton = `ui button ${style.btn}`;
-    const unbookmarkedButton = `ui twitter button ${style.btn}`;
+    const bookmarkedButton = `${style.btn} ui button`;
+    const unbookmarkedButton = `${style.btn} ui twitter button`;
+    const inline = `${style.inline}`
     return (
       <div>
         {this.props.bookmarks.bookmarkButtonColor === "black" ?
           <Button onClick={this.handleClickBookmark} className={bookmarkedButton}>
-            <Icon name="bookmark" size="big" />
-            Bookmark
+            <span>
+              <Icon className={inline} name="bookmark" size="big" />
+              <p className={inline}>Bookmark</p>
+            </span>
           </Button>
           :
           <Button onClick={this.handleClickBookmark} className={unbookmarkedButton}>
-            <Icon name="remove bookmark" size="big" />
-            Unbookmark
+            <span>
+              <Icon className={inline} name="remove bookmark" size="big" />
+              <p className={inline}>Unbookmark</p>
+            </span>
           </Button>
         }
       </div>
