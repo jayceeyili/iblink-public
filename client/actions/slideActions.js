@@ -49,7 +49,7 @@ export function updateNote( body ) {
 
   return {
     type: ActionType.UpdateNote,
-    text: body.note
+    body: body
   }
 }
 
@@ -72,5 +72,6 @@ export function deleteNote( body ) {
 
   return {
     type: ActionType.DeleteNote,
+    body: body
   }
 }

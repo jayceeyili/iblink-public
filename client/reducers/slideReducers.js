@@ -17,9 +17,13 @@ const currentSlide = ( state = initialState, action ) => {
       kv[action.body.currentAudienceSlide] = action.body.note;
       return { ...state, note: action.body.note, notes: Object.assign(state.notes, kv) };
     case actionType.UpdateNote:
-      return state;
+      var kv = {};
+      kv[action.body.currentAudienceSlide] = action.body.note;
+      return { ...state, note: action.body.note, notes: Object.assign(state.notes, kv) };
     case actionType.DeleteNote:
-      return { ...state, note: '' };
+      var kv = {};
+      kv[action.body.currentAudienceSlide] = '';
+      return { ...state, note: '', notes: Object.assign(state.notes, kv) };
     case actionType.UpdateSlideState:
       return {
         ...state,
