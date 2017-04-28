@@ -7,7 +7,12 @@ let socket = null;
 
 export function matrixMiddleware(store) {
   return next => (action) => {
-    if ( socket && (action.type === actionType.AddNote || action.type === actionType.AddBookmark)) {
+    if ( socket && (
+      action.type === actionType.AddNote ||
+      action.type === actionType.AddBookmark ||
+      action.type === actionType.DeleteNote ||
+      action.type === actionType.RemoveBookmark
+    )) {
       var selectedPresentationIndex = store.getState().selectedPresentationIndex;
       var presentation_id = store.getState().presentations[selectedPresentationIndex].id;
       var channel = store.getState().sockets.channel;

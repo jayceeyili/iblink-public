@@ -106,7 +106,7 @@ class Notes extends Component {
             <textarea
               className={textArea}
               type="text"
-              placeholder={this.props.notes[i]}
+              placeholder={this.props.note || this.props.notes[i]}
               value={this.state.text}
               onChange={this.handleChange}
             ></textarea>
