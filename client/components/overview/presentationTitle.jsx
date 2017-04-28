@@ -6,8 +6,11 @@ import PropTypes from 'prop-types';
 const titles = `${style.title}`
 const container = `${style.container}`
 
-const PresentationTitle = ({ title, onPresentationTitleClicked }) => (
+const PresentationTitle = ({ title, onPresentationTitleClicked, current }) => (
   <div
+    style={{
+      'textDecoration': current ? 'underline' : 'none'
+    }}
     onClick={onPresentationTitleClicked}
     className={titles}
   >
