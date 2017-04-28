@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router';
 import { Button, Icon, Divider, Form, Modal, Segment } from 'semantic-ui-react';
+import style from './style.css';
 import firebase from 'firebase';
 
 var config = {
@@ -30,6 +31,7 @@ class LoginView extends React.Component {
     this.signOut = this.signOut.bind(this)
     this.signUp = this.signUp.bind(this)
     this.loginProvider = this.loginProvider.bind(this)
+    this.goBack = this.goBack.bind(this)
 
   }
 
@@ -118,14 +120,27 @@ class LoginView extends React.Component {
     this.setState({signup: !this.state.signup })
   }
 
+  goBack() {
+    this.setState({signup: !this.state.signup})
+  }
+
+
   render() {
+    const modalButton = `${style.modalButton}`
+
     return (
       <div>
         {this.props.authentication === '' ?
 
         <Modal
-          trigger={<Button positive>Sign In</Button>}
-          size='medium'
+          trigger={ <Button
+                    id={modalButton}
+                    className='ui primary button'
+                    size='big'
+                    fluid
+                    >
+                      Sign In
+                    </Button>}
         >
           <Modal.Content
           >
@@ -176,15 +191,21 @@ class LoginView extends React.Component {
                     <Divider />
 
                     {this.state.signup === false ?
-                      <Button
-                        secondary
-                        onClick={this.signUp}
-                        fluid
+                        <Button
+                          secondary
+                          onClick={this.signUp}
+                          fluid
                         >
                           Sign Up
                         </Button>
                         :
-                        <div></div>
+                        <Button
+                          secondary
+                          onClick={this.goBack}
+                          fluid
+                        >
+                          Back To Login
+                        </Button>
                       }
                   </Segment>
                 </Form>
@@ -206,7 +227,9 @@ class LoginView extends React.Component {
         <Button
           negative
           onClick={this.signOut}
-          size='medium'
+          id={modalButton}
+          size='big'
+          fluid
         >
           Sign Out
         </Button>

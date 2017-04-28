@@ -1,6 +1,6 @@
 import React from 'react';
 import UploadContainer from '../../containers/uploadContainer.js';
-import LoginModal from '../../containers/loginContainer.js';
+// import LoginModal from '../../containers/loginContainer.js';
 import SendStatusButton from '../slide_utilities/toggle_present_button/SendStatusButton.jsx';
 import { Button, Menu } from 'semantic-ui-react';
 import style from './style.css';
@@ -14,6 +14,7 @@ class NavBar extends React.Component {
 
   render() {
     const container = `${style.nav}`
+    const logo = `${style.inline}`
     return (
       // <div className={container}>
       // </div>
@@ -22,7 +23,9 @@ class NavBar extends React.Component {
         attached
         >
         <Menu.Item>
-          <LoginModal />
+            <a href='/'>
+              <h1 className={logo}>iBlink</h1>
+            </a>
         </Menu.Item>
 
         <Menu.Item>
