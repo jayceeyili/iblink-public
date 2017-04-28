@@ -6,7 +6,7 @@ import PresentationList from '../components/overview/presentationList.jsx';
 import PresentationTitle from '../components/overview/presentationTitle.jsx';
 
 const YourPresentationsContainer = ({ presentations, selectPresentationIndex }) => (
-  <PresentationList title="Presentations">
+  <PresentationList>
     {presentations.map((presentation, index) =>
       <PresentationTitle
         key={presentation.id}

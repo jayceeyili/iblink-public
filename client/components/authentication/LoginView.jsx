@@ -125,7 +125,7 @@ class LoginView extends React.Component {
 
         <Modal
           trigger={<Button positive>Sign In</Button>}
-          size='small'
+          size='medium'
         >
           <Modal.Content
           >
@@ -206,6 +206,7 @@ class LoginView extends React.Component {
         <Button
           negative
           onClick={this.signOut}
+          size='medium'
         >
           Sign Out
         </Button>

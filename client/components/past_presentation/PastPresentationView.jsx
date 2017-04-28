@@ -32,10 +32,10 @@ const PastPresentationView = props => (
                   </div>
                   :
                   <div>
-                    <div>
+                    {/* <div>
                       <NotesContainer />
                       <BookmarkButtonContainer />
-                    </div>
+                    </div> */}
                     <div>
                       <MetricsContainer />
                     </div>
