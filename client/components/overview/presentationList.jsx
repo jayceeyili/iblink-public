@@ -1,10 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PresentationList = ({ title, children }) => (
+const paddingTop = {
+  'padding-top': '40px',
+  'text-decoration': 'underline'
+}
+
+const PresentationList = ({ children }) => (
   <div>
-    <h2>{title}</h2>
-    <div>{children}</div>
+    <h2 style={paddingTop}>Presentations</h2>
+    <div>
+      <div>{children}</div>
+    </div>
   </div>
 );
 

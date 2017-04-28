@@ -5,12 +5,13 @@ import { selectPresentationIndex } from '../actions/selectedPresentationActions'
 import PresentationList from '../components/overview/presentationList.jsx';
 import PresentationTitle from '../components/overview/presentationTitle.jsx';
 
-const YourPresentationsContainer = ({ presentations, selectPresentationIndex }) => (
-  <PresentationList title="Presentations">
+const YourPresentationsContainer = ({ presentations, selectedPresentationIndex, selectPresentationIndex }) => (
+  <PresentationList>
     {presentations.map((presentation, index) =>
       <PresentationTitle
         key={presentation.id}
         title={presentation.title}
+        current={index === selectedPresentationIndex}
         onPresentationTitleClicked={() => selectPresentationIndex(index)}
       />
     )}
@@ -27,7 +28,8 @@ YourPresentationsContainer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  presentations: state.presentations
+  presentations: state.presentations,
+  selectedPresentationIndex: state.selectedPresentationIndex
 });
 
 export default connect(

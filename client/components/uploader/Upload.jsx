@@ -104,7 +104,7 @@ class Upload extends React.Component {
             basic
             color="blue"
             onClick={this.handleGetTitle}
-            size="medium"
+            size="big"
           >
             <Icon name="add circle" />
             Upload a presentation
