@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
     channel: state.sockets.channel,
     audienceIsOn: state.sockets.audienceIsOn,
     images: state.presentations[state.selectedPresentationIndex].slides,
-    bookmarks: state.bookmarks
+    bookmarks: state.bookmarks,
   };
 };
 

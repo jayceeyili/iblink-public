@@ -20,13 +20,15 @@ class Notes extends Component {
     let body = {
       userId: this.props.userId,
       note: this.state.text,
-      slideId: this.props.slideId
+      slideId: this.props.slideId,
+      currentAudienceSlide: this.props.currentAudienceSlide
     }
     if ( this.state.text ) {
       this.props.addNote( body );
     } else {
       console.error( 'Sorry, please enter your note first' );
     }
+    this.clearText();
   }
 
   handleUpdate() {
@@ -34,7 +36,8 @@ class Notes extends Component {
     let body = {
       userId: this.props.userId,
       note: this.state.text,
-      slideId: this.props.slideId
+      slideId: this.props.slideId,
+      currentAudienceSlide: this.props.currentAudienceSlide
     }
 
     if (this.state.text) {
@@ -42,13 +45,15 @@ class Notes extends Component {
     } else {
       console.error('Input filed cannot be empty');
     }
+    this.clearText();
   }
 
   handleDelete() {
     event.preventDefault();
     let body = {
       userId: this.props.userId,
-      slideId: this.props.slideId
+      slideId: this.props.slideId,
+      currentAudienceSlide: this.props.currentAudienceSlide
     }
     this.props.deleteNote( body );
     this.clearText();
@@ -73,16 +78,18 @@ class Notes extends Component {
     const updateNote = `btn btn-info ${style.button}`
     const deleteNote = `btn btn-danger ${style.button}`
 
+    let i = this.props.currentAudienceSlide;
+
     return (
       <div>
         {
-          !this.props.note ?
+          !this.props.note && !this.props.notes[i] ?
           <div>
             <textarea
               className={textArea}
               type="text"
               placeholder='take some notes!'
-              value={this.props.text}
+              value={this.state.text}
               onChange={this.handleChange}
             ></textarea>
             <div>
@@ -99,8 +106,8 @@ class Notes extends Component {
             <textarea
               className={textArea}
               type="text"
-              placeholder='take some notes!'
-              value={this.props.text}
+              placeholder={this.props.notes[i]}
+              value={this.state.text}
               onChange={this.handleChange}
             ></textarea>
             <span>

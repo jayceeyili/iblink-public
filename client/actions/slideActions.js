@@ -26,7 +26,7 @@ export function addNote( body ) {
 
   return {
     type: ActionType.AddNote,
-    text: body.note
+    body: body
   }
 }
 

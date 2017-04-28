@@ -8,7 +8,7 @@ class AudienceCarouselView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      audienceImages: null
+      audienceImages: null,
     };
 
     this.setAudienceAccess = this.setAudienceAccess.bind(this);
