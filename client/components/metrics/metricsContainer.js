@@ -6,11 +6,11 @@ import Metrics from './Metrics.jsx';
 
 // const bundledActionCreators = Object.assign( {}, noteActions );
 const mapStateToProps = state => {
-  console.log('this is the state in metrics', state.matrix);
+  // console.log('this is the state in metrics', state.matrix);
   return ({
   activeData: state.matrix,
   currentSlide: state.bookmarks.currentAudienceSlide,
-  presentationId: state.presentations[state.selectedPresentationIndex].id
+  presentationId: state.presentations[state.selectedPresentationIndex].title
 })};
 // const mapDispatchToProps = dispatch => bindActionCreators(bundledActionCreators, dispatch);
 
