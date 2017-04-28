@@ -70,8 +70,8 @@ class Notes extends Component {
   render() {
     const textArea = `${style.textArea}`
     const addNote = `btn btn-basic ${style.button}`
-    const updateNote = `btn btn-info`
-    const deleteNote = `btn btn-danger`
+    const updateNote = `btn btn-info ${style.button}`
+    const deleteNote = `btn btn-danger ${style.button}`
 
     return (
       <div>
