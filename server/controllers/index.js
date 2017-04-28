@@ -1,5 +1,4 @@
 const path = require('path');
-const Promise = require('bluebird');
 
 const presentation = require('../models/presentation');
 const channel = require('../models/channel');
@@ -8,7 +7,6 @@ const bookmarkUtil = require('../models/bookmark');
 const noteUtil = require('../models/note');
 
 let maxSlide = 0;  // TODO: improve after MVP to support multiple presentations
-const getTargetPresentationSlides = Promise.promisify(require('../models/slide').getTargetPresentationSlides);
 
 module.exports = {
 
@@ -104,37 +102,22 @@ module.exports = {
   },
 
   audience_presentation_add_bookmark: {
-    get(req, res) {
-      res.json(bookmarkedSlides);
-    },
     post(req, res) {
-      const slideIndex = req.body.slideIndex;
       const userId = req.body.userId;
-      const presentationId = req.body.presentationId;
+      const slideId = req.body.slideId;
 
-      getTargetPresentationSlides(presentationId)
-      .then((targetPresentationSlides) => {
-        bookmarkUtil.addBookmark(targetPresentationSlides[slideIndex].dataValues.image_url, userId, presentationId);
-        console.log('slide at index ', slideIndex, ' is added to bookmarked');
-        res.json('slide at index ', slideIndex, ' is added to bookmarked');
-      })
-      .catch(err => console.log(err));
+      bookmarkUtil.addBookmark(userId, slideId);
+      res.json('slide ', slideId, ' is being bookmarked');
     }
   },
 
   audience_presentation_remove_bookmark: {
     post(req, res) {
-      const slideIndex = req.body.slideIndex;
       const userId = req.body.userId;
-      const presentationId = req.body.presentationId;
+      const slideId = req.body.slideId;
 
-      getTargetPresentationSlides(presentationId)
-      .then((targetPresentationSlides) => {
-        bookmarkUtil.removeBookmark(targetPresentationSlides[slideIndex].dataValues.image_url, userId, presentationId);
-        console.log('slide at index ', slideIndex, ' is being removed from bookmarked');
-        res.json('slide at index ', slideIndex, ' is removed from bookmarked');
-      })
-      .catch(err => console.log(err));
+      bookmarkUtil.removeBookmark(userId, slideId);
+      res.json('slide ', slideId, ' is being removed');
     }
   },
 
@@ -155,12 +138,6 @@ module.exports = {
     }
   },
 
-  // audience_presentation_get_bookmarks: {
-  //   get(req, res) {
-  //     res.json(bookmarkedSlides);
-  //   }
-  // },
-
   // upload slides into database
   presenter_presentation: {
     post(req, res) {
@@ -180,42 +157,6 @@ module.exports = {
           res.status(201).end(JSON.stringify(result));  // return the whole presentation with IDs
         }
       });
-    }
-  },
-
-  metrics: {
-    get(req, res) {
-      const presentationId = req.query.presentationId;
-      // declare a variable initialized at an empty array to store the resulting metrics data
-      const metricsData = [];
-      // declare a variable that stores the result of the slideUtil function that queries db to get all the slides of that presentation id
-      // iterate over the target slides
-      // query db to get the count of bookmarks with set presentation id and set slide index
-      // query db to get the count of notes with set presentation id and set slide index
-      res.json(metricsData);
-      // [
-      //   {
-      //     notes: '10',
-      //     bookmarks: '13',
-      //     slide: '1'
-      //   }, {
-      //     notes: '0',
-      //     bookmarks: '2',
-      //     slide: '2'
-      //   }, {
-      //     notes: '5',
-      //     bookmarks: '6',
-      //     slide: '3'
-      //   }, {
-      //     notes: '12',
-      //     bookmarks: '0',
-      //     slide: '4'
-      //   }, {
-      //     notes: '7',
-      //     bookmarks: '2',
-      //     slide: '5'
-      //   }
-      // ]
     }
   },
 

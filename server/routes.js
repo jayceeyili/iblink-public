@@ -17,7 +17,6 @@ router.post('/audience_presentation', controller.audience_presentation.post);
 
 router.post('/audience_presentation/add_bookmark', controller.audience_presentation_add_bookmark.post);
 router.post('/audience_presentation/remove_bookmark', controller.audience_presentation_remove_bookmark.post);
-// router.get('/audience_presentation/get_bookmarks', controller.audience_presentation_get_bookmarks.get);
 
 // notes
 router.post('/audience_presentation/add_note', controller.audience_presentation_note.post);
@@ -25,8 +24,6 @@ router.post('/audience_presentation/update_note', controller.audience_presentati
 router.post('/audience_presentation/delete_note', controller.audience_presentation_note.delete);
 
 router.post('/presenter_presentation', controller.presenter_presentation.post);
-
-router.get('/metrics', controller.metrics.get);
 
 //get user specific databaseURL
 router.get('/:userId', controller.get_user_data.get);

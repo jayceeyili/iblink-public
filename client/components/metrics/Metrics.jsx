@@ -34,7 +34,6 @@ class BarStack extends React.Component {
     activityData.columns = [
       'slide', 'notes', 'bookmarks'
     ];
-    console.log('Activity data:', this.props.activeData);
 
     let width = 700,
       height = 400,
@@ -58,7 +57,6 @@ class BarStack extends React.Component {
     // const max = d3.max(data, d => d.value);
     // chart.selectAll('rect').filter(d => d.value === max).classed('max', true).attr('fill', 'green');
       // example of doing a different display for a specific column
-
 
     return (
       <BarStackChart

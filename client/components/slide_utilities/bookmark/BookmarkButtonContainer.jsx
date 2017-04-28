@@ -8,8 +8,8 @@ const bundledActionCreators = Object.assign({},
 );
 const mapStateToProps = state => ({
   bookmarks: state.bookmarks,
-  presentationId: state.presentations[0].id,
-  userId: state.authentication.userId
+  userId: state.authentication.userId,
+  slides: state.presentations[state.selectedPresentationIndex].slides
 });
 const mapDispatchToProps = dispatch => bindActionCreators(bundledActionCreators, dispatch);
 
