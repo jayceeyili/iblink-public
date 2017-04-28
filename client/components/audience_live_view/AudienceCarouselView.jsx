@@ -56,10 +56,13 @@ class AudienceCarouselView extends React.Component {
   }
 
   render() {
+    const centered = { textAlign: 'center' };
+
     return (
       <div>
         { this.props.audienceIsOn ?
           <section className="image-gallery-container">
+            <h1 style={centered}> {this.props.title} </h1>
             <ImageGallery
               ref={(ImageGallery) => { this.ImageGallery = ImageGallery; }}
               items={this.state.audienceImages}

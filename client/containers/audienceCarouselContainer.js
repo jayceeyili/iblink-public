@@ -14,6 +14,7 @@ const mapStateToProps = (state) => {
     audienceIsOn: state.sockets.audienceIsOn,
     images: state.presentations[state.selectedPresentationIndex].slides,
     bookmarks: state.bookmarks,
+    title: state.presentations[state.selectedPresentationIndex].title
   };
 };
 
