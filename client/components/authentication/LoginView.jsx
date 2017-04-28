@@ -69,7 +69,6 @@ class LoginView extends React.Component {
     } else {
       firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(results => {
-          console.log('Success! Welcome', results.uid)
           this.props.loggedIn(results.uid)
           this.props.getUserData(results.uid)
           this.setState({
@@ -92,7 +91,6 @@ class LoginView extends React.Component {
       var token = result.credential.accessToken;
       var secret = result.credential.secret;
       var user = result.user;
-      console.log('Success! Welcome', user.uid);
       this.props.loggedIn(user.uid)
       this.props.getUserData(user.uid)
       this.setState({loggedIn: false})
@@ -127,6 +125,7 @@ class LoginView extends React.Component {
 
   render() {
     const modalButton = `${style.modalButton}`
+    const signuptitle = `${style.signuptitle}`
 
     return (
       <div>
@@ -147,9 +146,9 @@ class LoginView extends React.Component {
             {this.props.authentication === '' ?
               <div>
                 {this.state.signup === false ?
-                  <h2>Login</h2>
+                  <h2 className={signuptitle}>Login</h2>
                   :
-                  <h2>Sign Up</h2>
+                  <h2 className={signuptitle}>Sign Up</h2>
                 }
 
                 <Form
@@ -196,6 +195,7 @@ class LoginView extends React.Component {
                           onClick={this.signUp}
                           fluid
                         >
+                          <Icon name='sign in' />
                           Sign Up
                         </Button>
                         :
@@ -231,6 +231,7 @@ class LoginView extends React.Component {
           size='big'
           fluid
         >
+          <Icon name="sign out"/>
           Sign Out
         </Button>
       }

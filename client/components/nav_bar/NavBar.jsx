@@ -23,7 +23,7 @@ class NavBar extends React.Component {
         attached
         >
         <Menu.Item>
-            <a href='/'>
+            <a href='/' className={logo}>
               <h1 className={logo}>iBlink</h1>
             </a>
         </Menu.Item>

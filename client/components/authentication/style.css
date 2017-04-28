@@ -2,15 +2,10 @@
   margin-top: 20px;
 }
 
-.inline {
-  display: inline-block;
-  text-decoration: none;
+.signuptitle {
+  text-align: center;
 }
 
-a:hover {
-  text-decoration: none;
-}
-
-a:active {
-  text-decoration: none;
+.containment {
+  height: 30px
 }
