@@ -1,5 +1,4 @@
 const path = require('path');
-const Promise = require('bluebird');
 
 const presentation = require('../models/presentation');
 const channel = require('../models/channel');

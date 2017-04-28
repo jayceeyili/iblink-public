@@ -35,7 +35,8 @@ module.exports.storePresentation = function (presentation, callback) {
 };
 
 module.exports.getAllPresentations = function (userId, callback) {
-  models.Presentation.findAll({ where: { user_id: userId } })
+  // models.Presentation.findAll({ where: { user_id: userId } })
+  models.Presentation.findAll({ user_id: userId })
   .then((presentationsStructure) => {
     // console.log('presentations sturcture:', presentationsStructure);
     const presentations = [];
