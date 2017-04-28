@@ -9,27 +9,27 @@ class BarStack extends React.Component {
 
   render() {
     const activityData = [
-      {
-        notes: '10',
-        bookmarks: '13',
-        slide: '1'
-      }, {
-        notes: '0',
-        bookmarks: '2',
-        slide: '2'
-      }, {
-        notes: '5',
-        bookmarks: '6',
-        slide: '3'
-      }, {
-        notes: '12',
-        bookmarks: '0',
-        slide: '4'
-      }, {
-        notes: '7',
-        bookmarks: '2',
-        slide: '5'
-      }
+      // {
+      //   notes: '10',
+      //   bookmarks: '13',
+      //   slide: '1'
+      // }, {
+      //   notes: '0',
+      //   bookmarks: '2',
+      //   slide: '2'
+      // }, {
+      //   notes: '5',
+      //   bookmarks: '6',
+      //   slide: '3'
+      // }, {
+      //   notes: '12',
+      //   bookmarks: '0',
+      //   slide: '4'
+      // }, {
+      //   notes: '7',
+      //   bookmarks: '2',
+      //   slide: '5'
+      // }
     ];
     activityData.columns = [
       'slide', 'notes', 'bookmarks'
@@ -51,8 +51,8 @@ class BarStack extends React.Component {
         return d.slide;
       },
       xScale = 'ordinal',
-      yTickFormat = d3.format('.2s');
 
+      yTickFormat = d3.format('.0f');
 
     // const max = d3.max(data, d => d.value);
     // chart.selectAll('rect').filter(d => d.value === max).classed('max', true).attr('fill', 'green');

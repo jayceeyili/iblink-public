@@ -6,17 +6,24 @@ const initialState = {
   id: null,
   bookmark: false,
   note: '',
+  notes: {},
   tweet: false
 };
 
 const currentSlide = ( state = initialState, action ) => {
   switch ( action.type ) {
     case actionType.AddNote:
-      return { ...state, note: action.text };
+      var kv = {};
+      kv[action.body.currentAudienceSlide] = action.body.note;
+      return { ...state, note: action.body.note, notes: Object.assign(state.notes, kv) };
     case actionType.UpdateNote:
-      return state;
+      var kv = {};
+      kv[action.body.currentAudienceSlide] = action.body.note;
+      return { ...state, note: action.body.note, notes: Object.assign(state.notes, kv) };
     case actionType.DeleteNote:
-      return { ...state, note: '' };
+      var kv = {};
+      kv[action.body.currentAudienceSlide] = '';
+      return { ...state, note: '', notes: Object.assign(state.notes, kv) };
     case actionType.UpdateSlideState:
       return {
         ...state,

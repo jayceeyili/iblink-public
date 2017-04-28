@@ -12,7 +12,9 @@ const mapStateToProps = state => ( {
   presentationId: state.presentations[state.selectedPresentationIndex].id,
   userId: state.authentication.userId,
   note: state.currentSlide.note,
-  slideId: state.currentSlide.id
+  slideId: state.currentSlide.id,
+  notes: state.currentSlide.notes,
+  currentAudienceSlide: state.bookmarks.currentAudienceSlide
 } );
 const mapDispatchToProps = dispatch => bindActionCreators( bundledActionCreators, dispatch );
 
