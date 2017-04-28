@@ -4,6 +4,10 @@ import ImageGallery from 'react-image-gallery';
 class PresenterCarouselView extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      max: 0
+    }
     // console.log('props in constructor:', props);
     this.handleImageLoad = this.handleImageLoad.bind(this);
     this.handleSlideChange = this.handleSlideChange.bind(this);
@@ -25,7 +29,9 @@ class PresenterCarouselView extends React.Component {
   }
 
   handleSlideChange(index) {
-    this.props.sendURL(index);
+    this.setState({
+      max: Math.max(this.state.max, index)
+    }, () => this.props.sendURL(this.state.max));
     let currentSlide = this.props.images[index];
     this.props.updateSlideState( currentSlide );
     this.props.getCurrentAudienceSlide(index);
