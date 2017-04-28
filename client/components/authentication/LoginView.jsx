@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router';
 import { Button, Icon, Divider, Form, Modal, Segment } from 'semantic-ui-react';
+import style from './style.css';
 import firebase from 'firebase';
 
 var config = {
@@ -30,6 +31,7 @@ class LoginView extends React.Component {
     this.signOut = this.signOut.bind(this)
     this.signUp = this.signUp.bind(this)
     this.loginProvider = this.loginProvider.bind(this)
+    this.goBack = this.goBack.bind(this)
 
   }
 
@@ -67,7 +69,6 @@ class LoginView extends React.Component {
     } else {
       firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(results => {
-          console.log('Success! Welcome', results.uid)
           this.props.loggedIn(results.uid)
           this.props.getUserData(results.uid)
           this.setState({
@@ -90,7 +91,6 @@ class LoginView extends React.Component {
       var token = result.credential.accessToken;
       var secret = result.credential.secret;
       var user = result.user;
-      console.log('Success! Welcome', user.uid);
       this.props.loggedIn(user.uid)
       this.props.getUserData(user.uid)
       this.setState({loggedIn: false})
@@ -118,23 +118,37 @@ class LoginView extends React.Component {
     this.setState({signup: !this.state.signup })
   }
 
+  goBack() {
+    this.setState({signup: !this.state.signup})
+  }
+
+
   render() {
+    const modalButton = `${style.modalButton}`
+    const signuptitle = `${style.signuptitle}`
+
     return (
       <div>
         {this.props.authentication === '' ?
 
         <Modal
-          trigger={<Button positive>Sign In</Button>}
-          size='medium'
+          trigger={ <Button
+                    id={modalButton}
+                    className='ui primary button'
+                    size='big'
+                    fluid
+                    >
+                      Sign In
+                    </Button>}
         >
           <Modal.Content
           >
             {this.props.authentication === '' ?
               <div>
                 {this.state.signup === false ?
-                  <h2>Login</h2>
+                  <h2 className={signuptitle}>Login</h2>
                   :
-                  <h2>Sign Up</h2>
+                  <h2 className={signuptitle}>Sign Up</h2>
                 }
 
                 <Form
@@ -176,15 +190,22 @@ class LoginView extends React.Component {
                     <Divider />
 
                     {this.state.signup === false ?
-                      <Button
-                        secondary
-                        onClick={this.signUp}
-                        fluid
+                        <Button
+                          secondary
+                          onClick={this.signUp}
+                          fluid
                         >
+                          <Icon name='sign in' />
                           Sign Up
                         </Button>
                         :
-                        <div></div>
+                        <Button
+                          secondary
+                          onClick={this.goBack}
+                          fluid
+                        >
+                          Back To Login
+                        </Button>
                       }
                   </Segment>
                 </Form>
@@ -206,8 +227,11 @@ class LoginView extends React.Component {
         <Button
           negative
           onClick={this.signOut}
-          size='medium'
+          id={modalButton}
+          size='big'
+          fluid
         >
+          <Icon name="sign out"/>
           Sign Out
         </Button>
       }

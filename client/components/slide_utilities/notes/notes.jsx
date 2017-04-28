@@ -1,4 +1,5 @@
 import React, { Component }from 'react';
+import { Button, Icon } from 'semantic-ui-react';
 import style from './style.css'
 
 class Notes extends Component {
@@ -97,6 +98,7 @@ class Notes extends Component {
                 className={addNote}
                 onClick={this.handleSubmit}
               >
+                <Icon name='sticky note outline' />
                 Add Note
               </button>
             </div>
@@ -114,11 +116,17 @@ class Notes extends Component {
               <button
                 className={updateNote}
                 onClick={this.handleUpdate}
-              >Update</button>
+              >
+                <Icon name="edit" />
+                Update
+              </button>
               <button
                 className={deleteNote}
                 onClick={this.handleDelete}
-              >Delete</button>
+              >
+                <Icon name="trash" />
+                Delete
+              </button>
             </span>
           </div>
         }
