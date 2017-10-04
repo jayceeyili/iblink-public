@@ -6,10 +6,8 @@ Presenters get metrics to improve their presentations and can connect with atten
 
 ## Team
 
-  - J.G Demathieu
-  - Johnny Chen
   - Yi Li
-  - Allen Guan
+  - J.G Demathieu
 
 ## Table of Contents
 

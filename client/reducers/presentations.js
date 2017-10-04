@@ -7,9 +7,7 @@ const presentation = (state, action) => {
       if (state.id !== action.id) {
         return state
       }
-      return {
-        null
-      }
+      return null;
     default:
       return state
   }
