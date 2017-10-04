@@ -39,7 +39,7 @@ module.exports = {
           // * presentationIndex, (in the presentations array below)
           // * currentSlideIndex, (in the slides array below)
           // * maxSlideIndex (in the slides array below)
-          selectedPresentationIndex: 0,
+          selectedPresentationIndex: 2,
           presentations,
           // title,
           // id,  (database ID)
