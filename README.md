@@ -26,11 +26,10 @@ Presenters get metrics to improve their presentations and can connect with atten
 ## Requirements
 
 - Node 6.4.x
-- Redis 2.6.x
-- MySQL 9.1.x
+- PostgreSQL
 - Babel-Core
 - React
--
+- Redux
 
 ## Development
 
@@ -39,9 +38,8 @@ Presenters get metrics to improve their presentations and can connect with atten
 From within the root directory:
 
 ```sh
-npm install -g bower
 npm install
-bower install
+npm start
 ```
 
 ### iBlink database creation
